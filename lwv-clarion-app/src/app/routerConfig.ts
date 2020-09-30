@@ -5,7 +5,6 @@ import { HistoryComponent } from './components/history/history.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { OfficersComponent } from './components/officers/officers.component';
-import { RegisterToVoteComponent } from './components/register-to-vote/register-to-vote.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 
 const appRoutes: Routes = [
@@ -28,10 +27,6 @@ const appRoutes: Routes = [
     {
         path: 'officers',
         component: OfficersComponent
-    },
-    {
-        path: 'register-to-vote',
-        component: RegisterToVoteComponent
     },
     {
         path: 'log-in',
