@@ -1,1 +1,35 @@
 <router-outlet></router-outlet>
+<br><br>
+<div >Member information for:
+   <br>
+   <li *ngFor="let testMember of members" >
+      {{testMember.FirstName}}
+   </li>
+</div>
+<br>
+
+<div *ngFor="let mem of members;let i = index;">
+   <input type="text"
+            [(ngModel)]="members[i].MemberID"
+            class="form-control"
+            #MemberID="ngModel"
+            [ngClass]="{ 'is-invalid': MemberID.touched && MemberID.invalid }"
+            disabled>
+     <input type="text"
+            [(ngModel)]="members[i].FirstName"
+            class="form-control"
+            #FirstName="ngModel"
+            [ngClass]="{ 'is-invalid': FirstName.touched && FirstName.invalid }">
+      <input type="text"
+            [(ngModel)]="members[i].LastName"
+            class="form-control"
+            #LastName="ngModel"
+            [ngClass]="{ 'is-invalid': LastName.touched && LastName.invalid }">
+   <br>
+</div>
+
+<!-- <button>Add</button>
+
+<button>Delete</button> -->
+
+<button>Update</button>
