@@ -31,4 +31,8 @@ export class AppComponent {
       }
     );
   }
+
+  updateMembers(){
+    console.log("in update members");
+  }
 }
