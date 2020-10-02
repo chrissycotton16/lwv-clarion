@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import  appRoutes from './routerConfig';
     ResourcesComponent,
     HistoryComponent,
     OfficersComponent,
-    LogInComponent
+    LogInComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
