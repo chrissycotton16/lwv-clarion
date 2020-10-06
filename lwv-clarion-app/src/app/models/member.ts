@@ -13,6 +13,10 @@ export class Member {
         Email?: string,
         PreferredPhone?: string,
         SecondaryPhone?: string,
+        StreetAddress?: string,
+        City?: string,
+        State?: string,
+        ZipCode?: number,
         MemberUser?: string,
         MemberPassword?: string,
     ) {}
