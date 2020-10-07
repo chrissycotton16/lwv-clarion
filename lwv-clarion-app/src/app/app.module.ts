@@ -17,6 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
+import { AdminComponent } from './components/admin/admin.component';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import  appRoutes from './routerConfig';
     ResourcesComponent,
     HistoryComponent,
     OfficersComponent,
-    LogInComponent
+    LogInComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
