@@ -24,6 +24,36 @@ export class MemberService {
         catchError(this.handleError));
     }
 
+    delete(MemberID: number): Observable<Member[]> {
+        console.log("in member service delete method");
+        const params = new HttpParams()
+        .set('MemberID', MemberID.toString());
+
+        return this.http.delete(`${this.baseUrl}/delete`, { params: params })
+        .pipe(map(res => {
+            const filteredMembers = this.members.filter((member) => {
+            return +member['MemberID'] !== +MemberID;
+            });
+            return this.members = filteredMembers;
+        }),
+        catchError(this.handleError));
+    }
+
+    update(member: Member): Observable<Member[]> {
+        return this.http.put(`${this.baseUrl}/update`, { data: member })
+        .pipe(map((res) => {
+            const theMember = this.members.find((item) => {
+            return +item['MemberID'] === +member['MemberID'];
+            });
+            if (theMember) {
+            theMember['FirstName'] = +member['FirstName'];
+            theMember['LastName'] = member['LastName'];
+            }
+            return this.members;
+        }),
+        catchError(this.handleError));
+    } 
+
     /*   store(car: Car): Observable<Car[]> {
         return this.http.post(`${this.baseUrl}/store`, { data: car })
         .pipe(map((res) => {
@@ -33,34 +63,9 @@ export class MemberService {
         catchError(this.handleError));
     }
 
-    update(car: Car): Observable<Car[]> {
-        return this.http.put(`${this.baseUrl}/update`, { data: car })
-        .pipe(map((res) => {
-            const theCar = this.cars.find((item) => {
-            return +item['id'] === +car['id'];
-            });
-            if (theCar) {
-            theCar['price'] = +car['price'];
-            theCar['model'] = car['model'];
-            }
-            return this.cars;
-        }),
-        catchError(this.handleError));
-    }
+    
 
-    delete(id: number): Observable<Car[]> {
-        const params = new HttpParams()
-        .set('id', id.toString());
-
-        return this.http.delete(`${this.baseUrl}/delete`, { params: params })
-        .pipe(map(res => {
-            const filteredCars = this.cars.filter((car) => {
-            return +car['id'] !== +id;
-            });
-            return this.cars = filteredCars;
-        }),
-        catchError(this.handleError));
-    }
+    
     */
     private handleError(error: HttpErrorResponse) {
         console.log(error);
