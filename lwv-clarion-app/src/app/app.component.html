@@ -1,15 +1,19 @@
-<mat-toolbar id = "navBar">
-    <div id = "buttonDiv">
-      <nav>
-        <a mat-button [routerLink]="'home'" routerLinkActive="active" id="homeButton"> LWV</a>
-        <a mat-button [routerLink]="'calendar'" id="buttons"> Calendar </a>
-        <a mat-button [routerLink]="'resources'" id="buttons"> Resources </a>
-        <a mat-button [routerLink]="'history'" id="buttons"> History </a>
-        <a mat-button [routerLink]="'officers'" id="buttons"> Officers </a>
-        <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" id = "vote"> Register to Vote! </a>
-        <a mat-raised-button [routerLink]="'/log-in'" id = "log-in"> Log In </a>
-      </nav>
+<div class = "NavigationBar">
+  <div class = "left">
+    <div class="navButtons">
+      <a mat-button [routerLink]="'home'" routerLinkActive="active" class="homeButton"> LWV</a>
+      <a mat-button [routerLink]="'calendar'" > Calendar </a>
+      <a mat-button [routerLink]="'resources'" > Resources </a>
+      <a mat-button [routerLink]="'history'" > History </a>
+      <a mat-button [routerLink]="'officers'" > Officers </a>
     </div>
-  <router-outlet></router-outlet>
-</mat-toolbar>
+  </div>
+  <div class = "right">
+    <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" target = "_blank" class="vote"> Register to Vote! </a>
+    <a mat-raised-button [routerLink]="'/log-in'" class = "login"> Log In </a>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+
 
