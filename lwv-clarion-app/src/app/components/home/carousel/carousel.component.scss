@@ -16,7 +16,6 @@
 
     }
     
-
 .slick-slide img{
     width:auto;
     border: 2px solid #fff;
@@ -31,13 +30,18 @@
   
 }
 
-.container{
-    margin: auto;
-    width: 80%;
-    border: 60px solid #005596;
-    background-color:  #005596;
-    
-  
+.carousel-container{
+  position: fixed;
+  margin: auto;
+  top: 15%;
+  left: 2%;
+  right: 2%;
+  width: 90%;
+  border: 35px solid #005596;
+  background-color:  #005596;
+  border-radius: 25px;
+  border-bottom: 10px;
+
 }
 
 .slide__caption {
@@ -47,24 +51,5 @@
    margin-bottom: 20px;
     
   }
-  .slick-prev {   
-    background: #be0f34; 
-    z-index: 1;
-    left: 0px !important;
-  }
-  .slick-next {
-    background: #be0f34; 
-    right: 30px !important;
-  }
   
-    .slick-prev:before {
-      color:#be0f34 !important;
-      font-size: 50px !important;
-      
-    }
-    .slick-next:before {
-      color: #be0f34  !important;
-      font-size: 50px !important
-  
-    }
     
