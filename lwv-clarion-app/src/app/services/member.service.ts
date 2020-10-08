@@ -39,6 +39,16 @@ export class MemberService {
         catchError(this.handleError));
     }
 
+    store(member: Member): Observable<Member[]> {
+        console.log("in store method in member service");
+        return this.http.post(`${this.baseUrl}/store`, { data: member })
+        .pipe(map((res) => {
+            this.members.push(res['data']);
+            return this.members;
+        }),
+        catchError(this.handleError));
+    }
+
     update(member: Member): Observable<Member[]> {
         return this.http.put(`${this.baseUrl}/update`, { data: member })
         .pipe(map((res) => {
@@ -46,27 +56,15 @@ export class MemberService {
             return +item['MemberID'] === +member['MemberID'];
             });
             if (theMember) {
-            theMember['FirstName'] = +member['FirstName'];
+            theMember['FirstName'] = member['FirstName'];
             theMember['LastName'] = member['LastName'];
             }
+            console.log("maybe now it works????: " + this.members);
             return this.members;
         }),
         catchError(this.handleError));
     } 
-
-    /*   store(car: Car): Observable<Car[]> {
-        return this.http.post(`${this.baseUrl}/store`, { data: car })
-        .pipe(map((res) => {
-            this.cars.push(res['data']);
-            return this.cars;
-        }),
-        catchError(this.handleError));
-    }
-
     
-
-    
-    */
     private handleError(error: HttpErrorResponse) {
         console.log(error);
 

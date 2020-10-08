@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Member } from './models/member';
 import { MemberService } from './services/member.service';
+import { FnParam } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,8 @@ export class AppComponent {
   error = '';
   success = '';
   message = "hello"
-  @Input() member={FirstName:'', LastName:'', id:0} //this is for storing purposes
-  testMember: Member;
+  @Input() member={ MemberID:0, FirstName:'', LastName:''} //this is for storing purposes
+  updatedMemberInfo: Member;
   constructor(private memberService: MemberService){
     this.ngOnInIt();
   }
@@ -49,17 +50,42 @@ export class AppComponent {
     this.getMembers();
   }
 
-  updateMembers(FirstName, LastName, MemberID){
+  addMember(f) {
+    this.resetErrors();
+    console.log("in add member in app component");
+    this.memberService.store(this.member)
+      .subscribe(
+        (res: Member[]) => {
+          // Update the list of cars
+          this.members = res;
+
+          // Inform the user
+          this.success = 'Created successfully';
+
+          // Reset the form
+          f.reset();
+        },
+        (err) => this.error = err
+      );
+    this.getMembers();
+  }
+
+  updateMember(MemberID, FirstName, LastName){
     this.resetErrors();
     console.log("new input: " + FirstName + " " + LastName + " " + MemberID);
-    this.memberService.update({ FirstName: FirstName.value, LastName: LastName.value, MemberID: +MemberID })
+    this.updatedMemberInfo = {MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value} ;
+    //{ MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value};
+    console.log("new in variable input: " + this.updatedMemberInfo.FirstName );
+
+    this.memberService.update(this.updatedMemberInfo)
       .subscribe(
         (res) => {
-          this.members    = res;
+          this.members = res;
           this.success = 'Updated successfully';
         },
         (err) => this.error = err
       );  
+     
     }
 
   resetErrors() {
