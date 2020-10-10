@@ -1,0 +1,16 @@
+<div class="carousel-container">  
+   <ngx-slick-carousel class="carousel" 
+    #slickModal="slick-carousel" 
+    [config]="slideConfig" 
+    (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)"
+    (afterChange)="afterChange($event)"
+    (beforeChange)="beforeChange($event)">
+   <div ngxSlickItem *ngFor="let slide of images" class="slide">
+   <img src="{{ slide.imageString }}" alt="test" width="auto">
+   <div class="slide__caption">{{slide.caption}}</div>
+   </div>
+   </ngx-slick-carousel>
+   
+</div>   
+   
