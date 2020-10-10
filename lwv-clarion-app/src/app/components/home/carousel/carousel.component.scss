@@ -1,0 +1,55 @@
+
+
+.slick-track {
+    margin-left: 0 !important;
+}
+
+.slick-slide:focus {
+    outline: none;
+    }
+
+.slick-slide{
+    height: auto;
+    align-items: center; 
+    justify-content: center; 
+    margin:10px;
+
+    }
+    
+.slick-slide img{
+    width:auto;
+    border: 2px solid #fff;
+    height: 300px;
+   
+  }
+
+.slide{
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+  
+}
+
+.carousel-container{
+  position: fixed;
+  margin: auto;
+  top: 20%;
+  left: 2%;
+  right: 2%;
+  width: 90%;
+  border: 35px solid #005596;
+  background-color:  #005596;
+  border-radius: 25px;
+  border-bottom: 10px;
+
+}
+
+.slide__caption {
+   
+   text-align: center;   
+   color: white;
+   margin-bottom: 20px;
+    
+  }
+  
+    
