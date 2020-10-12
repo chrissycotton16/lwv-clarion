@@ -21,8 +21,10 @@ import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
+
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
+
 
 
 

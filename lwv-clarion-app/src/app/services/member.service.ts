@@ -47,6 +47,7 @@ export class MemberService {
             return this.members;
         }),
         catchError(this.handleError));
+        console.log("leaving store method in member service");
     }
 
     update(member: Member): Observable<Member[]> {

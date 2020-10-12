@@ -10,6 +10,7 @@ import { FnParam } from '@angular/compiler/src/output/output_ast';
 })
 export class AppComponent {
   title = 'lwv-clarion-app';
+
   members: Member[];
   error = '';
   success = '';
@@ -92,4 +93,5 @@ export class AppComponent {
     this.success = '';
     this.error   = '';
   }
+
 }

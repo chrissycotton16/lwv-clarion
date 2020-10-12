@@ -1,1 +1,146 @@
-<p>admin works!</p>
+
+<br><br>
+<div >Member information for:
+   <br>
+   <li *ngFor="let testMember of members" >
+      {{testMember.FirstName}}
+   </li>
+</div>
+<br>
+
+<div *ngFor="let mem of members;let i = index;">
+   <input type="text"
+            [(ngModel)]="members[i].MemberID"
+            class="form-control"
+            #MemberID="ngModel"
+            [ngClass]="{ 'is-invalid': MemberID.touched && MemberID.invalid }"
+            disabled>
+     <input type="text"
+            [(ngModel)]="members[i].FirstName"
+            class="form-control"
+            #FirstName="ngModel"
+            [ngClass]="{ 'is-invalid': FirstName.touched && FirstName.invalid }">
+      <input type="text"
+            [(ngModel)]="members[i].LastName"
+            class="form-control"
+            #LastName="ngModel"
+            [ngClass]="{ 'is-invalid': LastName.touched && LastName.invalid }">
+   <input type="button" value = "Delete" color='primary' (click)='deleteMember(members[i].MemberID)'>
+   <input type="button" value = "Update" color='primary' (click)='updateMember(members[i].MemberID, members[i].FirstName, members[i].LastName)'>
+</div>
+<br>
+<br>
+<div id="theForm">
+   <h2>Add New Member</h2>
+   <form #f="ngForm" name="theForm" (submit)="addMember(f)">
+     <div class="form-group">
+       <label>First Name*</label>
+       <input type="text"
+             class="form-control"
+             name="FirstName"
+             [(ngModel)]="member.FirstName"
+             #memberModel="ngModel"
+             required
+             pattern="^[a-zA-Z]+$">
+       <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+         The first name is required
+       </span>
+       <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
+         The first name can only contain the letters a-z or A-Z
+       </span>
+     </div>
+ 
+     <div class="form-group">
+      <label>Last Name*</label>
+      <input type="text"
+            class="form-control"
+            name="LastName"
+            [(ngModel)]="member.LastName"
+            #memberModel="ngModel"
+            required
+            pattern="^[a-zA-Z]+$">
+      <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+        The last name is required
+      </span>
+      <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
+        The last name can only contain the letters a-z or A-Z
+      </span>
+     </div>
+ 
+     <div class="form-group">
+        <label>Secondary Household Member Name</label>
+        <input type="text"
+              class="form-control"
+              name="SecondaryHouseholdMemberName"
+              [(ngModel)]="member.SecondaryHouseholdMemberName"
+              #memberModel="ngModel"
+              pattern="^[a-zA-Z]+$">
+        <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
+          The Secondary Household Member Name can only contain the letters a-z or A-Z
+        </span>
+       </div>
+
+       <div class="form-group">
+        <label>Last Paid Date</label>
+        <input type="text"
+              class="form-control"
+              name="LastPaidDate"
+              [(ngModel)]="member.LastPaidDate"
+              #memberModel="ngModel"
+              pattern="">
+        <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
+          The last paid date must be in this format: "MM/YY".
+        </span>
+       </div>
+
+       <div class="form-group">
+        <label>Date Joined</label>
+        <input type="text"
+              class="form-control"
+              name="DateJoined"
+              [(ngModel)]="member.DateJoined"
+              #memberModel="ngModel"
+              pattern="">
+        <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
+            The date joined must be in this format: "MM/YY".
+        </span>
+       </div>
+
+       <div class="form-group">
+        <label>Active</label>
+        <input type="checkbox"
+              class="form-control"
+              name="Active"
+              [(ngModel)]="member.Active"
+              #memberModel="ngModel">
+       </div>
+       <div class="form-group">
+        <label>Email</label>
+        <input type="text"
+              class="form-control"
+              name="Email"
+              [(ngModel)]="member.Email"
+              #memberModel="ngModel"
+              required
+              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
+            Please enter a valid email address. Ex: "janedoe@email.com"
+        </span>
+        <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+            The first name is required
+          </span>
+       </div>
+
+     <button
+         class="btn btn-primary btn-sm"
+         [disabled]="f.invalid">Add
+     </button>
+   </form>
+ </div>
+ 
+ 
+<button mat-button color='primary'>Export</button>
+
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="success" class="alert alert-success">{{success}}</div>
+
