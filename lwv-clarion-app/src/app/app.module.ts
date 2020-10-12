@@ -20,9 +20,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
 import { AdminComponent } from './components/admin/admin.component';
-
-
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
@@ -58,7 +55,6 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

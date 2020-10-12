@@ -75,7 +75,7 @@ export class AppComponent {
     console.log("new input: " + FirstName + " " + LastName + " " + MemberID);
     this.updatedMemberInfo = {MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value} ;
     //{ MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value};
-    console.log("new in variable input: " + this.updatedMemberInfo.FirstName );
+    //console.log("new in variable input: " + this.updatedMemberInfo.FirstName );
 
     this.memberService.update(this.updatedMemberInfo)
       .subscribe(
