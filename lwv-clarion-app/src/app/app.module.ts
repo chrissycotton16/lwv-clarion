@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,12 @@ import  appRoutes from './routerConfig';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
 
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     HistoryComponent,
     OfficersComponent,
     LogInComponent,
-    AdminComponent
+    AdminComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +52,11 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    SlickCarouselModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
