@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Member } from '../models/member';
@@ -9,7 +8,7 @@ import { Member } from '../models/member';
   providedIn: 'root'
 })
 export class MemberService {
-    baseUrl = 'http://localhost/api/lwv';
+    baseUrl = 'http://localhost/api/lwv/member';
     members: Member[];
 
     constructor(private http: HttpClient) { }
@@ -18,14 +17,12 @@ export class MemberService {
         return this.http.get(`${this.baseUrl}/list`).pipe(
         map((res) => {
             this.members = res['data'];
-            console.log(this.members);
             return this.members;
         }),
         catchError(this.handleError));
     }
 
     delete(MemberID: number): Observable<Member[]> {
-        console.log("in member service delete method");
         const params = new HttpParams()
         .set('MemberID', MemberID.toString());
 

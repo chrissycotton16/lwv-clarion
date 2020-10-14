@@ -21,9 +21,11 @@ import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { MembersComponent } from './components/admin/members/members.component';
 
 
 
@@ -39,7 +41,8 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     OfficersComponent,
     LogInComponent,
     AdminComponent,
-    CarouselComponent
+    CarouselComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatTabsModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
