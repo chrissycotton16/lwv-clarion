@@ -17,9 +17,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
+//carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
-
+//calendar
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import listPlugin from '@fullcalendar/list'; 
+import interactionPlugin from '@fullcalendar/interaction'; 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  listPlugin,
+  interactionPlugin
+]);
 
 
 
@@ -45,7 +55,8 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     RouterModule,
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
-    SlickCarouselModule
+    SlickCarouselModule,
+    FullCalendarModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
