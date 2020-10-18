@@ -37,7 +37,7 @@ export class CalendarComponent {
     eventClick: this.handleEventClick.bind(this),
     events: [
       { title: 'event 1', start:'2020-10-17T13:00', end:'2020-10-17T15:00' },
-      { title: 'event 2', start:'2020-10-17T16:00', end:'2020-10-17T18:00' },
+      { title: 'event 2', start:'2020-10-10T16:00', end:'2020-10-10T18:00' },
       { title: 'event 3', start:'2020-10-20T12:00', end:'2020-10-20T12:30'}
     ]
   };
