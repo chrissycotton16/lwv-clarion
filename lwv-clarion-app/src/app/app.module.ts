@@ -22,14 +22,14 @@ import  appRoutes from './routerConfig';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
-
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {MatDialogModule} from '@angular/material/dialog';
+
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { MembersComponent } from './components/admin/members/members.component';
-
-
-
-
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MemberAddDialogComponent } from './components/admin/members/member-add-dialog/member-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { MembersComponent } from './components/admin/members/members.component';
     LogInComponent,
     AdminComponent,
     CarouselComponent,
-    MembersComponent
+    MembersComponent,
+    MemberAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,10 @@ import { MembersComponent } from './components/admin/members/members.component';
     RouterModule.forRoot(appRoutes),
     FormsModule,
     SlickCarouselModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatDialogModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],

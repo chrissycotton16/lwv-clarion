@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MemberAddDialogComponent } from './member-add-dialog/member-add-dialog.component';
 
 @Component({
   selector: 'app-members',
@@ -11,11 +13,20 @@ export class MembersComponent implements OnInit {
   members: Member[];
   error = '';
   success = '';
+  addedMemberTest: Member;
+  displayedColumns: string[] = ['Select','Member ID', 'First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
+                                  'Membership Type', 'Active', 'Email', 'Preferred Phone', 'Secondary Phone', 'Street Address', 'City',
+                                  'State', 'Zip Code', 'Delete'];
+
   @Input() member={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate: '',
                     DateJoined:'', MembershipType:0, Active:0, Email:'', PreferredPhone:'', SecondaryPhone:'',
                     StreetAddress:'', City:'', State:'', ZipCode:0, MemberUser:'', MemberPassword:''}; //this is for storing purposes
+  @Input() member2={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate: '',
+                    DateJoined:'', MembershipType:0, Active:0, Email:'', PreferredPhone:'', SecondaryPhone:'',
+                    StreetAddress:'', City:'', State:'', ZipCode:0, MemberUser:'', MemberPassword:''}; //this is for storing purposes
   updatedMemberInfo: Member;
-  constructor(private memberService: MemberService){
+  
+  constructor(private memberService: MemberService, public dialog:MatDialog){
     this.ngOnInit();
   }
 
@@ -23,6 +34,12 @@ export class MembersComponent implements OnInit {
     this.getMembers();
   }
 
+  openDialog(): void{
+    const dialogRef = this.dialog.open(MemberAddDialogComponent, {
+      width: '300px',
+      data: {firstname: this.member2.FirstName}
+    });
+  }
   getMembers():void {
     this.memberService.getAll().subscribe(
       (res: Member[]) => {

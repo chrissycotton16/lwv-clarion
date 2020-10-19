@@ -1,7 +1,92 @@
 
 <br><br>
 <h1>Administrative View: Members</h1>
-<h2>Current Members</h2>
+<!--Table view?-->
+<table mat-table [dataSource]="members">
+      <ng-container matColumnDef="Select">
+            <th mat-header-cell *matHeaderCellDef>Select</th>
+            <td mat-cell *matCellDef="let mem">
+                  <mat-checkbox [(ngModel)]="mem.checked"></mat-checkbox>
+            </td>
+      </ng-container>
+      <ng-container matColumnDef="Member ID">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let mem">{{mem.MemberID}}</td>
+      </ng-container>
+      <ng-container matColumnDef="First Name">
+            <th mat-header-cell *matHeaderCellDef>First Name</th>
+            <td mat-cell *matCellDef="let mem">{{mem.FirstName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Last Name">
+            <th mat-header-cell *matHeaderCellDef>Last Name</th>
+            <td mat-cell *matCellDef="let mem">{{mem.LastName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Secondary Member">
+            <th mat-header-cell *matHeaderCellDef>Secondary Household Member Name</th>
+            <td mat-cell *matCellDef="let mem">{{mem.SecondaryHouseholdMemberName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Last Paid Date">
+            <th mat-header-cell *matHeaderCellDef>Last Paid Date</th>
+            <td mat-cell *matCellDef="let mem">{{mem.LastPaidDate}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Date Joined">
+            <th mat-header-cell *matHeaderCellDef>Date Joined</th>
+            <td mat-cell *matCellDef="let mem">{{mem.DateJoined}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Membership Type">
+            <th mat-header-cell *matHeaderCellDef>Membership Type</th>
+            <td mat-cell *matCellDef="let mem">{{mem.MembershipType}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Active">
+            <th mat-header-cell *matHeaderCellDef>Active</th>
+            <td mat-cell *matCellDef="let mem">{{mem.Active}}
+            </td> 
+      </ng-container>
+      <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let mem">{{mem.Email}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Preferred Phone">
+            <th mat-header-cell *matHeaderCellDef>Preferred Phone</th>
+            <td mat-cell *matCellDef="let mem">{{mem.PreferredPhone}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Secondary Phone">
+            <th mat-header-cell *matHeaderCellDef>Secondary Phone</th>
+            <td mat-cell *matCellDef="let mem">{{mem.SecondaryPhone}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Street Address">
+            <th mat-header-cell *matHeaderCellDef>Street Address</th>
+            <td mat-cell *matCellDef="let mem">{{mem.StreetAddress}}</td>
+      </ng-container>
+      <ng-container matColumnDef="City">
+            <th mat-header-cell *matHeaderCellDef>City</th>
+            <td mat-cell *matCellDef="let mem">{{mem.City}}</td>
+      </ng-container>
+      <ng-container matColumnDef="State">
+            <th mat-header-cell *matHeaderCellDef>State</th>
+            <td mat-cell *matCellDef="let mem">{{mem.State}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Zip Code">
+            <th mat-header-cell *matHeaderCellDef>Zip Code</th>
+            <td mat-cell *matCellDef="let mem">{{mem.ZipCode}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Delete">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let mem"> 
+                  <input type="button" value = "Delete" color='primary' (click)='deleteMember(mem.MemberID)'>     
+            </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+
+
+<!-- <h2>Current Members</h2>
 
 <div *ngFor="let mem of members;let i = index;">
     <input type="text"
@@ -9,69 +94,89 @@
             class="form-control"
             #MemberID="ngModel"
             [ngClass]="{ 'is-invalid': MemberID.touched && MemberID.invalid }"
-            disabled>
+            disabled
+            required>
      <input type="text"
             [(ngModel)]="members[i].FirstName"
             class="form-control"
             #FirstName="ngModel"
-            [ngClass]="{ 'is-invalid': FirstName.touched && FirstName.invalid }">
+            [ngClass]="{ 'is-invalid': FirstName.touched && FirstName.invalid }"
+            required>
       <input type="text"
             [(ngModel)]="members[i].LastName"
             class="form-control"
             #LastName="ngModel"
-            [ngClass]="{ 'is-invalid': LastName.touched && LastName.invalid }">
+            [ngClass]="{ 'is-invalid': LastName.touched && LastName.invalid }"
+            required>
       <input type="text"
             [(ngModel)]="members[i].SecondaryHouseholdMemberName"
             class="form-control"
-            #SecondaryHouseholdMemberName="ngModel">
+            #SecondaryHouseholdMemberName="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].LastPaidDate"
             class="form-control"
-            #LastPaidDate="ngModel">
+            #LastPaidDate="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].DateJoined"
             class="form-control"
-            #DateJoined="ngModel">
+            #DateJoined="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].MembershipType"
             class="form-control"
-            #MembershipType="ngModel">
+            #MembershipType="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].Active"
             class="form-control"
-            #Active="ngModel">
+            #Active="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].Email"
             class="form-control"
-            #Email="ngModel">
+            #Email="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].PreferredPhone"
             class="form-control"
-            #PreferredPhone="ngModel">
+            #PreferredPhone="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].SecondaryPhone"
             class="form-control"
-            #SecondaryPhone="ngModel">
+            #SecondaryPhone="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].StreetAddress"
             class="form-control"
-            #StreetAddress="ngModel">
+            #StreetAddress="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].City"
             class="form-control"
-            #City="ngModel">
+            #City="ngModel"
+            required>
       <input type="text"
             [(ngModel)]="members[i].State"
             class="form-control"
-            #State="ngModel">
+            #State="ngModel"
+            required>
+            
       <input type="text"
             [(ngModel)]="members[i].ZipCode"
             class="form-control"
-            #ZipCode="ngModel">
+            #ZipCode="ngModel"
+            required>
 
    <input type="button" value = "Delete" color='primary' (click)='deleteMember(members[i].MemberID)'>
    <input type="button" value = "Update" color='primary' (click)='updateMember(members[i].MemberID, members[i].FirstName, members[i].LastName)'>
+</div> -->
 <br><br>
+
+<div>
+      <button mat-raised-button (onclick)="openDialog()">Add New Member</button>
 </div>
 
 <div id="theForm">
@@ -118,7 +223,11 @@
               name="SecondaryHouseholdMemberName"
               [(ngModel)]="member.SecondaryHouseholdMemberName"
               #memberModel="ngModel"
-              pattern="^[a-zA-Z]+$">
+              pattern="^[a-zA-Z]+$"
+              required>
+            <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+            </span>
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern">
           The Secondary Household Member Name can only contain the letters a-z or A-Z
         </span>
@@ -131,7 +240,11 @@
               name="LastPaidDate"
               [(ngModel)]="member.LastPaidDate"
               #memberModel="ngModel"
-              pattern="">
+              pattern=""
+              required>
+            <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+            </span>
               <!-- pattern? -->
        </div>
 
@@ -142,7 +255,11 @@
               name="DateJoined"
               [(ngModel)]="member.DateJoined"
               #memberModel="ngModel"
-              pattern="">
+              pattern=""
+              required>
+            <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+            </span>
               <!-- pattern? -->
        </div>
        <div class="form-group">
@@ -152,7 +269,11 @@
                   name="MembershipType"
                   [(ngModel)]="member.MembershipType"
                   #memberModel="ngModel"
-                  pattern="">
+                  pattern=""
+                  required>
+                  <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                        The first name is required
+                      </span>
                   <!-- pattern? -->
            </div>
 
@@ -172,7 +293,11 @@
               name="Email"
               [(ngModel)]="member.Email"
               #memberModel="ngModel"
+              required
               pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+              <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+                </span>
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             Please enter a valid email address. Ex: "janedoe@email.com"
         </span>
@@ -185,7 +310,11 @@
               name="PreferredPhone"
               [(ngModel)]="member.PreferredPhone"
               #memberModel="ngModel"
+              required
               pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$">
+              <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+                </span>
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             Please enter a valid phone number. Ex: "(123) 456-7890"
         </span>
@@ -198,7 +327,11 @@
               name="SecondaryPhone"
               [(ngModel)]="member.SecondaryPhone"
               #memberModel="ngModel"
+              required
               pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$">
+              <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+                </span>
               <!-- test pattern -->
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             Please enter a valid phone number. Ex: "(123) 456-7890"
@@ -212,8 +345,12 @@
               name="StreetAddress"
               [(ngModel)]="member.StreetAddress"
               #memberModel="ngModel"
+              required
               pattern="^[#.0-9a-zA-Z\s,-]+$">
               <!-- test pattern -->
+              <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+                </span>
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             Street Address can only contain the characters ".", 0-9, a-z and A-Z. Ex: "10 S. Main St."
         </span>
@@ -226,7 +363,11 @@
               name="City"
               [(ngModel)]="member.City"
               #memberModel="ngModel"
-              pattern="">
+              pattern=""
+              required>
+              <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                  The first name is required
+                </span>
               <!-- test pattern ^[a-zA-Z]+$ -->
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             The City name can only contain the letters a-z or A-Z.
@@ -240,7 +381,11 @@
                   name="State"
                   [(ngModel)]="member.State"
                   #memberModel="ngModel"
-                  pattern="">
+                  pattern=""
+                  required>
+                  <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                        The first name is required
+                      </span>
                   <!-- test pattern ^[a-zA-Z]+$ -->
             <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
                   The State can only contain two capital letters. EX: "PA"
@@ -253,7 +398,11 @@
                         name="ZipCode"
                         [(ngModel)]="member.ZipCode"
                         #memberModel="ngModel"
-                        pattern="">
+                        pattern=""
+                        required>
+                        <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
+                              The first name is required
+                        </span>
                         <!-- test pattern -->
                   <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
                         The Zip Code must have 5 digits.
@@ -264,6 +413,7 @@
          [disabled]="f.invalid">Add
      </button>
    </form>
+   
  </div>
  
  

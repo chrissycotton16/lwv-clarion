@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add Member</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="firstname">
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
