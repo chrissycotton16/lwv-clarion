@@ -17,7 +17,6 @@ export class CalendarComponent {
     displayEventTime:true,
     eventDisplay: 'block',
     eventColor: '#be0f34',
-    themeSystem: 'standard',
     aspectRatio: 2.3,
     showNonCurrentDates: false,
     expandRows: true,
@@ -31,7 +30,7 @@ export class CalendarComponent {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,listMonth'
+      right: 'dayGridMonth,listYear'
     },
 
     eventClick: this.handleEventClick.bind(this),

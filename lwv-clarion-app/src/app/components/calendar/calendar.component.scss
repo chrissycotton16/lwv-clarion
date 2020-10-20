@@ -1,3 +1,4 @@
+
 .calendar-container{
     position: fixed;
     margin: auto;
@@ -8,5 +9,29 @@
     height: 90%;
   }
 
-  
+  .fc .fc-button-primary  {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-bg-color, #be0f34 !important);
+    border-color: #be0f34 !important;
+    border-color: var(--fc-button-border-color,#be0f34 !important);
+  } 
+.fc .fc-button-primary:hover {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-hover-bg-color, #be0f34 !important);
+    border-color: #be0f34 !important;
+    border-color: var(--fc-button-hover-border-color, #be0f34 !important);
+  }
+.fc .fc-button-primary:disabled {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-bg-color, #be0f34 !important);
+    border-color: #be0f34 !important;
+    border-color: var(--fc-button-border-color, #be0f34 !important); 
+  }
+.fc .fc-button-primary:not(:disabled):active,
+  .fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-active-bg-color, #be0f34 !important);
+    border-color:#be0f34 !important;
+    border-color: var(--fc-button-active-border-color, #be0f34 !important);
+  }
   
