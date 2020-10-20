@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ResourcesComponent } from './components/resources/resources.component';
@@ -18,6 +20,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
 //carousel
+import { AdminComponent } from './components/admin/admin.component';
+import { FormsModule } from '@angular/forms';
+
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 //calendar
@@ -33,6 +38,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +48,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     HistoryComponent,
     OfficersComponent,
     LogInComponent,
+    AdminComponent,
     CarouselComponent
   ],
   imports: [
@@ -57,6 +64,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     RouterModule.forRoot(appRoutes),
     SlickCarouselModule,
     FullCalendarModule
+    FormsModule,
+    SlickCarouselModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],

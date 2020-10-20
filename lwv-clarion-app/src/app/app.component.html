@@ -1,3 +1,4 @@
+
 <div class = "NavigationBar">
   <div class = "left">
     <div class="navButtons">
@@ -6,13 +7,17 @@
       <a mat-button [routerLink]="'resources'" > Resources </a>
       <a mat-button [routerLink]="'history'" > History </a>
       <a mat-button [routerLink]="'officers'" > Officers </a>
+      <a mat-button [routerLink]="'admin'" > Admin</a>
     </div>
   </div>
   <div class = "right">
     <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" target = "_blank" class="vote"> Register to Vote! </a>
+    &nbsp;
     <a mat-raised-button [routerLink]="'/log-in'" class = "login"> Log In </a>
   </div>
 </div>
+
+
 <router-outlet></router-outlet>
 
 
@@ -29,8 +34,7 @@
    </p> 
 
    <p> &copy; Copyright 2020 League of Women Voters of Clarion County
-   </p> 
-
-              
+   </p>       
   
 </div>
+

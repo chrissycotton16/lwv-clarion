@@ -1,28 +1,31 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Member } from './models/member';
-import { MemberService } from './services/member.service';
-import { FnParam } from '@angular/compiler/src/output/output_ast';
+import { Member } from 'src/app/models/member';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class AppComponent {
-  title = 'lwv-clarion-app';
+export class AdminComponent implements OnInit {
 
   members: Member[];
   error = '';
   success = '';
   message = "hello"
-  @Input() member={ MemberID:0, FirstName:'', LastName:''} //this is for storing purposes
+  @Input() member={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate: '',
+                    DateJoined:'', MembershipType:0, Active:null, Email:'', PreferredPhone:'', SecondaryPhone:'',
+                    StreetAddress:'', City:'', State:'', ZipCode:0, MemberUser:'', MemberPassword:''}; //this is for storing purposes
   updatedMemberInfo: Member;
   constructor(private memberService: MemberService){
     this.ngOnInIt();
   }
-
+  ngOnInit(): void {
+    this.getMembers();
+  }
   ngOnInIt(){
     this.getMembers();
+
   }
   getMembers():void {
     console.log("fetching members");
@@ -93,5 +96,4 @@ export class AppComponent {
     this.success = '';
     this.error   = '';
   }
-
 }
