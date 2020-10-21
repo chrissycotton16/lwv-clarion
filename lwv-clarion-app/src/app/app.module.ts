@@ -63,7 +63,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
     SlickCarouselModule,
-    FullCalendarModule
+    FullCalendarModule,
     FormsModule,
     SlickCarouselModule
   ],
