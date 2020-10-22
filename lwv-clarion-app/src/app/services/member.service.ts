@@ -10,7 +10,7 @@ import { Member } from '../models/member';
 export class MemberService {
     baseUrl = 'http://localhost/api/lwv/member';
     members: Member[];
-
+   
     constructor(private http: HttpClient) { }
 
     getAll(): Observable<Member[]> {
@@ -37,14 +37,13 @@ export class MemberService {
     }
 
     store(member: Member): Observable<Member[]> {
-        console.log("in store method in member service");
+        console.log("in mem service");
         return this.http.post(`${this.baseUrl}/store`, { data: member })
         .pipe(map((res) => {
             this.members.push(res['data']);
             return this.members;
         }),
         catchError(this.handleError));
-        console.log("leaving store method in member service");
     }
 
     update(member: Member): Observable<Member[]> {
@@ -57,7 +56,7 @@ export class MemberService {
             theMember['FirstName'] = member['FirstName'];
             theMember['LastName'] = member['LastName'];
             }
-            console.log("maybe now it works????: " + this.members);
+            //console.log("maybe now it works????: " + this.members);
             return this.members;
         }),
         catchError(this.handleError));

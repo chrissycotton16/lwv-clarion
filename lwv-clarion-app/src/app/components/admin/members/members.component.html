@@ -37,10 +37,9 @@
             <th mat-header-cell *matHeaderCellDef>Membership Type</th>
             <td mat-cell *matCellDef="let mem">{{mem.MembershipType}}</td>
       </ng-container>
-      <ng-container matColumnDef="Active">
-            <th mat-header-cell *matHeaderCellDef>Active</th>
-            <td mat-cell *matCellDef="let mem">{{mem.Active}}
-            </td> 
+      <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let mem">{{mem.Status}}</td> 
       </ng-container>
       <ng-container matColumnDef="Email">
             <th mat-header-cell *matHeaderCellDef>Email</th>
@@ -70,10 +69,11 @@
             <th mat-header-cell *matHeaderCellDef>Zip Code</th>
             <td mat-cell *matCellDef="let mem">{{mem.ZipCode}}</td>
       </ng-container>
-      <ng-container matColumnDef="Delete">
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
             <td mat-cell *matCellDef="let mem"> 
-                  <input type="button" value = "Delete" color='primary' (click)='deleteMember(mem.MemberID)'>     
+                  <input type="button" value = "Delete" color='primary' (click)='deleteMember(mem.MemberID)'>   
+                  <input type="button" value = "Update" color='primary' (click)='openUpdateDialog(mem.MemberID)'>   
             </td>
       </ng-container>
 
@@ -81,8 +81,11 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
+<br><br>
 
-
+<div>
+      <button mat-raised-button (click)="openDialog()">Add New Member</button>
+</div>
 
 
 
@@ -172,12 +175,10 @@
 
    <input type="button" value = "Delete" color='primary' (click)='deleteMember(members[i].MemberID)'>
    <input type="button" value = "Update" color='primary' (click)='updateMember(members[i].MemberID, members[i].FirstName, members[i].LastName)'>
-</div> -->
+</div>
 <br><br>
 
-<div>
-      <button mat-raised-button (onclick)="openDialog()">Add New Member</button>
-</div>
+
 
 <div id="theForm">
    <h2>Add New Member</h2>
@@ -245,7 +246,6 @@
             <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                   The first name is required
             </span>
-              <!-- pattern? -->
        </div>
 
        <div class="form-group">
@@ -260,7 +260,6 @@
             <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                   The first name is required
             </span>
-              <!-- pattern? -->
        </div>
        <div class="form-group">
             <label>Membership Type</label>
@@ -274,7 +273,6 @@
                   <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                         The first name is required
                       </span>
-                  <!-- pattern? -->
            </div>
 
        <div class="form-group">
@@ -332,7 +330,6 @@
               <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                   The first name is required
                 </span>
-              <!-- test pattern -->
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             Please enter a valid phone number. Ex: "(123) 456-7890"
         </span>
@@ -347,7 +344,6 @@
               #memberModel="ngModel"
               required
               pattern="^[#.0-9a-zA-Z\s,-]+$">
-              <!-- test pattern -->
               <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                   The first name is required
                 </span>
@@ -368,7 +364,6 @@
               <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                   The first name is required
                 </span>
-              <!-- test pattern ^[a-zA-Z]+$ -->
         <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
             The City name can only contain the letters a-z or A-Z.
         </span>
@@ -386,7 +381,6 @@
                   <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                         The first name is required
                       </span>
-                  <!-- test pattern ^[a-zA-Z]+$ -->
             <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
                   The State can only contain two capital letters. EX: "PA"
             </span>
@@ -403,7 +397,6 @@
                         <span class="help-block danger" *ngIf="memberModel.errors?.required && memberModel.touched">
                               The first name is required
                         </span>
-                        <!-- test pattern -->
                   <span class="help-block danger" *ngIf="memberModel.errors?.pattern && memberModel.touched">
                         The Zip Code must have 5 digits.
                   </span>
@@ -415,9 +408,9 @@
    </form>
    
  </div>
+-->
  
- 
-<button mat-button color='primary'>Export</button>
+<button mat-button color='primary' (click)="getEmails()">Export Email Addresses</button>
 
 <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 <div *ngIf="success" class="alert alert-success">{{success}}</div>
