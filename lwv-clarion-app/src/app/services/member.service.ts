@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Member } from '../models/member';
@@ -9,23 +8,21 @@ import { Member } from '../models/member';
   providedIn: 'root'
 })
 export class MemberService {
-    baseUrl = 'http://localhost/api/lwv';
+    baseUrl = 'http://localhost/api/lwv/member';
     members: Member[];
-
+   
     constructor(private http: HttpClient) { }
 
     getAll(): Observable<Member[]> {
         return this.http.get(`${this.baseUrl}/list`).pipe(
         map((res) => {
             this.members = res['data'];
-            console.log(this.members);
             return this.members;
         }),
         catchError(this.handleError));
     }
 
     delete(MemberID: number): Observable<Member[]> {
-        console.log("in member service delete method");
         const params = new HttpParams()
         .set('MemberID', MemberID.toString());
 
@@ -40,14 +37,13 @@ export class MemberService {
     }
 
     store(member: Member): Observable<Member[]> {
-        console.log("in store method in member service");
+        console.log("in mem service");
         return this.http.post(`${this.baseUrl}/store`, { data: member })
         .pipe(map((res) => {
             this.members.push(res['data']);
             return this.members;
         }),
         catchError(this.handleError));
-        console.log("leaving store method in member service");
     }
 
     update(member: Member): Observable<Member[]> {
@@ -60,7 +56,7 @@ export class MemberService {
             theMember['FirstName'] = member['FirstName'];
             theMember['LastName'] = member['LastName'];
             }
-            console.log("maybe now it works????: " + this.members);
+            //console.log("maybe now it works????: " + this.members);
             return this.members;
         }),
         catchError(this.handleError));

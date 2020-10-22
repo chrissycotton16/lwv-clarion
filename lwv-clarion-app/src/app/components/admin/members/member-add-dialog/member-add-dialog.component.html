@@ -1,0 +1,80 @@
+<h1 mat-dialog-title cdkFocusInitial>Add Member</h1>
+<div mat-dialog-content class="AddForm">
+    <mat-form-field >
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="firstname" placeholder="Jane" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="lastname" placeholder="Doe" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Secondary Household Member</mat-label>
+        <input matInput [(ngModel)]="secondaryname" placeholder="John Doe" maxlength="50">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Last Date Paid</mat-label>
+        <input matInput [(ngModel)]="lastpaid" placeholder="01/20" maxlength="10">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Date Joined</mat-label>
+        <input matInput [(ngModel)]="datejoined" placeholder="01/01/20" maxlength="10">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Membership Type</mat-label>
+        <mat-select [(ngModel)]="membership">
+            <mat-option *ngFor="let type of membershipTypes" [value]='type'>
+                {{type}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="status">
+            <mat-option *ngFor="let opt of statusOptions" [value]='opt'>
+                {{opt}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" placeholder="jane.doe@mail.com" maxlength="50">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Preferred Phone</mat-label>
+        <input matInput [(ngModel)]="phone" placeholder="(123)456-7890" maxlength="13">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Secondary Phone</mat-label>
+        <input matInput [(ngModel)]="secondaryphone" placeholder="(123)456-7890" maxlength="13">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Street Address</mat-label>
+        <input matInput [(ngModel)]="street" placeholder="1 Main Street" maxlength="30">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput [(ngModel)]="city" maxlength="25" placeholder="Clarion" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>State</mat-label>
+        <input matInput [(ngModel)]="state" placeholder="PA" maxlength="2">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Zip Code</mat-label>
+        <input matInput [(ngModel)]="zip" placeholder="16214" maxlength="5">
+    </mat-form-field><br>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
+        [disabled]="firstname == undefined || lastname == undefined || secondaryname == undefined ||
+        lastpaid == undefined || datejoined == undefined || email == undefined || phone == undefined
+        || secondaryphone == undefined || street == undefined
+        || city == undefined || state == undefined || zip == undefined">Add Member</button>
+        <!-- || secondaryname == undefined ||
+        lastpaid == undefined || datejoined == undefined || email == undefined || phone == undefined
+        || secondaryphone == undefined || street == undefined
+        || city == undefined || state == undefined || zip == undefined" -->
+        <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+</div>

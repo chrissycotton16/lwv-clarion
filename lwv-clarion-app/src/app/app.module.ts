@@ -22,7 +22,7 @@ import  appRoutes from './routerConfig';
 //carousel
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
-
+import { MatTabsModule } from '@angular/material/tabs';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 //calendar
@@ -36,7 +36,16 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   interactionPlugin
 ]);
 
+import {MatDialogModule} from '@angular/material/dialog';
 
+import { MembersComponent } from './components/admin/members/members.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MemberAddDialogComponent } from './components/admin/members/member-add-dialog/member-add-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -49,7 +58,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     OfficersComponent,
     LogInComponent,
     AdminComponent,
-    CarouselComponent
+    CarouselComponent,
+    MembersComponent,
+    MemberAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +76,15 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SlickCarouselModule,
     FullCalendarModule,
     FormsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatTabsModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
