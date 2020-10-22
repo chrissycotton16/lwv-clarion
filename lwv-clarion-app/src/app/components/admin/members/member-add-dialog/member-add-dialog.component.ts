@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
 
 export interface DialogData{
-  firstname: string;
+  
 }
 
 @Component({
@@ -54,7 +54,6 @@ export class MemberAddDialogComponent implements OnInit {
       City: this.city, 
       State: this.state, 
       ZipCode: this.zip};
-    console.log("in dialog");
     console.log(this.newMember);                        
     this.dialogRef.close(this.newMember);
   }

@@ -4,6 +4,7 @@ import { MemberService } from 'src/app/services/member.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberAddDialogComponent } from './member-add-dialog/member-add-dialog.component';
 import { SplitInterpolation } from '@angular/compiler';
+import { MemberUpdateDialogComponent } from './member-update-dialog/member-update-dialog.component';
 
 @Component({
   selector: 'app-members',
@@ -26,7 +27,10 @@ export class MembersComponent implements OnInit {
   @Input() newMember2: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
                     DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
                     StreetAddress:'', City:'', State:'', ZipCode:0};
- 
+  selectedID: number;
+  memberToUpdate: Member = {MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
+                            DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
+                            StreetAddress:'', City:'', State:'', ZipCode:0}
   
   constructor(private memberService: MemberService, public dialog:MatDialog){
     this.ngOnInit();
@@ -97,8 +101,21 @@ export class MembersComponent implements OnInit {
     this.getMembers();
   }
 
-  openUpdateDialog(ID){
-    //update with ID info open
+  openUpdateDialog(mem){
+    console.log("the ID is: " + mem.MemberID);
+    const dialogRef = this.dialog.open(MemberUpdateDialogComponent, {
+      width: '450px',
+      data:{ updateFirstName: mem.FirstName, updateLastName: mem.LastName, updateSecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName,
+             updateLastPaidDate: mem.LastPaidDate, updateDateJoined: mem.DateJoined, updateMemberShipType: mem.MembershipType,
+             updateStatus: mem.Status, updateEmail: mem.Email, updatePreferredPhone: mem.PreferredPhone,
+             updateSecondaryPhone: mem.SecondaryPhone, updateStreetAddress: mem.StreetAddress, updateCity: mem.City, 
+             updateState: mem.State, updateZipCode: mem.ZipCode},
+      
+      autoFocus: false
+    });
+    dialogRef.afterClosed().subscribe(result => {      
+
+    });
   }
   updateMember(MemberID, FirstName, LastName){
     console.log("in update members function in memebrs.ts");
