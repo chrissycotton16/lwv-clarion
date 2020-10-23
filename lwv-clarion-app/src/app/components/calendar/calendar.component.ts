@@ -33,17 +33,19 @@ export class CalendarComponent {
       right: 'dayGridMonth,listYear'
     },
 
-    eventClick: this.handleEventClick.bind(this),
+    eventClick:function(arg){
+      alert(arg.event.extendedProps.description)
+    },
     events: [
-      { title: 'event 1', start:'2020-10-17T13:00', end:'2020-10-17T15:00' },
-      { title: 'event 2', start:'2020-10-10T16:00', end:'2020-10-10T18:00' },
-      { title: 'event 3', start:'2020-10-20T12:00', end:'2020-10-20T12:30'}
-    ]
+      { title: 'event 1', start:'2020-10-17T13:00', end:'2020-10-17T15:00',  extendedProps: {description: 'Event 1 description'} },
+      { title: 'event 2', start:'2020-10-10T16:00', end:'2020-10-10T18:00', extendedProps: {description: 'Event 2 description'} },
+      { title: 'event 3', start:'2020-10-20T12:00', end:'2020-10-20T12:30', extendedProps: {description: 'Event 3 description'}}
+    ], 
   };
 
-  handleEventClick(arg) {
-    alert('Event Click')
-  }
+  
+
+  
   toggleListView() {
     this.calendarOptions.initialView = 'listMonth'
   }
