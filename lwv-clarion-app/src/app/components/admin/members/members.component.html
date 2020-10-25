@@ -83,9 +83,14 @@
 
 <br><br>
 
-<div>
-      <button mat-raised-button (click)="openDialog()">Add New Member</button>
-</div>
+<button mat-raised-button (click)="openDialog()">Add New Member</button>
+
+<button mat-raised-button (click)="getEmails()">Export Email Addresses</button>
+<br><br>
+<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
+<br><br><br><br>
 
 
 
@@ -410,9 +415,4 @@
  </div>
 -->
  
-<button mat-button color='primary' (click)="getEmails()">Export Email Addresses</button>
 
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>
-<div *ngIf="success" class="alert alert-success">{{success}}</div>
-
-<br><br><br><br>

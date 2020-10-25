@@ -13,6 +13,7 @@ import { MemberUpdateDialogComponent } from './member-update-dialog/member-updat
 })
 export class MembersComponent implements OnInit {
   members: Member[];
+  emails: string[];
   error = '';
   success = '';
   addedMemberTest: Member;
@@ -71,16 +72,18 @@ export class MembersComponent implements OnInit {
   
 
   deleteMember(MemberID) {
-    this.resetErrors();
-    this.memberService.delete(+MemberID)
-      .subscribe(
-        (res: Member[]) => {
-          this.members = res;
-          this.success = 'Deleted successfully';
-        },
-        (err) => this.error = err
-      );
-    this.getMembers();
+    if(window.confirm('Are you sure you want to delete this item?')){
+      this.resetErrors();
+      this.memberService.delete(+MemberID)
+        .subscribe(
+          (res: Member[]) => {
+            this.members = res;
+            this.success = 'Deleted successfully';
+          },
+          (err) => this.error = err
+        );
+      this.getMembers();
+    }
   }
 
   addMember(mem: Member) {
@@ -102,40 +105,52 @@ export class MembersComponent implements OnInit {
   }
 
   openUpdateDialog(mem){
-    console.log("the ID is: " + mem.MemberID);
     const dialogRef = this.dialog.open(MemberUpdateDialogComponent, {
       width: '450px',
-      data:{ updateFirstName: mem.FirstName, updateLastName: mem.LastName, updateSecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName,
+      data:{ updateMemberID: mem.MemberID, updateFirstName: mem.FirstName, updateLastName: mem.LastName, updateSecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName,
              updateLastPaidDate: mem.LastPaidDate, updateDateJoined: mem.DateJoined, updateMemberShipType: mem.MembershipType,
              updateStatus: mem.Status, updateEmail: mem.Email, updatePreferredPhone: mem.PreferredPhone,
              updateSecondaryPhone: mem.SecondaryPhone, updateStreetAddress: mem.StreetAddress, updateCity: mem.City, 
-             updateState: mem.State, updateZipCode: mem.ZipCode},
+             updateState: mem.State, updateZipCode: mem.ZipCode },
       
       autoFocus: false
     });
-    dialogRef.afterClosed().subscribe(result => {      
-
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined){
+        this.memberToUpdate = result;
+        this.updateMember(this.memberToUpdate);
+      }
     });
   }
-  updateMember(MemberID, FirstName, LastName){
-    console.log("in update members function in memebrs.ts");
-    // this.resetErrors();
-    // console.log("new input: " + FirstName + " " + LastName + " " + MemberID);
-    // this.updatedMemberInfo = {MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value} ;
-    // //{ MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value};
-    // //console.log("new in variable input: " + this.updatedMemberInfo.FirstName );
-    // this.memberService.update(this.updatedMemberInfo)
-    //   .subscribe(
-    //     (res) => {
-    //       this.members = res;
-    //       this.success = 'Updated successfully';
-    //     },
-    //     (err) => this.error = err
-    //   );  
+
+  updateMember(mem){
+    this.resetErrors();
+    console.log(mem.SecondaryPhone);
+    this.memberService.update({MemberID: mem.MemberID, FirstName: mem.FirstName, LastName: mem.LastName, 
+        SecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName, LastPaidDate: mem.LastPaidDate,
+        DateJoined: mem.DateJoined, MembershipType: mem.MembershipType, Status: mem.Status, Email:mem.Email,
+        PreferredPhone: mem.PreferredPhone, SecondaryPhone: mem.SecondaryPhone, StreetAddress: mem.StreetAddress,
+        City: mem.City, State: mem.State, ZipCode: mem.ZipCode })
+    .subscribe(
+      (res) => {
+        this.members    = res;
+        this.success = 'Updated successfully';
+      },
+      (err) => this.error = err
+    );
   }
 
   getEmails(){
-      console.log("in get emails function!");
+    this.memberService.getEmails().subscribe(
+      (res: string[]) => {
+        this.emails = res;
+        console.log(this.emails);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );  
+    console.log(this.emails);
   }
 
   resetErrors() {

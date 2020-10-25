@@ -67,10 +67,7 @@
 
     <div mat-dialog-actions>
         <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
-        [disabled]="firstname == undefined || lastname == undefined || secondaryname == undefined ||
-        lastpaid == undefined || datejoined == undefined || email == undefined || phone == undefined
-        || secondaryphone == undefined || street == undefined
-        || city == undefined || state == undefined || zip == undefined">Update Member</button>
+        [disabled]="">Update Member</button>
         <button mat-button (click)="onNoClick()">Cancel</button>
     </div>
 </div>
