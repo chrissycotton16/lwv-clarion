@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { OfficerService } from 'src/app/services/officer.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Officer } from 'src/app/models/officer';
 
 @Component({
   selector: 'app-admin-officers',
@@ -6,13 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-officers.component.scss']
 })
 export class AdminOfficersComponent implements OnInit {
-  displayedColumns: string[] = ['Select','Member ID', 'First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
-  'Membership Type', 'Status', 'Email', 'Preferred Phone', 'Secondary Phone', 'Street Address', 'City',
-  'State', 'Zip Code', 'Edit'];
+  displayedColumns: string[] = ['FirstName', 'LastName', 'Position', 'Email', 'TermStart', 'TermEnd'];
+  @Input() officer ={ OfficerID:0, FirstName:'', LastName:'', Position:'', Email:'', TermStart:'', TermEnd:''}; //this is for storing purposes
+  officers: Officer[];
+  officerLength: number;
+  error = '';
+  success = '';
+  constructor(private officerService: OfficerService, public dialog:MatDialog){
+    this.ngOnInit();
+  }
 
-  constructor() { }
+  ngOnInit(){
+    this.getOfficers();
+  }
 
-  ngOnInit(): void {
+  getOfficers():void {
+    this.officerService.getAll().subscribe(
+      (res: Officer[]) => {
+        this.officers = res;
+        console.log(this.officers);
+        this.officerLength = this.officers.length;
+      },
+      (err) => {
+        this.error = err;
+      }
+
+    );
   }
 
 }

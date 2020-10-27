@@ -16,9 +16,7 @@ export class MembersComponent implements OnInit {
   emails: string[];
   error = '';
   success = '';
-  addedMemberTest: Member;
-  updatedMemberInfo: Member;
-  listedEmails = "";
+  listedEmails = '';
   memberLength: number;
   displayedColumns: string[] = ['First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
                                   'Membership Type', 'Status', 'Email', 'Preferred Phone', 'Secondary Phone', 'Street Address', 'City',

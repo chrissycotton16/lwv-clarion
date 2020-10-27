@@ -6,7 +6,7 @@ import { Officer } from '../models/officer';
 @Injectable({
     providedIn: 'root'
 })
-export class MemberService {
+export class OfficerService {
     baseUrl = 'http://localhost/api/lwv/officer';
     constructor(private http: HttpClient) { }
     officers: Officer[];
