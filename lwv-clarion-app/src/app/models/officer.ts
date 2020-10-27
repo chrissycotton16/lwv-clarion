@@ -1,6 +1,13 @@
+import { StringDecoder } from 'string_decoder';
+
 export class Officer {
     constructor(
-        //required attributes of MembershipType
-        
+        FirstName: string,
+        LastName: string,
+        OfficerID?:   number,
+        Position?: string,
+        Email?: string,
+        TermStart?: string,
+        TermEnd?: string,
     ) {}
   }

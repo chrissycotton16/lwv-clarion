@@ -4,6 +4,7 @@ import { MemberService } from 'src/app/services/member.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberAddDialogComponent } from './member-add-dialog/member-add-dialog.component';
 import { SplitInterpolation } from '@angular/compiler';
+import { MemberUpdateDialogComponent } from './member-update-dialog/member-update-dialog.component';
 
 @Component({
   selector: 'app-members',
@@ -12,11 +13,12 @@ import { SplitInterpolation } from '@angular/compiler';
 })
 export class MembersComponent implements OnInit {
   members: Member[];
+  emails: string[];
   error = '';
   success = '';
-  addedMemberTest: Member;
-  updatedMemberInfo: Member;
-  displayedColumns: string[] = ['Select','Member ID', 'First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
+  listedEmails = '';
+  memberLength: number;
+  displayedColumns: string[] = ['First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
                                   'Membership Type', 'Status', 'Email', 'Preferred Phone', 'Secondary Phone', 'Street Address', 'City',
                                   'State', 'Zip Code', 'Edit'];
 
@@ -26,7 +28,10 @@ export class MembersComponent implements OnInit {
   @Input() newMember2: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
                     DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
                     StreetAddress:'', City:'', State:'', ZipCode:0};
- 
+  selectedID: number;
+  memberToUpdate: Member = {MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
+                            DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
+                            StreetAddress:'', City:'', State:'', ZipCode:0}
   
   constructor(private memberService: MemberService, public dialog:MatDialog){
     this.ngOnInit();
@@ -58,25 +63,29 @@ export class MembersComponent implements OnInit {
       (res: Member[]) => {
         this.members = res;
         console.log(this.members);
+        this.memberLength = this.members.length;
       },
       (err) => {
         this.error = err;
       }
+
     );
   }
   
 
   deleteMember(MemberID) {
-    this.resetErrors();
-    this.memberService.delete(+MemberID)
-      .subscribe(
-        (res: Member[]) => {
-          this.members = res;
-          this.success = 'Deleted successfully';
-        },
-        (err) => this.error = err
-      );
-    this.getMembers();
+    if(window.confirm('Are you sure you want to delete this item?')){
+      this.resetErrors();
+      this.memberService.delete(+MemberID)
+        .subscribe(
+          (res: Member[]) => {
+            this.members = res;
+            this.success = 'Deleted successfully';
+          },
+          (err) => this.error = err
+        );
+      this.getMembers();
+    }
   }
 
   addMember(mem: Member) {
@@ -97,28 +106,56 @@ export class MembersComponent implements OnInit {
     this.getMembers();
   }
 
-  openUpdateDialog(ID){
-    //update with ID info open
+  openUpdateDialog(mem){
+    const dialogRef = this.dialog.open(MemberUpdateDialogComponent, {
+      width: '450px',
+      data:{ updateMemberID: mem.MemberID, updateFirstName: mem.FirstName, updateLastName: mem.LastName, updateSecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName,
+             updateLastPaidDate: mem.LastPaidDate, updateDateJoined: mem.DateJoined, updateMemberShipType: mem.MembershipType,
+             updateStatus: mem.Status, updateEmail: mem.Email, updatePreferredPhone: mem.PreferredPhone,
+             updateSecondaryPhone: mem.SecondaryPhone, updateStreetAddress: mem.StreetAddress, updateCity: mem.City, 
+             updateState: mem.State, updateZipCode: mem.ZipCode },
+      
+      autoFocus: false
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined){
+        this.memberToUpdate = result;
+        this.updateMember(this.memberToUpdate);
+      }
+    });
   }
-  updateMember(MemberID, FirstName, LastName){
-    console.log("in update members function in memebrs.ts");
-    // this.resetErrors();
-    // console.log("new input: " + FirstName + " " + LastName + " " + MemberID);
-    // this.updatedMemberInfo = {MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value} ;
-    // //{ MemberID:+MemberID, FirstName: FirstName.value, LastName: LastName.value};
-    // //console.log("new in variable input: " + this.updatedMemberInfo.FirstName );
-    // this.memberService.update(this.updatedMemberInfo)
-    //   .subscribe(
-    //     (res) => {
-    //       this.members = res;
-    //       this.success = 'Updated successfully';
-    //     },
-    //     (err) => this.error = err
-    //   );  
+
+  updateMember(mem){
+    this.resetErrors();
+    console.log(mem.SecondaryPhone);
+    this.memberService.update({MemberID: mem.MemberID, FirstName: mem.FirstName, LastName: mem.LastName, 
+        SecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName, LastPaidDate: mem.LastPaidDate,
+        DateJoined: mem.DateJoined, MembershipType: mem.MembershipType, Status: mem.Status, Email:mem.Email,
+        PreferredPhone: mem.PreferredPhone, SecondaryPhone: mem.SecondaryPhone, StreetAddress: mem.StreetAddress,
+        City: mem.City, State: mem.State, ZipCode: mem.ZipCode })
+    .subscribe(
+      (res) => {
+        this.members    = res;
+        this.success = 'Updated successfully';
+      },
+      (err) => this.error = err
+    );
   }
 
   getEmails(){
-      console.log("in get emails function!");
+    this.memberService.getEmails().subscribe(
+      (res: string[]) => {
+        this.emails = res;
+        console.log(this.emails);
+        this.emails.forEach(email => {
+          console.log(email);
+        });
+        //console.log("Here" + this.listedEmails);
+      },
+      (err) => {
+        this.error = err;
+      }
+    );     
   }
 
   resetErrors() {

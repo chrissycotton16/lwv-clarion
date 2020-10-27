@@ -46,6 +46,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MemberUpdateDialogComponent } from './components/admin/members/member-update-dialog/member-update-dialog.component';
+import { AdminOfficersComponent } from './components/admin/admin-officers/admin-officers.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { MatSelectModule } from '@angular/material/select';
     AdminComponent,
     CarouselComponent,
     MembersComponent,
-    MemberAddDialogComponent
+    MemberAddDialogComponent,
+    MemberUpdateDialogComponent,
+    AdminOfficersComponent
   ],
   imports: [
     BrowserModule,
