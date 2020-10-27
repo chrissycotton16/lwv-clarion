@@ -18,7 +18,9 @@ export class MembersComponent implements OnInit {
   success = '';
   addedMemberTest: Member;
   updatedMemberInfo: Member;
-  displayedColumns: string[] = ['Select','Member ID', 'First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
+  listedEmails = "";
+  memberLength: number;
+  displayedColumns: string[] = ['First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
                                   'Membership Type', 'Status', 'Email', 'Preferred Phone', 'Secondary Phone', 'Street Address', 'City',
                                   'State', 'Zip Code', 'Edit'];
 
@@ -63,10 +65,12 @@ export class MembersComponent implements OnInit {
       (res: Member[]) => {
         this.members = res;
         console.log(this.members);
+        this.memberLength = this.members.length;
       },
       (err) => {
         this.error = err;
       }
+
     );
   }
   
@@ -145,12 +149,15 @@ export class MembersComponent implements OnInit {
       (res: string[]) => {
         this.emails = res;
         console.log(this.emails);
+        this.emails.forEach(email => {
+          console.log(email);
+        });
+        //console.log("Here" + this.listedEmails);
       },
       (err) => {
         this.error = err;
       }
-    );  
-    console.log(this.emails);
+    );     
   }
 
   resetErrors() {
