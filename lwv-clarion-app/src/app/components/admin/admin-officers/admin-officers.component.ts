@@ -20,7 +20,7 @@ export class AdminOfficersComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getOfficers();
+    //this.getOfficers();
   }
 
   getOfficers():void {

@@ -33,10 +33,10 @@ export class NewMemberDialogComponent implements OnInit {
   membershipTypes: string[] = ['Student: $0', 'Individual: $40-$80', 'Household: $60-$120'];
   statusOptions: string[] = ['Inactive', 'Active', 'Pending'];
 
-  newMember: Member;
+  
   error = '';
   success = '';
-  @Input() newMember2: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
+  @Input() newMember: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
                     DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
                     StreetAddress:'', City:'', State:'', ZipCode:0};
 
@@ -75,8 +75,9 @@ export class NewMemberDialogComponent implements OnInit {
 
 
     addMember(mem: Member) {
-      mem = this.newMember2;
+      mem = this.newMember;
       console.log("member v");
+      console.log(this.newMember);
       console.log(mem);
       this.resetErrors();
       this.memberService.store(mem)
@@ -122,7 +123,7 @@ export class NewMemberDialogComponent implements OnInit {
     dialogConfig.afterClosed().subscribe(result => {
       if(result == "yes"){
         console.log(this.newMember);
-        //this.addMember(this.newMember2);
+        this.addMember(this.newMember);
         this.dialogRef.close(this.newMember);
       }
     });
