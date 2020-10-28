@@ -8,17 +8,15 @@ export class Member {
         SecondaryHouseholdMemberName?: string,
         LastPaidDate?: string,
         DateJoined?: string,
-        MembershipType?: number,
-        Active?: boolean, //might not be a boolean.. that database has it a tinyInt (0 or 1)
+        MembershipType?: string,
+        Status?: string,
         Email?: string,
         PreferredPhone?: string,
         SecondaryPhone?: string,
         StreetAddress?: string,
         City?: string,
         State?: string,
-        ZipCode?: number,
-        MemberUser?: string,
-        MemberPassword?: string,
+        ZipCode?: string
     ) {}
   }
   

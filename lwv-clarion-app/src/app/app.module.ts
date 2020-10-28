@@ -19,21 +19,43 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
-import { AdminComponent } from './components/admin/admin.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
 
+import { AdminComponent } from './components/admin/admin.component';
+import { MatTabsModule } from '@angular/material/tabs';
+
+//carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
+//calendar
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import listPlugin from '@fullcalendar/list'; 
+import interactionPlugin from '@fullcalendar/interaction'; 
+//resources
+import {MatExpansionModule} from '@angular/material/expansion';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NewMemberDialogComponent } from './components/new-member-dialog/new-member-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatOptionModule } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentComponent } from './components/payment/payment.component';
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  listPlugin,
+  interactionPlugin
+]);
 
+import {MatDialogModule} from '@angular/material/dialog';
 
+import { MembersComponent } from './components/admin/members/members.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MemberAddDialogComponent } from './components/admin/members/member-add-dialog/member-add-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MemberUpdateDialogComponent } from './components/admin/members/member-update-dialog/member-update-dialog.component';
+import { AdminOfficersComponent } from './components/admin/admin-officers/admin-officers.component';
 
 
 @NgModule({
@@ -47,6 +69,10 @@ import { PaymentComponent } from './components/payment/payment.component';
     LogInComponent,
     AdminComponent,
     CarouselComponent,
+    MembersComponent,
+    MemberAddDialogComponent,
+    MemberUpdateDialogComponent,
+    AdminOfficersComponent,
     NewMemberDialogComponent,
     PaymentComponent
   
@@ -62,7 +88,20 @@ import { PaymentComponent } from './components/payment/payment.component';
     RouterModule,
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
+    SlickCarouselModule,
+    FullCalendarModule,
     FormsModule,
+    SlickCarouselModule,
+    MatTabsModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatExpansionModule,
+    PdfViewerModule,
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
