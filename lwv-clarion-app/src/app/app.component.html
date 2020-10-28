@@ -1,8 +1,9 @@
+<div class="container">
 
 <div class = "NavigationBar">
   <div class = "left">
     <div class="navButtons">
-      <a mat-button [routerLink]="'home'" routerLinkActive="active" class="homeButton"> LWV</a>
+      <a mat-button [routerLink]="''" routerLinkActive="active" class="homeButton"> LWV</a>
       <a mat-button [routerLink]="'calendar'" > Calendar </a>
       <a mat-button [routerLink]="'resources'" > Resources </a>
       <a mat-button [routerLink]="'history'" > History </a>
@@ -13,12 +14,16 @@
   <div class = "right">
     <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" target = "_blank" class="vote"> Register to Vote! </a>
     &nbsp;
-    <a mat-raised-button [routerLink]="'/log-in'" class = "login"> Log In </a>
+    <a mat-raised-button (click)= "openLogInDialog()" class = "login"> Log In </a>
   </div>
 </div>
 
 
-<router-outlet></router-outlet>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+  
+ 
 
 
 <div class = "footer" id='footer'>
@@ -38,3 +43,4 @@
   
 </div>
 
+</div>

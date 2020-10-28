@@ -1,3 +1,18 @@
-<div id = "test">
-    <p>log-in works!</p>
-</div>
+<mat-dialog-content>
+    <label>Admin Log In</label>
+
+<mat-form-field >
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="username" placeholder="username" maxlength="25">
+</mat-form-field><br>
+<mat-form-field>
+    <mat-label>password</mat-label>
+    <input matInput [(ngModel)]="password" placeholder="password" maxlength="25" type="password">
+</mat-form-field><br>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button mat-raised-button mat-primary (click)="logIn()" id="login"
+        [disabled]="username == undefined || password == undefined ">Log In</button>
+</mat-dialog-actions>
+</mat-dialog-content>

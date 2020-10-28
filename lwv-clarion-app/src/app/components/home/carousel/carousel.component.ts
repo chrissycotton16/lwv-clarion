@@ -11,22 +11,18 @@ export class CarouselComponent {
 
   constructor() { console.log("in carousel TS");  }
 
-  slides = [
-    {img: "http://placehold.it/500x800/666666"},
-    {img: "http://placehold.it/500x500/666666"},
-    {img: "http://placehold.it/800x500/666666"},
-    {img: "http://placehold.it/500x500/666666"}
-  ];
+  slides = [];
 
   images : Image = [
-    {imageString: "http://placehold.it/500x800/666666", caption: "slide 1"},
-    {imageString: "http://placehold.it/500x500/666666", caption: "slide 2"},
-    {imageString: "http://placehold.it/800x500/666666", caption: "slide 3"},
-    {imageString: "http://placehold.it/1920x1080/666666", caption: "slide 4"}
+    {imageString: "./assets/VoterReg2020.jpg", caption: "Picture Caption 1"},
+    {imageString: "./assets/FBpicture1.jpg", caption: "Picture Caption 2"},
+    {imageString: "./assets/HvS Debate 1.jpg", caption: "Picture Caption 3"},
+    {imageString: "./assets/HvS Debate 6.jpg", caption: "Picture Caption 4"},
+    {imageString: "./assets/HvS Debate 9.jpg", caption: "Picture Caption 5"},
+    {imageString: "./assets/HvS Debate 8.jpg", caption: "Picture Caption 6"}
 
   ]
   
-
   slideConfig = {"slidesToShow": 1, 
                 "slidesToScroll": 1, 
                 'dots': true, 
@@ -49,20 +45,20 @@ export class CarouselComponent {
   }
   
   slickInit(e) {
-    console.log('slick initialized');
+    //console.log('slick initialized');
     
   }
   
   breakpoint(e) {
-    console.log('breakpoint');
+    //console.log('breakpoint');
   }
   
   afterChange(e) {
-    console.log('afterChange');
+    //console.log('afterChange');
   }
   
   beforeChange(e) {
-    console.log('beforeChange');
+    //console.log('beforeChange');
   }
 }
 

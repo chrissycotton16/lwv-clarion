@@ -9,7 +9,7 @@ import { Officer } from 'src/app/models/officer';
   styleUrls: ['./admin-officers.component.scss']
 })
 export class AdminOfficersComponent implements OnInit {
-  displayedColumns: string[] = ['FirstName', 'LastName', 'Position', 'Email', 'TermStart', 'TermEnd'];
+  displayedColumns: string[] = ['FirstName', 'LastName', 'Position', 'Email', 'TermStart'];
   @Input() officer ={ OfficerID:0, FirstName:'', LastName:'', Position:'', Email:'', TermStart:'', TermEnd:''}; //this is for storing purposes
   officers: Officer[];
   officerLength: number;
@@ -27,13 +27,11 @@ export class AdminOfficersComponent implements OnInit {
     this.officerService.getAll().subscribe(
       (res: Officer[]) => {
         this.officers = res;
-        console.log(this.officers);
         this.officerLength = this.officers.length;
       },
       (err) => {
         this.error = err;
       }
-
     );
   }
 

@@ -1,15 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { AUTO_STYLE } from '@angular/animations';
+import { Component } from '@angular/core';
+import {  CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
+
+
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
 
-  constructor() { }
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    displayEventEnd:true,
+    displayEventTime:true,
+    eventDisplay: 'block',
+    eventColor: '#be0f34',
+    aspectRatio: 2.3,
+    showNonCurrentDates: false,
+    expandRows: true,
+    
+    eventTimeFormat:
+    {
+      hour: 'numeric',
+      minute: '2-digit',
+      meridiem: 'short'
+    },
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,listYear'
+    },
 
-  ngOnInit(): void {
+    eventClick:function(arg){
+      alert(arg.event.extendedProps.description)
+    },
+    events: [
+      { title: 'event 1', start:'2020-10-17T13:00', end:'2020-10-17T15:00',  extendedProps: {description: 'Event 1 description'} },
+      { title: 'event 2', start:'2020-10-10T16:00', end:'2020-10-10T18:00', extendedProps: {description: 'Event 2 description'} },
+      { title: 'event 3', start:'2020-10-20T12:00', end:'2020-10-20T12:30', extendedProps: {description: 'Event 3 description'}}
+    ], 
+  };
+
+  
+
+  
+  toggleListView() {
+    this.calendarOptions.initialView = 'listMonth'
   }
 
 }

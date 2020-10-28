@@ -19,13 +19,33 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
+
 import { AdminComponent } from './components/admin/admin.component';
-import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+
+//carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
+//calendar
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import listPlugin from '@fullcalendar/list'; 
+import interactionPlugin from '@fullcalendar/interaction'; 
+//resources
+import {MatExpansionModule} from '@angular/material/expansion';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NewMemberDialogComponent } from './components/new-member-dialog/new-member-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './components/payment/payment.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  listPlugin,
+  interactionPlugin
+]);
+
 import {MatDialogModule} from '@angular/material/dialog';
 
-import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { MembersComponent } from './components/admin/members/members.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -53,7 +73,10 @@ import { MatSortModule } from '@angular/material/sort';
     MembersComponent,
     MemberAddDialogComponent,
     MemberUpdateDialogComponent,
-    AdminOfficersComponent
+    AdminOfficersComponent,
+    NewMemberDialogComponent,
+    PaymentComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -66,6 +89,8 @@ import { MatSortModule } from '@angular/material/sort';
     RouterModule,
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
+    SlickCarouselModule,
+    FullCalendarModule,
     FormsModule,
     SlickCarouselModule,
     MatTabsModule,
@@ -76,6 +101,15 @@ import { MatSortModule } from '@angular/material/sort';
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
+    MatExpansionModule,
+    PdfViewerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
+    SlickCarouselModule,
     MatSortModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],

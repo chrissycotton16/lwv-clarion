@@ -1,5 +1,38 @@
-#test{
+
+.calendar-container{
     position: fixed;
-    top: 50%;
-    left: 50%;
-}
+    margin: auto;
+    left: 2%;
+    top: 9%;
+    right: 2%;
+    width: 90%;
+    height: 100%;
+    
+  }
+
+  .fc .fc-button-primary  {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-bg-color, #be0f34 !important);
+    border-color: #be0f34 !important;
+    border-color: var(--fc-button-border-color,#be0f34 !important);
+  } 
+.fc .fc-button-primary:hover {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-hover-bg-color, #be0f34 !important);
+    border-color: #be0f34 !important;
+    border-color: var(--fc-button-hover-border-color, #be0f34 !important);
+  }
+.fc .fc-button-primary:disabled {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-bg-color, #be0f34 !important);
+    border-color: #be0f34 !important;
+    border-color: var(--fc-button-border-color, #be0f34 !important); 
+  }
+.fc .fc-button-primary:not(:disabled):active,
+  .fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #be0f34 !important;
+    background-color: var(--fc-button-active-bg-color, #be0f34 !important);
+    border-color:#be0f34 !important;
+    border-color: var(--fc-button-active-border-color, #be0f34 !important);
+  }
+  

@@ -1,5 +1,17 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 #test{
     position: fixed;
     top: 50%;
     left: 50%;
+}
+
+.accordian-container{
+    position: fixed;
+    margin: auto;
+    left: 2%;
+    top: 15%;
+    right: 2%;
+    width: 90%;
+    height: 100%;
 }
