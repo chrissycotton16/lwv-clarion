@@ -57,6 +57,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MemberUpdateDialogComponent } from './components/admin/members/member-update-dialog/member-update-dialog.component';
 import { AdminOfficersComponent } from './components/admin/admin-officers/admin-officers.component';
 import { MatSortModule } from '@angular/material/sort';
+import { OfficerUpdateDialogComponent } from './components/admin/admin-officers/officer-update-dialog/officer-update-dialog.component';
+import { OfficerAddDialogComponent } from './components/admin/admin-officers/officer-add-dialog/officer-add-dialog.component';
 
 
 @NgModule({
@@ -75,7 +77,9 @@ import { MatSortModule } from '@angular/material/sort';
     MemberUpdateDialogComponent,
     AdminOfficersComponent,
     NewMemberDialogComponent,
-    PaymentComponent
+    PaymentComponent,
+    OfficerUpdateDialogComponent,
+    OfficerAddDialogComponent
   
   ],
   imports: [

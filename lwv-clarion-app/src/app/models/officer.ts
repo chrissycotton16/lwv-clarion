@@ -8,6 +8,5 @@ export class Officer {
         Position?: string,
         Email?: string,
         TermStart?: string,
-        TermEnd?: string,
     ) {}
   }

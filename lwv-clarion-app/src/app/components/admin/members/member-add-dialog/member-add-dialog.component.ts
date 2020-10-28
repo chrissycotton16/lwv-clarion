@@ -12,6 +12,7 @@ export interface DialogData{
   styleUrls: ['./member-add-dialog.component.scss']
 })
 export class MemberAddDialogComponent implements OnInit { 
+  newMember: Member;
   firstname: string;
   lastname: string;
   secondaryname: string;
@@ -29,7 +30,7 @@ export class MemberAddDialogComponent implements OnInit {
   membershipTypes: string[] = ['Student: $0', 'Individual: $40-$80', 'Household: $60-$120'];
   statusOptions: string[] = ['Inactive', 'Active', 'Pending'];
 
-  newMember: Member;
+ 
 
   onNoClick(): void {
     this.dialogRef.close();
