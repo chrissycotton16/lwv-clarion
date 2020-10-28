@@ -21,7 +21,6 @@ import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
 
 import { AdminComponent } from './components/admin/admin.component';
-import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 
 //carousel
@@ -35,6 +34,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 //resources
 import {MatExpansionModule} from '@angular/material/expansion';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NewMemberDialogComponent } from './components/new-member-dialog/new-member-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './components/payment/payment.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -70,7 +72,10 @@ import { AdminOfficersComponent } from './components/admin/admin-officers/admin-
     MembersComponent,
     MemberAddDialogComponent,
     MemberUpdateDialogComponent,
-    AdminOfficersComponent
+    AdminOfficersComponent,
+    NewMemberDialogComponent,
+    PaymentComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -96,7 +101,14 @@ import { AdminOfficersComponent } from './components/admin/admin-officers/admin-
     MatOptionModule,
     MatSelectModule,
     MatExpansionModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
+    SlickCarouselModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
