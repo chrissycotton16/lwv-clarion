@@ -2,9 +2,7 @@ import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
 
-export interface DialogData{
-  
-}
+export interface DialogData{}
 
 @Component({
   selector: 'app-member-add-dialog',
@@ -30,15 +28,11 @@ export class MemberAddDialogComponent implements OnInit {
   membershipTypes: string[] = ['Student: $0', 'Individual: $40-$80', 'Household: $60-$120'];
   statusOptions: string[] = ['Inactive', 'Active', 'Pending'];
 
- 
-
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   onOkClick(){
     this.newMember = {FirstName:this.firstname, 
@@ -55,12 +49,10 @@ export class MemberAddDialogComponent implements OnInit {
       City: this.city, 
       State: this.state, 
       ZipCode: this.zip};
-    console.log(this.newMember);                        
     this.dialogRef.close(this.newMember);
   }
 
   constructor(
     public dialogRef: MatDialogRef<MemberAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
 }

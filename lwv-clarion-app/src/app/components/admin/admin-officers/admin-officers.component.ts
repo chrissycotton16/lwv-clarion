@@ -89,7 +89,7 @@ export class AdminOfficersComponent implements OnInit {
     const dialogRef = this.dialog.open(OfficerUpdateDialogComponent, {
       width: '450px',
       data:{ updateOfficerID: off.OfficerID, updateFirstName: off.FirstName, updateLastName: off.LastName, updatePosition: off.Position,  
-             updateEmail: off.Email, updateTermStart: off.TermStart },
+             updateEmail: off.Email, updateTermStart: off.TermStart},
       autoFocus: false
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -104,16 +104,15 @@ export class AdminOfficersComponent implements OnInit {
   updateOfficer(off){
     this.resetErrors();
     this.officerService.update({OfficerID: off.OfficerID, FirstName: off.FirstName, LastName: off.LastName, 
-        Position: off.Position, Email: off.Email, TermStart: off.TermStart })
+        Position: off.Position, Email: off.Email, TermStart: off.TermStart})
     .subscribe(
       (res) => {
-        this.officers    = res;
+        this.officers = res;
         this.success = 'Updated successfully';
       },
       (err) => this.error = err
     );
   }
-
 
   resetErrors() {
     this.success = '';

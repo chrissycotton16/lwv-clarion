@@ -64,10 +64,13 @@
         <mat-label>Zip Code</mat-label>
         <input matInput [(ngModel)]="data.updateZipCode" maxlength="5">
     </mat-form-field><br>
-
     <div mat-dialog-actions>
         <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
-        [disabled]="">Update Member</button>
+        [disabled]="data.updateFirstName == '' || data.updateLastName == '' || data.updateSecondaryHouseholdMemberName == '' 
+        || data.updateLastPaidDate == '' || data.updateDateJoined == '' || data.updateMemberShipType == '' 
+        || data.updateStatus ==''|| data.updateEmail == '' || data.updatePreferredPhone == ''
+        || data.updateSecondaryPhone == '' || data.updateStreetAddress == ''
+        || data.updateCity == '' || data.updateState == '' || data.updateZipCode == ''">Update Member</button>
         <button mat-button (click)="onNoClick()">Cancel</button>
     </div>
 </div>

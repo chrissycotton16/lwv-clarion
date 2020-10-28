@@ -17,19 +17,13 @@ export class MembersComponent implements OnInit {
   emails: string[];
   error = '';
   success = '';
-  listedEmails = '';
   memberLength: number;
   displayedColumns: string[] = ['FirstName', 'LastName', 'SecondaryMember', 'LastPaidDate', 'DateJoined',
                                   'MembershipType', 'Status', 'Email', 'PreferredPhone', 'SecondaryPhone', 'StreetAddress', 'City',
                                   'State', 'ZipCode', 'Edit'];
-
-  @Input() member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
-                    DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
-                    StreetAddress:'', City:'', State:'', ZipCode:0}; //this is for storing purposes
-  @Input() newMember2: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
+  @Input() newMember: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
                     DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
                     StreetAddress:'', City:'', State:'', ZipCode:0};
-  selectedID: number;
   memberToUpdate: Member = {MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
                             DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
                             StreetAddress:'', City:'', State:'', ZipCode:0}
@@ -45,25 +39,21 @@ export class MembersComponent implements OnInit {
   openDialog(): void{
     const dialogRef = this.dialog.open(MemberAddDialogComponent, {
       width: '450px',
-      data:{ newMember2: this.newMember2 },
+      data:{ newMember: this.newMember },
       autoFocus: false
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.newMember2 = result;
+      this.newMember = result;
       if(result != undefined){
-        console.log(this.newMember2);
-        this.addMember(this.newMember2);
+        this.addMember(this.newMember);
       }
     });
   }
-
- 
 
   getMembers():void {
     this.memberService.getAll().subscribe(
       (res: Member[]) => {
         this.members = res;
-        console.log(this.members);
         this.memberLength = this.members.length;
       },
       (err) => {
@@ -72,7 +62,6 @@ export class MembersComponent implements OnInit {
     );
   }
   
-
   deleteMember(MemberID) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();
@@ -89,7 +78,7 @@ export class MembersComponent implements OnInit {
   }
 
   addMember(mem: Member) {
-    mem = this.newMember2;
+    mem = this.newMember;
     this.resetErrors();
     this.memberService.store(mem)
       .subscribe(
@@ -142,11 +131,10 @@ export class MembersComponent implements OnInit {
     this.memberService.getEmails().subscribe(
       (res: string[]) => {
         this.emails = res;
-        console.log(this.emails);
         this.emails.forEach(email => {
+          //output to input box
           console.log(email);
         });
-        //console.log("Here" + this.listedEmails);
       },
       (err) => {
         this.error = err;
