@@ -33,6 +33,13 @@ export class NewMemberDialogComponent implements OnInit {
   membershipTypes: string[] = ['Student: $0', 'Individual: $40-$80', 'Household: $60-$120'];
   statusOptions: string[] = ['Inactive', 'Active', 'Pending'];
 
+  currentDate: string;
+  today = new Date();
+  dd = String(this.today.getDate()).padStart(2, '0');
+  mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  yyyy = this.today.getFullYear();
+
+  
   
   error = '';
   success = '';
@@ -53,7 +60,7 @@ export class NewMemberDialogComponent implements OnInit {
       LastName:this.lastname,
       SecondaryHouseholdMemberName: this.secondaryname, 
       LastPaidDate: "N/A",
-      DateJoined: "N/A",
+      DateJoined: this.currentDate,
       MembershipType: this.membership, 
       Status: "Pending",
       Email: this.email,
@@ -71,7 +78,9 @@ export class NewMemberDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<NewMemberDialogComponent>, 
     private dialog: MatDialog,
     private memberService: MemberService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      this.currentDate = this.mm + '/' + this.dd + '/' + this.yyyy;
+    }
 
 
     addMember(mem: Member) {
@@ -103,7 +112,7 @@ export class NewMemberDialogComponent implements OnInit {
       LastName:this.lastname,
       SecondaryHouseholdMemberName: this.secondaryname, 
       LastPaidDate: "N/A",
-      DateJoined: "N/A",
+      DateJoined: this.currentDate,
       MembershipType: this.membership, 
       Status: "Pending",
       Email: this.email,
