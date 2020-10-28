@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resources.component.scss']
 })
 export class ResourcesComponent implements OnInit {
+  panelOpenState = false;
 
   constructor() { }
 
 
-pdfSrc="./assets/Placeholder-PDF.pdf";
-pdfSrc2="./assets/Placeholder-PDF.pdf";
-pdfSrc3="./assets/Placeholder-PDF.pdf";
+pdfSrc="./assets/LWVCC_Fiscal_Policy.pdf";
+pdfSrc2="./assets/LWVCC_Nonpartisan_Policy.pdf";
+pdfSrc3="./assets/LWVCC_Public_Releases_Policy.pdf";
 
 
   ngOnInit(): void {

@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit {
                     StreetAddress:'', City:'', State:'', ZipCode:0, MemberUser:'', MemberPassword:''}; //this is for storing purposes
   updatedMemberInfo: Member;
   constructor(private memberService: MemberService){
-    this.ngOnInIt();
+   // this.ngOnInIt();
   }
   ngOnInit(): void {
     this.getMembers();
