@@ -20,10 +20,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
 import { AdminComponent } from './components/admin/admin.component';
-import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { NewMemberDialogComponent } from './components/new-member-dialog/new-member-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -39,7 +46,10 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     OfficersComponent,
     LogInComponent,
     AdminComponent,
-    CarouselComponent
+    CarouselComponent,
+    NewMemberDialogComponent,
+    PaymentComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -53,6 +63,12 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
     SlickCarouselModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],

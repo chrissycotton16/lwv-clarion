@@ -21,6 +21,8 @@ export class AppComponent {
     this.ngOnInIt();
   }
 
+
+  
   ngOnInIt(){
     this.getMembers();
   }
