@@ -56,6 +56,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MemberUpdateDialogComponent } from './components/admin/members/member-update-dialog/member-update-dialog.component';
 import { AdminOfficersComponent } from './components/admin/admin-officers/admin-officers.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { AdminOfficersComponent } from './components/admin/admin-officers/admin-
     MatOptionModule,
     MatSelectModule,
     MatInputModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatSortModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],

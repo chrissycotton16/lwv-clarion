@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberAddDialogComponent } from './member-add-dialog/member-add-dialog.component';
-import { SplitInterpolation } from '@angular/compiler';
 import { MemberUpdateDialogComponent } from './member-update-dialog/member-update-dialog.component';
+import {MatSort, Sort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-members',
@@ -18,9 +19,9 @@ export class MembersComponent implements OnInit {
   success = '';
   listedEmails = '';
   memberLength: number;
-  displayedColumns: string[] = ['First Name', 'Last Name', 'Secondary Member', 'Last Paid Date', 'Date Joined',
-                                  'Membership Type', 'Status', 'Email', 'Preferred Phone', 'Secondary Phone', 'Street Address', 'City',
-                                  'State', 'Zip Code', 'Edit'];
+  displayedColumns: string[] = ['FirstName', 'LastName', 'SecondaryMember', 'LastPaidDate', 'DateJoined',
+                                  'MembershipType', 'Status', 'Email', 'PreferredPhone', 'SecondaryPhone', 'StreetAddress', 'City',
+                                  'State', 'ZipCode', 'Edit'];
 
   @Input() member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
                     DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
@@ -36,7 +37,7 @@ export class MembersComponent implements OnInit {
   constructor(private memberService: MemberService, public dialog:MatDialog){
     this.ngOnInit();
   }
-
+ 
   ngOnInit(){
     this.getMembers();
   }
@@ -68,7 +69,6 @@ export class MembersComponent implements OnInit {
       (err) => {
         this.error = err;
       }
-
     );
   }
   
@@ -90,8 +90,6 @@ export class MembersComponent implements OnInit {
 
   addMember(mem: Member) {
     mem = this.newMember2;
-    console.log("member v");
-    console.log(mem);
     this.resetErrors();
     this.memberService.store(mem)
       .subscribe(
@@ -114,7 +112,6 @@ export class MembersComponent implements OnInit {
              updateStatus: mem.Status, updateEmail: mem.Email, updatePreferredPhone: mem.PreferredPhone,
              updateSecondaryPhone: mem.SecondaryPhone, updateStreetAddress: mem.StreetAddress, updateCity: mem.City, 
              updateState: mem.State, updateZipCode: mem.ZipCode },
-      
       autoFocus: false
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -127,7 +124,6 @@ export class MembersComponent implements OnInit {
 
   updateMember(mem){
     this.resetErrors();
-    console.log(mem.SecondaryPhone);
     this.memberService.update({MemberID: mem.MemberID, FirstName: mem.FirstName, LastName: mem.LastName, 
         SecondaryHouseholdMemberName: mem.SecondaryHouseholdMemberName, LastPaidDate: mem.LastPaidDate,
         DateJoined: mem.DateJoined, MembershipType: mem.MembershipType, Status: mem.Status, Email:mem.Email,
