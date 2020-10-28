@@ -20,11 +20,10 @@
         <mat-label>Term Start</mat-label>
         <input matInput [(ngModel)]="data.updateTermStart" placeholder="01/20" maxlength="10">
     </mat-form-field><br>
-
     <div mat-dialog-actions>
         <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
-        [disabled]="data.updateFirstName == undefined || data.updateLastName == undefined ||
-        data.updatePosition == undefined || data.updateEmail == undefined || data.updateTermStart == undefined">Update Officer</button>
+        [disabled]="data.updateFirstName == '' || data.updateLastName == '' ||
+        data.updatePosition == '' || data.updateEmail == '' || data.updateTermStart == ''">Update Officer</button>
         <button mat-button (click)="onNoClick()">Cancel</button>
     </div>
 </div>

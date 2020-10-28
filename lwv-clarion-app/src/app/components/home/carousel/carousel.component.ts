@@ -9,7 +9,9 @@ import { Image } from './image';
 export class CarouselComponent {
   title = 'slick-test';
 
-  constructor() { console.log("in carousel TS");  }
+  constructor() { 
+    //console.log("in carousel TS");
+  }
 
   slides = [];
 
@@ -20,7 +22,6 @@ export class CarouselComponent {
     {imageString: "./assets/HvS Debate 6.jpg", caption: "Picture Caption 4"},
     {imageString: "./assets/HvS Debate 9.jpg", caption: "Picture Caption 5"},
     {imageString: "./assets/HvS Debate 8.jpg", caption: "Picture Caption 6"}
-
   ]
   
   slideConfig = {"slidesToShow": 1, 
@@ -31,8 +32,7 @@ export class CarouselComponent {
                 "autoplay": true, 
                 "autoplayspeed": 1000,  
                 "centerMode": true,
-                "variableWidth": true
-                    
+                "variableWidth": true      
                 };
 
   

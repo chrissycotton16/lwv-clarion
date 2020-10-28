@@ -31,8 +31,7 @@ export class OfficerAddDialogComponent implements OnInit {
         LastName:this.lastname,
         Position: this.position,
         Email: this.email,
-        TermStart: this.termstart, };
-      console.log(this.newOfficer);                        
+        TermStart: this.termstart};
       this.dialogRef.close(this.newOfficer);
     }
 }
