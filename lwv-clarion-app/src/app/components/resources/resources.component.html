@@ -1,3 +1,37 @@
-<div id = "test">
-    <p>resources works!</p>
-</div>
+
+<div class="accordian-container">
+  <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              Fiscal Policy
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <pdf-viewer [src]="pdfSrc"               [render-text]="true"              style="display: block; width:auto; height: 700px"  ></pdf-viewer> 
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Nonpartisan Policy
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <pdf-viewer [src]="pdfSrc2"               [render-text]="true"              style="display: block; width:auto; height: 700px"  ></pdf-viewer> 
+            </mat-expansion-panel>
+    
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Public Release Policy
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <pdf-viewer [src]="pdfSrc3"               [render-text]="true"              style="display: block; width:auto; height: 700px"  ></pdf-viewer> 
+            </mat-expansion-panel>
+    </mat-accordion>
+  </div>

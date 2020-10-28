@@ -19,10 +19,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import  appRoutes from './routerConfig';
-//carousel
+
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+
+//carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 //calendar
@@ -30,6 +32,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import listPlugin from '@fullcalendar/list'; 
 import interactionPlugin from '@fullcalendar/interaction'; 
+//resources
+import {MatExpansionModule} from '@angular/material/expansion';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   listPlugin,
@@ -88,7 +94,9 @@ import { AdminOfficersComponent } from './components/admin/admin-officers/admin-
     MatInputModule,
     MatFormFieldModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
+    PdfViewerModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
