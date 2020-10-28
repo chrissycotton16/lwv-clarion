@@ -14,8 +14,8 @@ export class PaymentComponent implements OnInit {
   }
 
   confirm(){
-    //eventually email from here
-    this.dialogRef.close();
+    this.dialogRef.close("yes");
+
   }
   close(){
     this.dialogRef.close();

@@ -1,7 +1,8 @@
+import { Input } from '@angular/core';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
+import { MemberService } from 'src/app/services/member.service';
 import { PaymentComponent } from '../payment/payment.component';
 
 export interface DialogData{
@@ -33,6 +34,11 @@ export class NewMemberDialogComponent implements OnInit {
   statusOptions: string[] = ['Inactive', 'Active', 'Pending'];
 
   newMember: Member;
+  error = '';
+  success = '';
+  @Input() newMember2: Member ={ MemberID:0, FirstName:'', LastName:'', SecondaryHouseholdMemberName:'', LastPaidDate:'',
+                    DateJoined:'', MembershipType:'', Status:'', Email:'', PreferredPhone:'', SecondaryPhone:'',
+                    StreetAddress:'', City:'', State:'', ZipCode:0};
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -46,10 +52,10 @@ export class NewMemberDialogComponent implements OnInit {
     this.newMember = {FirstName:this.firstname, 
       LastName:this.lastname,
       SecondaryHouseholdMemberName: this.secondaryname, 
-      LastPaidDate: this.lastpaid,
-      DateJoined: this.datejoined,
+      LastPaidDate: "N/A",
+      DateJoined: "N/A",
       MembershipType: this.membership, 
-      Status: this.status,
+      Status: "Pending",
       Email: this.email,
       PreferredPhone: this.phone, 
       SecondaryPhone: this.secondaryphone, 
@@ -64,17 +70,61 @@ export class NewMemberDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<NewMemberDialogComponent>, 
     private dialog: MatDialog,
+    private memberService: MemberService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
 
+    addMember(mem: Member) {
+      mem = this.newMember2;
+      console.log("member v");
+      console.log(mem);
+      this.resetErrors();
+      this.memberService.store(mem)
+        .subscribe(
+          (res: Member[]) => {
+            // Update the list of members
+            //this.members = res;
+            // Inform the user
+            this.success = 'Created successfully';
+          },
+          (err) => this.error = err
+        );
+    }
+
+
+    resetErrors() {
+      this.success = '';
+      this.error   = '';
+    }
+
   saveOpen(){
-    console.log(this.firstname,this.membership, this.status);
-    this.dialogRef.close(this.newMember);
+    this.newMember = {FirstName:this.firstname, 
+      LastName:this.lastname,
+      SecondaryHouseholdMemberName: this.secondaryname, 
+      LastPaidDate: "N/A",
+      DateJoined: "N/A",
+      MembershipType: this.membership, 
+      Status: "Pending",
+      Email: this.email,
+      PreferredPhone: this.phone, 
+      SecondaryPhone: this.secondaryphone, 
+      StreetAddress: this.street,
+      City: this.city, 
+      State: this.state, 
+      ZipCode: this.zip};
+    
     const dialogConfig = this.dialog.open(PaymentComponent, {
       width: '450px',
       data: {id: 1,
         title: 'Payment'},
       autoFocus: false
+    });
+    dialogConfig.afterClosed().subscribe(result => {
+      if(result == "yes"){
+        console.log(this.newMember);
+        //this.addMember(this.newMember2);
+        this.dialogRef.close(this.newMember);
+      }
     });
   }
 
