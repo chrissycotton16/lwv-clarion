@@ -10,8 +10,8 @@ import { NewMemberDialogComponent } from '../new-member-dialog/new-member-dialog
 export class HomeComponent implements OnInit {
 
   constructor(private dialog: MatDialog){}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+  
   }
   
   openMemberDialog(){
