@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   
   }
-  
   openMemberDialog(){
     const dialogConfig = this.dialog.open(NewMemberDialogComponent, {
       width: '450px',
