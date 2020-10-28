@@ -1,0 +1,30 @@
+<h1 mat-dialog-title cdkFocusInitial>Add Officer</h1>
+<div mat-dialog-content class="AddForm">
+    <mat-form-field >
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="firstname" placeholder="Jane" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="lastname" placeholder="Doe" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Position</mat-label>
+        <input matInput [(ngModel)]="position" placeholder="Vice President" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" placeholder="jane.doe@mail.com" maxlength="50">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Term Start</mat-label>
+        <input matInput [(ngModel)]="termstart" placeholder="01/20" maxlength="10">
+    </mat-form-field><br>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
+        [disabled]="firstname == undefined || lastname == undefined ||
+        position == undefined || email == undefined || termstart == undefined">Add Officer</button>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+</div>

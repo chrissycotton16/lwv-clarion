@@ -1,18 +1,7 @@
 
 <br><br>
 <h1>Administrative View: Members</h1>
-<!--Table view?-->
 <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
-      <!-- <ng-container matColumnDef="Select">
-            <th mat-header-cell *matHeaderCellDef>Select</th>
-            <td mat-cell *matCellDef="let mem">
-                  <mat-checkbox [(ngModel)]="mem.checked"></mat-checkbox>
-            </td>
-      </ng-container>
-      <ng-container matColumnDef="Member ID">
-            <th mat-header-cell *matHeaderCellDef>ID</th>
-            <td mat-cell *matCellDef="let mem">{{mem.MemberID}}</td>
-      </ng-container> -->
       <ng-container matColumnDef="FirstName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
             <td mat-cell *matCellDef="let mem">{{mem.FirstName}}</td>
