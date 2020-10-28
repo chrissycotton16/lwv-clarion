@@ -25,5 +25,4 @@ export class HomeComponent implements OnInit {
       data => console.log("Dialog output: ", data)
     );
   }
-
 }
