@@ -1,0 +1,34 @@
+<h1 mat-dialog-title cdkFocusInitial>Add Event</h1>
+<div mat-dialog-content class="AddForm">
+    <mat-form-field >
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title" placeholder="Election Day" maxlength="50">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input matInput [(ngModel)]="startdate" placeholder="2020-10-17" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>End Date</mat-label>
+        <input matInput [(ngModel)]="enddate" placeholder="2020-10-17" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Start Time</mat-label>
+        <input matInput [(ngModel)]="starttime" placeholder="13:00" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>End Time</mat-label>
+        <input matInput [(ngModel)]="endtime" placeholder="15:00" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="description" placeholder="Vote today!" maxlength="50">
+    </mat-form-field><br>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
+        [disabled]="title == undefined || starttime == undefined ||
+        endtime == undefined || description == undefined">Add Event</button>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+</div>
