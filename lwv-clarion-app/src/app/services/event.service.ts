@@ -21,6 +21,14 @@ export class EventService {
         catchError(this.handleError));
     }
 
+    getAllWithOutID(): Observable<Event[]> {
+        return this.http.get(`${this.baseUrl}/listNoID`).pipe(
+        map((res) => {
+            this.events = res['data'];
+            return this.events;
+        }),
+        catchError(this.handleError));
+    }
 
     delete(EventID: number): Observable<Event[]> {
         const params = new HttpParams()
@@ -29,7 +37,7 @@ export class EventService {
         return this.http.delete(`${this.baseUrl}/delete`, { params: params })
         .pipe(map(res => {
             const filteredEvents = this.events.filter((event) => {
-            return +event['MemberID'] !== +EventID;
+            return +event['EventID'] !== +EventID;
             });
             return this.events = filteredEvents;
         }),
@@ -54,10 +62,10 @@ export class EventService {
             return +item['EventID'] === +event['EventID'];
             });
             if (theEvent) {
-                theEvent['Title'] = event['Title'];
-                theEvent['StartTime'] = event['StartTime'];
-                theEvent['EndTime'] = event['EndTime'];
-                theEvent['Description'] = event['Description'];
+                theEvent['title'] = event['title'];
+                theEvent['start'] = event['start'];
+                theEvent['end'] = event['end'];
+                theEvent['description'] = event['description'];
             }
             return this.events;
         }),

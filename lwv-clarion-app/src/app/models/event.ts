@@ -1,10 +1,10 @@
 export class Event {
     constructor(
         EventID?:   number,      
-        Title?: string,
-        StartTime?: string, // check data type
-        EndTime?: string, // check data type
-        Description?: string,
+        title?: string,
+        start?: string, // check data type
+        end?: string, // check data type
+        description?: string,
     ) {}
   }
   

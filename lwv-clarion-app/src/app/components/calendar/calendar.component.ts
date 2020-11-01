@@ -1,6 +1,7 @@
-import { AUTO_STYLE } from '@angular/animations';
-import { Component } from '@angular/core';
-import {  CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
+import { Component, OnInit } from '@angular/core';
+import { EventSourceInput, CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
+import { Event } from 'src/app/models/event';
+import { EventService } from 'src/app/services/event.service';
 
 
 
@@ -9,43 +10,69 @@ import {  CalendarOptions } from '@fullcalendar/angular'; // useful for typechec
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit{
+  eventsList:Event[];
+  calendarOptions: CalendarOptions;
+  error= '';
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    displayEventEnd:true,
-    displayEventTime:true,
-    eventDisplay: 'block',
-    eventColor: '#be0f34',
-    aspectRatio: 2.3,
-    showNonCurrentDates: false,
-    expandRows: true,
-    
-    eventTimeFormat:
-    {
-      hour: 'numeric',
-      minute: '2-digit',
-      meridiem: 'short'
-    },
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,listYear'
-    },
+  constructor(private eventService: EventService){
+    this.getEvents();
+  }
+  ngOnInit(): void {
+    // console.log("in it");
+    // this.getEvents();
+    // console.log(this.eventsList);
+    // this.getCalendar();
+  }
+ 
+getCalendar(){
+  this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      displayEventEnd:true,
+      displayEventTime:true,
+      eventDisplay: 'block',
+      eventColor: '#be0f34',
+      aspectRatio: 2.3,
+      showNonCurrentDates: false,
+      expandRows: true,
+      
+      eventTimeFormat:
+      {
+        hour: 'numeric',
+        minute: '2-digit',
+        meridiem: 'short'
+      },
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listYear'
+      },
 
-    eventClick:function(arg){
-      alert(arg.event.extendedProps.description)
-    },
-    events: [
-      { title: 'event 1', start:'2020-10-17T13:00', end:'2020-10-17T15:00',  extendedProps: {description: 'Event 1 description'} },
-      { title: 'event 2', start:'2020-10-10T16:00', end:'2020-10-10T18:00', extendedProps: {description: 'Event 2 description'} },
-      { title: 'event 3', start:'2020-10-20T12:00', end:'2020-10-20T12:30', extendedProps: {description: 'Event 3 description'}}
-    ], 
-  };
+      events: this.eventsList,
 
-  
+      eventClick:function(arg){
+        //add dialog box here!
+        alert(arg.event.extendedProps.description)
+      },
+      
+    };
+}
 
-  
+  getEvents() {
+    this.eventService.getAllWithOutID().subscribe(
+      (res: Event[]) => {
+        this.eventsList = res;
+        console.log(this.eventsList);
+        this.getCalendar();
+
+      },
+      (err) => {
+        this.error = err;
+        console.log(this.error);
+      }
+    );
+  }
+
   toggleListView() {
     this.calendarOptions.initialView = 'listMonth'
   }
