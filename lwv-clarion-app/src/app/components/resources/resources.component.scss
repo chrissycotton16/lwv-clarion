@@ -6,12 +6,34 @@
     left: 50%;
 }
 
-.accordian-container{
+table, th, td{
+    text-align: center;
+    border: 1px solid black;
+}
+table{
     position: fixed;
     margin: auto;
     left: 2%;
     top: 15%;
     right: 2%;
-    width: 90%;
+    width: 60%;
+    height: 20%;
+}
+
+img{
+    width: 20%;
+}
+
+.links-container{
+    
+}
+
+.accordian-container{
+    position: fixed;
+    margin: auto;
+    left: 2%;
+    top: 45%;
+    right: 2%;
+    width: 60%;
     height: 100%;
 }
