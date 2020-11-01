@@ -12,13 +12,13 @@ import { EventUpdateDialogComponent } from './event-update-dialog/event-update-d
 })
 export class AdminEventsComponent implements OnInit {
   displayedColumns: string[] = ['Title', 'StartTime', 'EndTime', 'Description', 'Edit'];
-  @Input() event ={ EventID:0, Title:'', StartTime:'', EndTime:'', Description:''}; //this is for storing purposes
+  @Input() event ={ EventID:0, title:'', start:'', end:'', description:''}; //this is for storing purposes
   events: Event[];
   eventLength: number;
   error = '';
   success = '';
-  @Input() newEvent: Event ={ EventID:0, Title:'', StartTime:'', EndTime:'', Description:''};
-  eventToUpdate: Event ={ EventID:0, Title:'', StartTime:'', EndTime:'', Description:''};
+  @Input() newEvent: Event ={ EventID:0, title:'', start:'', end:'', description:''};
+  eventToUpdate: Event ={ EventID:0, title:'', start:'', end:'', description:''};
 
   constructor(private eventService: EventService, public dialog:MatDialog){
     this.ngOnInit();
@@ -88,8 +88,8 @@ export class AdminEventsComponent implements OnInit {
   openUpdateDialog(eve){
     const dialogRef = this.dialog.open(EventUpdateDialogComponent, {
       width: '450px',
-      data:{ updateEventID: eve.EventID, updateTitle: eve.Title, updateStartTime: eve.StartTime, updateEndTime: eve.EndTime,  
-             updateDescription: eve.Description},
+      data:{ updateEventID: eve.EventID, updateTitle: eve.title, updateStartTime: eve.start, updateEndTime: eve.end,  
+             updateDescription: eve.description},
       autoFocus: false
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -103,8 +103,8 @@ export class AdminEventsComponent implements OnInit {
 
   updateEvent(eve){
     this.resetErrors();
-    this.eventService.update({EventID: eve.EventID, Title: eve.Title, StartTime: eve.StartTime, EndTime: eve.EndTime,  
-      Description: eve.Description})
+    this.eventService.update({EventID: eve.EventID, title: eve.title, start: eve.start, end: eve.end,  
+      description: eve.description})
     .subscribe(
       (res) => {
         this.events = res;

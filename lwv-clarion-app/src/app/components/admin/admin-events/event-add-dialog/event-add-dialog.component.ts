@@ -30,10 +30,10 @@ export class EventAddDialogComponent implements OnInit {
   }
   onOkClick(){
       this.newEvent = {
-        Title:this.title, 
-        StartTime:this.startdate + "T" + this.starttime,
-        EndTime: this.enddate + "T" + this.endtime,
-        Description: this.description};
+        title:this.title, 
+        start:this.startdate + "T" + this.starttime,
+        end: this.enddate + "T" + this.endtime,
+        description: this.description};
       this.dialogRef.close(this.newEvent);
     }
 }

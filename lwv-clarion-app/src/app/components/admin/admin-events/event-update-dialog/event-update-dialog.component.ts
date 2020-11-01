@@ -37,10 +37,10 @@ export class EventUpdateDialogComponent implements OnInit {
   onOkClick(){
     this.data.eventToUpdate = { 
       EventID: this.data.updateEventID,
-      Title:this.data.updateTitle, 
-      StartTime:this.data.updateStartTime,
-      EndTime: this.data.updateEndTime, 
-      Description: this.data.updateDescription};
+      title:this.data.updateTitle, 
+      start:this.data.updateStartTime,
+      end: this.data.updateEndTime, 
+      description: this.data.updateDescription};
       this.dialogRef.close(this.data.eventToUpdate);
   }
 }
