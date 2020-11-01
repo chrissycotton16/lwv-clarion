@@ -19,10 +19,7 @@ export class CalendarComponent implements OnInit{
     this.getEvents();
   }
   ngOnInit(): void {
-    // console.log("in it");
-    // this.getEvents();
-    // console.log(this.eventsList);
-    // this.getCalendar();
+
   }
  
 getCalendar(){
