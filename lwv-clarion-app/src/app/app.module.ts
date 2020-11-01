@@ -59,6 +59,9 @@ import { AdminOfficersComponent } from './components/admin/admin-officers/admin-
 import { MatSortModule } from '@angular/material/sort';
 import { OfficerUpdateDialogComponent } from './components/admin/admin-officers/officer-update-dialog/officer-update-dialog.component';
 import { OfficerAddDialogComponent } from './components/admin/admin-officers/officer-add-dialog/officer-add-dialog.component';
+import { AdminEventsComponent } from './components/admin/admin-events/admin-events.component';
+import { EventAddDialogComponent } from './components/admin/admin-events/event-add-dialog/event-add-dialog.component';
+import { EventUpdateDialogComponent } from './components/admin/admin-events/event-update-dialog/event-update-dialog.component';
 
 
 @NgModule({
@@ -79,7 +82,10 @@ import { OfficerAddDialogComponent } from './components/admin/admin-officers/off
     NewMemberDialogComponent,
     PaymentComponent,
     OfficerUpdateDialogComponent,
-    OfficerAddDialogComponent
+    OfficerAddDialogComponent,
+    AdminEventsComponent,
+    EventAddDialogComponent,
+    EventUpdateDialogComponent
   
   ],
   imports: [
