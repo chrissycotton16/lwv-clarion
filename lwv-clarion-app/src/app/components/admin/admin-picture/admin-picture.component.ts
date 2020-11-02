@@ -68,20 +68,20 @@ export class AdminPictureComponent implements OnInit {
   // }
 
 
-  // deleteOfficer(OfficerID) {
-  //   if(window.confirm('Are you sure you want to delete this item?')){
-  //     this.resetErrors();
-  //     this.officerService.delete(+OfficerID)
-  //       .subscribe(
-  //         (res: Officer[]) => {
-  //           this.officers = res;
-  //           this.success = 'Deleted successfully';
-  //         },
-  //         (err) => this.error = err
-  //       );
-  //     this.getOfficers();
-  //   }
-  // }
+  deleteImage(ImageID) {
+    if(window.confirm('Are you sure you want to delete this item?')){
+      this.resetErrors();
+      this.imageService.delete(+ImageID)
+        .subscribe(
+          (res: Image[]) => {
+            this.images = res;
+            this.success = 'Deleted successfully';
+          },
+          (err) => this.error = err
+        );
+      this.getImages();
+    }
+  }
 
   // openUpdateDialog(off){
   //   const dialogRef = this.dialog.open(OfficerUpdateDialogComponent, {
