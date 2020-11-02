@@ -1,86 +1,238 @@
 <body>
+  <h1>Links</h1>
 
-<div class="links-container">
+  <div class="links-container">
+    
+    <table>
+      <tr >
+          <td style="text-align: center;">
+            <a href="https://www.votespa.com/"> <img src="./assets/VotesPA.png"> </a>
+          </td>
+          
+          <td style="border:5px solid #005596;">
+            <a href="https://www.votespa.com/">Register to vote in Pennsylvania and other voting resources</a>
+          </td>
+      </tr>
   
-  <table>
-    <tr>
-        <td>
-          <img src="">
+      <tr>
+        <td style="text-align: center;">
+          <a href="http://www.co.clarion.pa.us/"> <img src="./assets/ClarionCounty.jpg"> </a>
         </td>
-
-        <td>
-          Register to vote in Pennsylvania and other voting resources
+        <td style="border:5px solid #005596;">
+          <a href="http://www.co.clarion.pa.us/"> Clarion County </a>
         </td>
-    </tr>
-
-    <tr>
-      <td>
-        <img src="./assets/ClarionCounty.jpg">
-      </td>
-      <td>
-        Clarion County
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <img src="./assets/LWVPA.jpg">
-      </td>
-      <td>
-        Pennsylvania League of Women Voters
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <img src="">
-      </td>
-      <td>
-        National League of Women Voters
-      </td>
-
-    </tr>
- 
-  </table>
-
-</div>
-
-
-<div class="accordian-container">
-  <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-              Fiscal Policy
-          </mat-panel-title>
-          <mat-panel-description>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <pdf-viewer [src]="pdfSrc"               [render-text]="true"              style="display: block; width:auto; height: 700px"  ></pdf-viewer> 
-      </mat-expansion-panel>
-    
-      <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Nonpartisan Policy
-                </mat-panel-title>
-                <mat-panel-description>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <pdf-viewer [src]="pdfSrc2"               [render-text]="true"              style="display: block; width:auto; height: 700px"  ></pdf-viewer> 
-            </mat-expansion-panel>
-    
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Public Release Policy
-                </mat-panel-title>
-                <mat-panel-description>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <pdf-viewer [src]="pdfSrc3"               [render-text]="true"              style="display: block; width:auto; height: 700px"  ></pdf-viewer> 
-            </mat-expansion-panel>
-    </mat-accordion>
+      </tr>
+  
+      <tr>
+        <td style="text-align: center;">
+          <a href="https://www.palwv.org/"> <img src="./assets/LWVPA.jpg"> </a>
+        </td>
+        <td style="border:5px solid #005596;">
+          <a href="https://www.palwv.org/"> Pennsylvania League of Women Voters </a>
+        </td>
+      </tr>
+  
+      <tr>
+        <td style="text-align: center;">
+          <a href="https://www.lwv.org/"> <img src="./assets/LWV.jpg" > </a>
+        </td>
+        <td style="border:5px solid #005596;">
+          <a href="https://www.lwv.org/"> National League of Women Voters </a>
+        </td>
+  
+      </tr>
+   
+    </table>
+  
   </div>
 
-</body>
+  <h1>Newsletters</h1>
+
+  <div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+                September 2020
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="pdfContainer">
+            <ng2-pdfjs-viewer 
+              #pdfViewerOnDemand
+              pdfSrc="Voter20.09.pdf"
+              [downloadFileName]="'mytestfile.pdf'"
+              [download]="true"
+              [find] = "false"
+              [fullScreen] ="false"
+              [openFile] ="false"
+              [viewBookmark] = "false"
+            ></ng2-pdfjs-viewer>
+          </div>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      April 2020
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="pdfContainer">
+                  <ng2-pdfjs-viewer 
+                    #pdfViewerOnDemand
+                    pdfSrc="Voter20.04.pdf"
+                    [downloadFileName]="'mytestfile.pdf'"
+                    [download]="true"
+                    [find] = "false"
+                    [fullScreen] ="false"
+                    [openFile] ="false"
+                    [viewBookmark] = "false"
+                  ></ng2-pdfjs-viewer>  
+                </div>
+              </mat-expansion-panel>
+      
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      March 2020
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="pdfContainer">
+                  <ng2-pdfjs-viewer 
+                    #pdfViewerOnDemand
+                    pdfSrc="Voter20.03.pdf"
+                    [downloadFileName]="'mytestfile.pdf'"
+                    [download]="true"
+                    [find] = "false"
+                    [fullScreen] ="false"
+                    [openFile] ="false"
+                    [viewBookmark] = "false"
+                  ></ng2-pdfjs-viewer>
+                </div>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      February 2020
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="pdfContainer">
+                  <ng2-pdfjs-viewer 
+                    #pdfViewerOnDemand
+                    pdfSrc="Voter20.02.pdf"
+                    [downloadFileName]="'mytestfile.pdf'"
+                    [download]="true"
+                    [find] = "false"
+                    [fullScreen] ="false"
+                    [openFile] ="false"
+                    [viewBookmark] = "false"
+                  ></ng2-pdfjs-viewer>
+                </div>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      December 2019 & January 2020
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="pdfContainer">
+                  <ng2-pdfjs-viewer 
+                    #pdfViewerOnDemand
+                    pdfSrc="Voter19.12.pdf"
+                    [downloadFileName]="'mytestfile.pdf'"
+                    [download]="true"
+                    [find] = "false"
+                    [fullScreen] ="false"
+                    [openFile] ="false"
+                    [viewBookmark] = "false"
+                  ></ng2-pdfjs-viewer>
+                </div>
+              </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+
+
+  <h1>Policies</h1>  
+  <div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+                Fiscal Policy
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="pdfContainer">
+            <ng2-pdfjs-viewer 
+              #pdfViewerOnDemand
+              pdfSrc="LWVCC_Fiscal_Policy.pdf"
+              [downloadFileName]="'mytestfile.pdf'"
+              [download]="true"
+              [find] = "false"
+              [fullScreen] ="false"
+              [openFile] ="false"
+              [viewBookmark] = "false"
+            ></ng2-pdfjs-viewer>
+          </div>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      Nonpartisan Policy
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="pdfContainer">
+                  <ng2-pdfjs-viewer 
+                    #pdfViewerOnDemand
+                    pdfSrc="LWVCC_Fiscal_Policy.pdf"
+                    [downloadFileName]="'mytestfile.pdf'"
+                    [download]="true"
+                    [find] = "false"
+                    [fullScreen] ="false"
+                    [openFile] ="false"
+                    [viewBookmark] = "false"
+                  ></ng2-pdfjs-viewer>  
+                </div>
+              </mat-expansion-panel>
+      
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      Public Release Policy
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="pdfContainer">
+                  <ng2-pdfjs-viewer 
+                    #pdfViewerOnDemand
+                    pdfSrc="LWVCC_Fiscal_Policy.pdf"
+                    [downloadFileName]="'mytestfile.pdf'"
+                    [download]="true"
+                    [find] = "false"
+                    [fullScreen] ="false"
+                    [openFile] ="false"
+                    [viewBookmark] = "false"
+                  ></ng2-pdfjs-viewer>
+                </div>
+              </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  
+  </body>

@@ -1,17 +1,23 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+body{
+    width: 100%;
+}
 
-#test{
-    position: fixed;
-    top: 50%;
-    left: 50%;
+a{
+    text-decoration: none;
+    color: black;
 }
 
 table, th, td{
     text-align: center;
-    border: 1px solid black;
 }
+
+td{
+    padding-top: 2%;
+}
+
 table{
-    position: fixed;
+    
     margin: auto;
     left: 2%;
     top: 15%;
@@ -21,19 +27,24 @@ table{
 }
 
 img{
-    width: 20%;
-}
-
-.links-container{
-    
+    max-width: 40%;
+    max-height: 100%;
 }
 
 .accordian-container{
-    position: fixed;
     margin: auto;
     left: 2%;
-    top: 45%;
     right: 2%;
     width: 60%;
     height: 100%;
+}
+
+.pdfContainer{
+    height: 700px;
+}
+
+h1{
+    text-align: center;
+    color: #005596;
+    padding: 2%;
 }
