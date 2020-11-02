@@ -22,6 +22,8 @@ import  appRoutes from './routerConfig';
 
 import { AdminComponent } from './components/admin/admin.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 //carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -114,7 +116,10 @@ import { OfficerAddDialogComponent } from './components/admin/admin-officers/off
     MatSelectModule,
     MatInputModule,
     SlickCarouselModule,
-    MatSortModule
+    MatSortModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    ScrollingModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],

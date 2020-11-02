@@ -1,46 +1,89 @@
-<div class="container">
+<!-- <body>
+  <div class="container">
 
-<div class = "NavigationBar">
-  <div class = "left">
-    <div class="navButtons">
-      <a mat-button [routerLink]="''" routerLinkActive="active" class="homeButton"> LWV</a>
-      <a mat-button [routerLink]="'calendar'" > Calendar </a>
-      <a mat-button [routerLink]="'resources'" > Resources </a>
-      <a mat-button [routerLink]="'history'" > History </a>
-      <a mat-button [routerLink]="'officers'" > Officers </a>
-      <a mat-button [routerLink]="'admin'" > Admin</a>
+    <div class = "NavigationBar">
+      <div class = "left">
+        <div class="navButtons">
+          <a mat-button [routerLink]="''" routerLinkActive="active" class="homeButton"> LWV</a>
+          <a mat-button [routerLink]="'calendar'" > Calendar </a>
+          <a mat-button [routerLink]="'resources'" > Resources </a>
+          <a mat-button [routerLink]="'history'" > History </a>
+          <a mat-button [routerLink]="'officers'" > Officers </a>
+          <a mat-button [routerLink]="'admin'" > Admin</a>
+        </div>
+      </div>
+      <div class = "right">
+        <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" target = "_blank" class="vote"> Register to Vote! </a>
+        &nbsp;
+        <a mat-raised-button (click)= "openLogInDialog()" class = "login"> Log In </a>
+      </div>
     </div>
+
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+      
   </div>
-  <div class = "right">
-    <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" target = "_blank" class="vote"> Register to Vote! </a>
-    &nbsp;
-    <a mat-raised-button (click)= "openLogInDialog()" class = "login"> Log In </a>
-  </div>
-</div>
+  <footer class = "footer" id='footer'>
+    <p id="address">League of Women Voters of Clarion County <br />
+      PO Box 108 Clarion, PA 16214  
+    </p> 
+
+    <p id="facebook"> Follow our Facebook
+      <a href="https://www.facebook.com/LWVClarionCounty/" target="_blank" rel="noopener">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+        </a>
+    </p> 
+
+    <p id="copyright"> &copy; Copyright 2020 League of Women Voters of Clarion County
+    </p>       
+    
+  </footer>
+</body> -->
 
 
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
-  
- 
+<html>
+  <body>
+    <!-- <div class="header" id="myHeader" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+      <h2>My Header</h2>
+    </div> -->
+    <div class = "NavigationBar" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+      <div class = "left">
+        <div class="navButtons">
+          <a mat-button [routerLink]="''" routerLinkActive="active" class="homeButton"> LWV</a>
+          <a mat-button [routerLink]="'calendar'" > Calendar </a>
+          <a mat-button [routerLink]="'resources'" > Resources </a>
+          <a mat-button [routerLink]="'history'" > History </a>
+          <a mat-button [routerLink]="'officers'" > Officers </a>
+          <a mat-button [routerLink]="'admin'" > Admin</a>
+        </div>
+      </div>
+      <div class = "right">
+        <a mat-raised-button href = "https://www.votespa.com/Register-to-Vote/Pages/default.aspx" target = "_blank" class="vote"> Register to Vote! </a>
+        &nbsp;
+        <a mat-raised-button (click)= "openLogInDialog()" class = "login"> Log In </a>
+      </div>
+    </div>
 
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+      <div class="push"></div>
+    </div>
+    <footer class="footer">
+      <p id="address">League of Women Voters of Clarion County <br />
+        PO Box 108 Clarion, PA 16214  
+      </p> 
+      <p id="facebook"> Follow our Facebook
+        <a href="https://www.facebook.com/LWVClarionCounty/" target="_blank" rel="noopener">
+          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+          </a>
+      </p> 
+      <p id="copyright"> &copy; Copyright 2020 League of Women Voters of Clarion County
+      </p>
+    </footer>
+  </body>
 
-<div class = "footer" id='footer'>
-   <p>League of Women Voters of Clarion County <br />
-    PO Box 108 Clarion, PA 16214  
-  </p> 
-
-   <p> Follow our Facebook
-    <a href="https://www.facebook.com/LWVClarionCounty/" target="_blank" rel="noopener">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
-   </p> 
-
-   <p> &copy; Copyright 2020 League of Women Voters of Clarion County
-   </p>       
-  
-</div>
-
-</div>
+</html>

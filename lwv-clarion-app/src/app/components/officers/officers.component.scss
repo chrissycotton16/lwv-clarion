@@ -1,11 +1,37 @@
 #test{
     position: fixed;
     top: 10%;
-    left: 5%;
+    left: 40%;
     width: 100%;
+    overflow-y: scroll;
 }
 
-table{
-    width: 90%;
+.position{
+    font-weight: 700;
+    font-size: x-large;
+    color: #005596;
 }
+
+.name{
+    font-weight: 200;
+    text-indent: 35px;
+    font-size: medium;
+    color: black;
+}
+
+// table{
+//     width: 90%;
+// }
+
+// div{
+//     position: fixed;
+//     //top: 87%;
+//     // margin: auto;
+//     left: 50%;
+//     //transform: translateX(-50%);
+//     width: 50%;
+//     border: 3px solid #005596;
+//     //padding: 10px;
+//     //text-align: center;
+// }
 

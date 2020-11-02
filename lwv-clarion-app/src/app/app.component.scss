@@ -1,21 +1,17 @@
-.container{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.NavigationBar{
-    background-color: #005596;
-    color: white;
-    font-size: larger;
-    display:flex;
-    justify-content: space-between;
-    padding: 1%;
-
-
-
-}
+// .container{
+// //   width: 100%;
+// //   height: 100%;
+//   min-height: 100%;
+//   margin-bottom: -50px;
+// //   display: flex;
+// //   flex-direction: column;
+// }
+// body{
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     //margin: 0;
+// }
 
 .homeButton{
     font-size: x-large;
@@ -31,6 +27,95 @@
     color: white;
 }
 
+
+// .NavigationBar{
+//     background-color: #005596;
+//     color: white;
+//     font-size: larger;
+//     display:flex;
+//     justify-content: space-between;
+//     padding: 1%;
+//     // position: fixed;
+//     // width: 100%;
+// }
+
+// .push{
+//     height: 50px;
+// }
+// .footer{
+//     // display: flex;
+//     // justify-content: center;
+//     // align-content: center;
+//     // padding: 10px 10px 0px 0px;
+//     background:  #005596;
+//     // color:white;
+//     // font-size: 15px;
+//     // position: relative;
+//     // bottom:0;
+//     // height: 50px;
+//     // width:100%;
+//     // justify-content: space-between;
+//     flex-shrink: 0;
+//   }
+
+//   #address{
+//       text-align: left;
+//       padding-right: 20%;
+//   }
+//   #facebook{
+//       text-align: center;
+//   }
+//   #copyright{
+//       text-align: right;
+//       padding-left: 20%;
+//   }
+
+//   .content{
+//     //overflow-y: scroll;
+//     //position: absolute;
+//     flex: 1 0 auto;
+//     z-index: 0;
+//   }
+  
+
+.NavigationBar {
+    z-index: 2;
+    height: 50px;
+    width: 100%;
+    //background: red;
+    position: fixed;
+    //background: #eee;
+    top: 0;
+    //height: 0;
+    //opacity: 0;
+    //transition: opacity .25s ease-out, height .15s ease;
+    cursor: default;
+    user-select: none;
+    background-color: #005596;
+    color: white;
+    font-size: larger;
+    display:flex;
+    justify-content: space-between;
+    padding: 1%;
+}
+  
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.wrapper {
+    z-index: 1;
+    min-height: 100%;
+
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+}
+.footer,
+.push {
+    height: 50px;
+}
 .footer{
     display: flex;
     justify-content: center;
@@ -39,16 +124,9 @@
     background:  #005596;
     color:white;
     font-size: 15px;
-    position: fixed;
-    bottom:0;
-    width:100%;
+//     // position: relative;
+//     // bottom:0;
+//     // height: 50px;
+//     // width:100%;
     justify-content: space-between;
-    
-  }
-
-  .content{
-     z-index: 0;
-     position: fixed;
- 
-  }
-  
+}
