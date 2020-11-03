@@ -1,4 +1,4 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 body{
     width: 100%;
 }
@@ -6,16 +6,18 @@ body{
 a{
     text-decoration: none;
     color: black;
+    font-size: large;
 }
 
 table, th, td{
     text-align: center;
+
 }
+
 
 td{
     padding-top: 2%;
 }
-
 table{
     
     margin: auto;
@@ -25,7 +27,6 @@ table{
     width: 60%;
     height: 20%;
 }
-
 img{
     max-width: 40%;
     max-height: 100%;
@@ -36,15 +37,22 @@ img{
     left: 2%;
     right: 2%;
     width: 60%;
-    height: 100%;
+    
 }
-
 .pdfContainer{
     height: 700px;
 }
-
 h1{
     text-align: center;
     color: #005596;
     padding: 2%;
+    font-size: xx-large;
+}
+
+.policies-container{
+    margin: auto;
+    left: 2%;
+    right: 2%;
+    width: 60%;
+    height: 100%;
 }
