@@ -62,6 +62,9 @@ import { OfficerAddDialogComponent } from './components/admin/admin-officers/off
 import { AdminEventsComponent } from './components/admin/admin-events/admin-events.component';
 import { EventAddDialogComponent } from './components/admin/admin-events/event-add-dialog/event-add-dialog.component';
 import { EventUpdateDialogComponent } from './components/admin/admin-events/event-update-dialog/event-update-dialog.component';
+import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
+import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
+import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
 
 
 @NgModule({
@@ -85,7 +88,10 @@ import { EventUpdateDialogComponent } from './components/admin/admin-events/even
     OfficerAddDialogComponent,
     AdminEventsComponent,
     EventAddDialogComponent,
-    EventUpdateDialogComponent
+    EventUpdateDialogComponent,
+    AdminDocumentsComponent,
+    AdminNewsletterComponent,
+    AdminPictureComponent
   
   ],
   imports: [

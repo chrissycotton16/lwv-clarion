@@ -1,0 +1,38 @@
+<br><br>
+<h1>Administrative View: Images</h1>
+<table mat-table [dataSource]="images" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="ImageID">
+           <th mat-header-cell *matHeaderCellDef mat-sort-header>ImageID</th>
+           <td mat-cell *matCellDef="let img">{{img.ImageID}}</td>
+      </ng-container>
+      <ng-container matColumnDef="imageString">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Image String</th>
+        <td mat-cell *matCellDef="let img">{{img.imageString}}</td>
+      </ng-container>
+      <ng-container matColumnDef="caption">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Caption</th>
+        <td mat-cell *matCellDef="let img">{{img.caption}}</td>
+        <!--<img src = "data:image/png;base64,' . base64_encode($row['product_image']) . '" width = "50px" height = "50px"/>-->
+      </ng-container>
+      <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let img"> 
+                  <input type="button" value = "Delete" color='primary' (click)='deleteImage(img.ImageID)'>   
+            </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div class="imageCount">
+      Number of images in carousel: {{this.imageLength}}  
+</div>
+<br><br>
+
+<!-- <button mat-raised-button (click)="openDialog()">Add New Image</button> -->
+
+<br><br>
+<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
+<br><br><br><br>
