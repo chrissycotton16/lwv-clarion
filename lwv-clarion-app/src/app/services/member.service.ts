@@ -8,7 +8,7 @@ import { Member } from '../models/member';
   providedIn: 'root'
 })
 export class MemberService {
-    baseUrl = 'https://clarionlwvpa.org/api/lwv/member';
+    baseUrl = 'http://localhost/api/lwv/member';
     members: Member[];
     emails: string[];
     constructor(private http: HttpClient) { }
