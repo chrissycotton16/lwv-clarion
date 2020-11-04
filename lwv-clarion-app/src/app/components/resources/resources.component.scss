@@ -1,17 +1,58 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-#test{
-    position: fixed;
-    top: 50%;
-    left: 50%;
+body{
+    width: 100%;
 }
 
-.accordian-container{
-    position: fixed;
+a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+table, th, td{
+    text-align: center;
+
+}
+
+
+td{
+    padding-top: 2%;
+}
+table{
+    
     margin: auto;
     left: 2%;
     top: 15%;
     right: 2%;
-    width: 90%;
+    width: 60%;
+    height: 20%;
+}
+img{
+    max-width: 40%;
+    max-height: 100%;
+}
+
+.accordian-container{
+    margin: auto;
+    left: 2%;
+    right: 2%;
+    width: 60%;
+    
+}
+.pdfContainer{
+    height: 700px;
+}
+h1{
+    text-align: center;
+    color: #005596;
+    padding: 2%;
+    font-size: xx-large;
+}
+
+.policies-container{
+    margin: auto;
+    left: 2%;
+    right: 2%;
+    width: 60%;
     height: 100%;
 }
