@@ -17,21 +17,38 @@ export class AdminService {
     checkAdmin = {user:'', password:''}
     user: string;
     password: string;
+    correctLogIn: boolean;
     constructor(private http : HttpClient) { }
 
     userLogin(admin: Admin): Observable<Admin[]> {
         console.log("in userLogin, next line is the post");
         console.log(admin);
-        return this.http.post(`${this.baseUrl}/login`, {data: admin})
+        return this.http.post(`${this.baseUrl}/login`, {data: admin},{responseType: "text"})
             .pipe(map((res) => {
-                console.log("after post in log in");
-                //comes back undefined
-                console.log(res['data']);
-                //this.confirmedAdmin.push(res['data']);
-
+                if(res == "success"){
+                    console.log("inside success if");
+                    alert("Welcome admin!");
+                    this.correctLogIn = true;
+                    
+                    //console.log("setting token");
+                    this.setToken("admin");
+                    //return this.confirmedAdmin;
+                }
+                else{
+                    this.correctLogIn = false;
+                    alert("Access denied: Incorrect user or password.");
+                    console.log("inside failure if");   
+                    //this.deleteToken();
+                    //this.getToken();
+                    //console.log(localStorage);
+                }
                 return this.confirmedAdmin;
             }),
             catchError(this.handleError));
+    }
+
+    getIfLoggedIn(){
+        return this.correctLogIn;
     }
 
     store(admin: Admin): Observable<Admin[]> {
@@ -76,6 +93,7 @@ export class AdminService {
     //token
     setToken(token: string) {
         localStorage.setItem('token', token);
+        console.log(localStorage);
     }
     getToken() {
         return localStorage.getItem('token');
@@ -83,7 +101,6 @@ export class AdminService {
     deleteToken() {
         localStorage.removeItem('token');
     }
-
     isLoggedIn() {
         const usertoken = this.getToken();
         if (usertoken != null) {

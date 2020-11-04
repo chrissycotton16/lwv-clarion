@@ -13,27 +13,55 @@ import { Admin } from 'src/app/models/admin';
 export class AdminComponent implements OnInit {
   user = '';
   password = '';
+  loggedIn = false;
+  checkLogIn: boolean;
   @Input() adminToCheck: Admin ={ AdminID:0, user:'', password:''};
   constructor(public adminService: AdminService, private router: Router){
+    if(this.adminService.isLoggedIn()){
+      console.log("you are already logged in");
+      //set log out button to true 
+      // set log in button to false
+      this.loggedIn = true;
+    }
+
     this.ngOnInit();
   }
 
   ngOnInit() {}
   
-  logIn(user, password){
-    console.log(this.user + " " + this.password);
-    console.log(user, password);
-    this.adminToCheck = {user: this.user, password: this.password};
+  logOut(){
+    this.adminService.deleteToken();
+    this.loggedIn = this.adminService.isLoggedIn();
+    this.resetUserPassword();
+    //location.reload();
+  }
 
-    console.log(this.adminToCheck);
-    this.adminService.userLogin(this.adminToCheck).pipe(first()).subscribe(
-      data =>
+  logIn(user, password){
+    this.adminToCheck = {user: this.user, password: this.password};
+    this.adminService.userLogin(this.adminToCheck).pipe(first()).subscribe( 
+      () =>
       {
-        alert("user name or password is correct");
-      },
-      error => 
-      {
-        alert("user name or password is incorrect");
+        this.loggedIn = this.test();
       });
+  }
+
+  
+
+  test(): boolean{
+    this.checkLogIn = this.adminService.getIfLoggedIn();
+    this.loggedIn = this.checkLogIn;
+    if(this.checkLogIn){
+      this.resetUserPassword();
+      return true;
+    }
+    else{
+      this.resetUserPassword();
+      return false;
+    }
+  }
+
+  resetUserPassword(){
+    this.user='';
+    this.password='';
   }
 }
