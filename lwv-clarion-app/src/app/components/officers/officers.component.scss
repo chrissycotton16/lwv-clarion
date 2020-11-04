@@ -1,18 +1,18 @@
 #test{
-    position: fixed;
-    top: 10%;
-    left: 40%;
-    width: 100%;
-    overflow-y: scroll;
+    z-index: 0;
+    position: relative;
+    left: 45%;
 }
 
 .position{
+    z-index: 0;
     font-weight: 700;
     font-size: x-large;
     color: #005596;
 }
 
 .name{
+    z-index: 0;
     font-weight: 200;
     text-indent: 35px;
     font-size: medium;
