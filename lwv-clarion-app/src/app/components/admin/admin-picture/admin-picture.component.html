@@ -35,4 +35,11 @@
 <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
 <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
 
+
+<div class="form-group">
+      <label for="file">Choose File</label>
+      <input type="file"
+             id="file"
+             (change)="handleFileInput($event.target.files)">
+  </div>
 <br><br><br><br>

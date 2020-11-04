@@ -65,6 +65,8 @@ import { EventUpdateDialogComponent } from './components/admin/admin-events/even
 import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 
 
 @NgModule({
@@ -91,7 +93,9 @@ import { AdminPictureComponent } from './components/admin/admin-picture/admin-pi
     EventUpdateDialogComponent,
     AdminDocumentsComponent,
     AdminNewsletterComponent,
-    AdminPictureComponent
+    AdminPictureComponent,
+    AdminUsersComponent,
+    AdminAddDialogComponent
   
   ],
   imports: [
