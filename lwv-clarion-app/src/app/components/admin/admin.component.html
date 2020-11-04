@@ -1,33 +1,13 @@
 
 <div class="admin-container">
-
-
-      <h1 mat-dialog-title cdkFocusInitial>Log In</h1>
-      <div mat-dialog-content class="LogInForm">
-      <mat-form-field >
-            <mat-label>User</mat-label>
-            <input matInput [(ngModel)]="user" placeholder="user" maxlength="25">
-      </mat-form-field><br>
-      <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput [(ngModel)]="password" type= "password" placeholder="Doe" maxlength="25">
-      </mat-form-field><br>
-      
-      <div mat-dialog-actions>
-            <button mat-button (click)="logIn(user, password)" class ="okButton" 
-            [disabled]="user == '' || password == ''">Log In</button>
-      </div>
-      </div>
-
-<br><br><br>
 <mat-tab-group>
       <mat-tab label="Members"><app-members></app-members></mat-tab>
       <mat-tab label="Officers"><app-admin-officers></app-admin-officers></mat-tab>
       <mat-tab label="Events"><app-admin-events></app-admin-events></mat-tab>
-      <!-- <mat-tab label="Documents"><app-admin-documents></app-admin-documents></mat-tab>
+      <mat-tab label="Documents"><app-admin-documents></app-admin-documents></mat-tab>
       <mat-tab label="Pictures"><app-admin-picture></app-admin-picture></mat-tab>
-      <mat-tab label="Newsletters"><app-admin-events></app-admin-events></mat-tab> -->
-      <mat-tab label="Admin"><app-admin-users></app-admin-users></mat-tab>
+      <mat-tab label="Newsletters"><app-admin-events></app-admin-events></mat-tab>
+      <mat-tab label="Admin">Hello!</mat-tab>
 </mat-tab-group>
 </div>
 

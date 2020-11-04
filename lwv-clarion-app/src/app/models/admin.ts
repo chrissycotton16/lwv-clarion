@@ -1,9 +1,9 @@
 export class Admin {
     constructor(
-        //attributes of Admin
-        user: string,
-        password:string,   
-        AdminID?: number
+        //required attributes of Admin
+        AdminUser: string,
+        AdminPassword: string,
+        AdminID?:   number      
     ) {}
   }
   
