@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-  import { Image } from 'src/app/models/image';
+import { Image } from './image';
+
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
