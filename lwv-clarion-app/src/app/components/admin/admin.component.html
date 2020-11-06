@@ -1,13 +1,36 @@
 
 <div class="admin-container">
-<mat-tab-group>
-      <mat-tab label="Members"><app-members></app-members></mat-tab>
-      <mat-tab label="Officers"><app-admin-officers></app-admin-officers></mat-tab>
-      <mat-tab label="Events"><app-admin-events></app-admin-events></mat-tab>
-      <mat-tab label="Documents"><app-admin-documents></app-admin-documents></mat-tab>
-      <mat-tab label="Pictures"><app-admin-picture></app-admin-picture></mat-tab>
-      <mat-tab label="Newsletters"><app-admin-events></app-admin-events></mat-tab>
-      <mat-tab label="Admin">Hello!</mat-tab>
-</mat-tab-group>
+      <div class="login-container">
+            <h1 mat-dialog-title cdkFocusInitial *ngIf="loggedIn == false">Log In</h1>
+            <div mat-dialog-content class="LogInForm">
+            <mat-form-field *ngIf="loggedIn == false">
+                  <mat-label >User</mat-label>
+                  <input matInput *ngIf="loggedIn == false" [(ngModel)]="user" placeholder="User" maxlength="25">
+            </mat-form-field><br>
+            <mat-form-field *ngIf="loggedIn == false">
+                  <mat-label>Password</mat-label>
+                  <input matInput *ngIf="loggedIn == false" [(ngModel)]="password" type= "Password" placeholder="Doe" maxlength="25">
+            </mat-form-field><br>
+            
+            <div mat-dialog-actions>
+                  <button mat-raised-button (click)="logIn(user, password)" class ="okButton" 
+                  [disabled]="user == '' || password == ''" *ngIf="loggedIn == false" color='primary'>Log In</button>
+                  <button  mat-raised-button (click)="logOut()" class ="okButton" 
+                  *ngIf="loggedIn == true" color='primary'>Log Out</button>
+            </div>
+            </div>
+      </div>
+      <div *ngIf="loggedIn == true">
+            <br><br><br>
+            <mat-tab-group>
+                  <mat-tab label="Members"><app-members></app-members></mat-tab>
+                  <mat-tab label="Officers"><app-admin-officers></app-admin-officers></mat-tab>
+                  <mat-tab label="Events"><app-admin-events></app-admin-events></mat-tab>
+                  <mat-tab label="Documents"><app-admin-documents></app-admin-documents></mat-tab>
+                  <mat-tab label="Pictures"><app-admin-picture></app-admin-picture></mat-tab>
+                  <mat-tab label="Newsletters"><app-admin-events></app-admin-events></mat-tab>
+                  <mat-tab label="Admin"><app-admin-users></app-admin-users></mat-tab>
+            </mat-tab-group>
+      </div>
 </div>
 

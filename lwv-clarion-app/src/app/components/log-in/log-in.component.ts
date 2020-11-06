@@ -24,6 +24,8 @@ export class LogInComponent implements OnInit {
   }
 
   logIn(){
+    //pass the user and password entered here to the app component and do all the work there or here 
+    // i have to pee brb
     this.dialogRef.close();
   }
 
