@@ -33,7 +33,8 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction'; 
 //resources
 import {MatExpansionModule} from '@angular/material/expansion';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+
 import { NewMemberDialogComponent } from './components/new-member-dialog/new-member-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './components/payment/payment.component';
@@ -65,8 +66,6 @@ import { EventUpdateDialogComponent } from './components/admin/admin-events/even
 import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
-import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
-import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 
 
 @NgModule({
@@ -93,9 +92,7 @@ import { AdminAddDialogComponent } from './components/admin/admin-users/admin-ad
     EventUpdateDialogComponent,
     AdminDocumentsComponent,
     AdminNewsletterComponent,
-    AdminPictureComponent,
-    AdminUsersComponent,
-    AdminAddDialogComponent
+    AdminPictureComponent
   
   ],
   imports: [
@@ -122,7 +119,6 @@ import { AdminAddDialogComponent } from './components/admin/admin-users/admin-ad
     MatOptionModule,
     MatSelectModule,
     MatExpansionModule,
-    PdfViewerModule,
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -130,7 +126,8 @@ import { AdminAddDialogComponent } from './components/admin/admin-users/admin-ad
     MatSelectModule,
     MatInputModule,
     SlickCarouselModule,
-    MatSortModule
+    MatSortModule,
+    PdfJsViewerModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],

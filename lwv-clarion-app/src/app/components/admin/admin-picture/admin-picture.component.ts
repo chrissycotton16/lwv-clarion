@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Image } from 'src/app/models/image';
 import { ImageService } from 'src/app/services/image.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-admin-picture',
@@ -18,7 +17,7 @@ export class AdminPictureComponent implements OnInit {
   success = '';
   @Input() newImage: Image ={ ImageID:0, imageString:'', caption:''};
 
-  constructor(private imageService: ImageService, public dialog:MatDialog, private fileUploadService: FileUploadService){
+  constructor(private imageService: ImageService, public dialog:MatDialog){
     this.ngOnInit();
   }
 
@@ -118,19 +117,4 @@ export class AdminPictureComponent implements OnInit {
     this.error   = '';
   }
 
-
-  //test
-
-  fileToUpload: File = null;
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-  uploadFileToActivity() {
-    // this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
-    //   // do something, if upload success
-    //   console.log("Success");
-    //   }, error => {
-    //     console.log(error);
-    //   });
-  }
 }
