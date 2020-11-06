@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { ResourcesComponent } from './components/resources/resources.component';
+import { ResourcesComponent } from './components/fakeresources/resources.component';
 import { HistoryComponent } from './components/history/history.component';
 import { OfficersComponent } from './components/officers/officers.component';
 import { LogInComponent } from './components/log-in/log-in.component';
