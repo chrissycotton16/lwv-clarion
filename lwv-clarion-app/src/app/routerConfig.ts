@@ -5,7 +5,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { OfficersComponent } from './components/officers/officers.component';
-import { ResourcesComponent } from './components/fakeresources/resources.component';
+import { ResourcesComponent } from './components/resources/resources.component';
 import { AdminComponent } from './components/admin/admin.component';
 
 const appRoutes: Routes = [

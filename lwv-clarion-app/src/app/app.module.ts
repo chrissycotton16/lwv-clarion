@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { ResourcesComponent } from './components/fakeresources/resources.component';
+import { ResourcesComponent } from './components/resources/resources.component';
 import { HistoryComponent } from './components/history/history.component';
 import { OfficersComponent } from './components/officers/officers.component';
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -66,6 +66,9 @@ import { EventUpdateDialogComponent } from './components/admin/admin-events/even
 import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
+import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
 
 
 @NgModule({
@@ -92,7 +95,10 @@ import { AdminPictureComponent } from './components/admin/admin-picture/admin-pi
     EventUpdateDialogComponent,
     AdminDocumentsComponent,
     AdminNewsletterComponent,
-    AdminPictureComponent
+    AdminPictureComponent,
+    AdminUsersComponent,
+    AdminAddDialogComponent,
+    AdminUpdateDialogComponent
   
   ],
   imports: [
