@@ -69,7 +69,14 @@
 
 <!-- <div id="recaptcha" class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div> -->
 <!-- <div class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div> -->
-<div class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div><br>
+<!-- <div class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div><br> -->
+<!-- <div nbRecaptcha key="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz" ></div> -->
+<re-captcha
+      [(ngModel)]="captcha"
+      name="captcha"
+      required
+      siteKey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"
+    ></re-captcha>
 
 <mat-dialog-actions>
     <button class="mat-raised-button"(click)="close()">Close</button>

@@ -1,11 +1,37 @@
 #test{
-    position: fixed;
-    top: 10%;
-    left: 5%;
-    width: 100%;
+    z-index: 0;
+    position: relative;
+    left: 45%;
 }
 
-table{
-    width: 90%;
+.position{
+    z-index: 0;
+    font-weight: 700;
+    font-size: x-large;
+    color: #005596;
 }
+
+.name{
+    z-index: 0;
+    font-weight: 200;
+    text-indent: 35px;
+    font-size: medium;
+    color: black;
+}
+
+// table{
+//     width: 90%;
+// }
+
+// div{
+//     position: fixed;
+//     //top: 87%;
+//     // margin: auto;
+//     left: 50%;
+//     //transform: translateX(-50%);
+//     width: 50%;
+//     border: 3px solid #005596;
+//     //padding: 10px;
+//     //text-align: center;
+// }
 

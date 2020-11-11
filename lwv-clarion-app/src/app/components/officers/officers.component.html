@@ -1,26 +1,5 @@
-<div id = "test">
-    <table mat-table [dataSource]="officers" matSort class="mat-elevation-z8">
-        <ng-container matColumnDef="FirstName">
-             <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-             <td mat-cell *matCellDef="let off">{{off.FirstName}}</td>
-        </ng-container>
-        <ng-container matColumnDef="LastName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-              <td mat-cell *matCellDef="let off">{{off.LastName}}</td>
-        </ng-container>
-        <ng-container matColumnDef="Position">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
-              <td mat-cell *matCellDef="let off">{{off.Position}}</td>
-        </ng-container>
-        <ng-container matColumnDef="Email">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-              <td mat-cell *matCellDef="let off">{{off.Email}}</td>
-        </ng-container>
-        <ng-container matColumnDef="TermStart">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Term</th>
-              <td mat-cell *matCellDef="let off">{{off.TermStart}}</td>
-        </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<div id = "test" [dataSource]="officers" >
+  <ul *ngFor="let off of officers" class="position">{{off.Position}}
+        <li class="name">{{off.FirstName}} {{off.LastName}}</li><br>
+  </ul><br>
 </div>

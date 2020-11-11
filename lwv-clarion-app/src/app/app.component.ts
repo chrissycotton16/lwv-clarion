@@ -1,3 +1,4 @@
+import { HostListener } from '@angular/core';
 import { Component} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -11,6 +12,12 @@ import { LogInComponent } from './components/log-in/log-in.component';
 export class AppComponent {
   title = 'lwv-clarion-app';
 
+  isSticky: boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    this.isSticky = window.pageYOffset >= 250;
+  }
   constructor(private dialog: MatDialog){
     this.ngOnInIt();
   }

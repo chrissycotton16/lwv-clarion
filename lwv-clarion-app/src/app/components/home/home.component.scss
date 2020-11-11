@@ -1,18 +1,21 @@
+
+.logoButton{
+    display: flex;
+}
+
 .logo {
-    position: fixed;
-    top:9%;
-    height: 15%;
-    left: 5%;
+    position: relative;
+    margin-left: 2%;
 }
 .logo img {
     width: 35%;
     height: auto;
 }
+.buttonDiv{
+    position: relative;
+}
 
-.memberButton{
-    position: fixed;
-    right: 15%;
-    top: 9.5%;
+.memberButton{ 
     background-color: #be0f34;
     color: white;
     font-size: xx-large;
@@ -40,5 +43,19 @@
         color: white;
         font-size: xx-large;
     }
+    margin-left: -30%;
+}
+
+.mission{
+    position: relative;
+    top: 95%;
+    margin: auto;
+    justify-content: center;
+    left: 25%;
+    transform: translateX(-50%);
+    width: 50%;
+    border: 3px solid #005596;
+    padding: 10px;
+    text-align: center;
 
 }

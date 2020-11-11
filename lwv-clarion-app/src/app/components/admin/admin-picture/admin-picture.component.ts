@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Image } from 'src/app/models/image';
 import { ImageService } from 'src/app/services/image.service';
 import { MatDialog } from '@angular/material/dialog';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-picture',
@@ -10,65 +12,108 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AdminPictureComponent implements OnInit {
   displayedColumns: string[] = ['ImageID', 'imageString', 'caption', 'Edit'];
-  @Input() image ={ ImageID:0, imageString:'', caption:''}; //this is for storing purposes
   images: Image[];
   imageLength: number;
   error = '';
   success = '';
-  @Input() newImage: Image ={ ImageID:0, imageString:'', caption:''};
+  public imagePath;
+  imgURL: any;
+  public message: string;
+  picturePreviewed:boolean = false;
+  newImageURL: string;
+  newImageCaption: string = '';
+  baseUrl = 'http://localhost/api/lwv/image/';
+  files:string[]  = [];
 
-  constructor(private imageService: ImageService, public dialog:MatDialog){
+  uploadForm =  new  FormGroup({
+    name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
+    file:  new  FormControl('',  [Validators.required])
+  });
+
+  constructor(private imageService: ImageService, public dialog:MatDialog, private httpClient:  HttpClient){
     this.ngOnInit();
   }
 
   ngOnInit(){
     this.getImages();
   }
+  
+  preview(files) {
+    if (files.length === 0)
+      return;
+ 
+    var docType = files[0].type;
+    if (docType.match(/image\/*/) == null) {
+      this.message = "Only images are supported. Please select a .png, .jpeg or .jpg";
+      return;
+    }
+ 
+    var read = new FileReader();
+    this.imagePath = files;
+    read.readAsDataURL(files[0]); 
+    read.onload = (_event) => { 
+      this.imgURL = read.result; 
+      this.picturePreviewed = true;
+    }
+    
+  }
+ 
+  onFileChange(event)  {
+      this.files = [];
+      this.files.push(event.target.files[0]);
+      this.preview(this.files);
+  }
+  
+  imageStringResult: string;
+  submitForm(){
+    this.resetErrors();
+    const formData =  new  FormData();
+    formData.append("file",  this.files[0]);
+    this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
+      if(res != 'failure'){
+        alert('File uploaded Successfully!');
+        this.imageStringResult = res;
+        //this.newImage = {ImageID: 0, imageString: res.toString(), caption: this.newImageCaption};  
+        this.uploadForm = new  FormGroup({
+          name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
+          file:  new  FormControl('',  [Validators.required])
+        });
+        this.picturePreviewed = false;
+        this.imgURL = "";
+        this.addtoDatabase(this.imageStringResult, this.newImageCaption);
+        this.newImageCaption = "";
+      }
+      else{
+        alert('File did not upload successfully. Please make sure the file you are submitting is an image and that it doesnt already exist in the folder.');
+        this.uploadForm = new  FormGroup({
+          name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
+          file:  new  FormControl('',  [Validators.required])
+        });
+        this.picturePreviewed = false;
+        this.imgURL = "";
+        this.newImageCaption = "";
+      }
+    });
+  }
 
+  addtoDatabase(imgString, caption){
+    this.imageService.store(imgString, caption);
+    this.getImages();
+  }
+
+  //database crud operations
   getImages():void {
     this.imageService.getAll().subscribe(
       (res: Image[]) => {
         this.images = res;
         this.imageLength = this.images.length;
-        console.log(this.images);
       },
       (err) => {
         this.error = err;
       }
     );
   }
-  // openDialog(): void{
-  //   const dialogRef = this.dialog.open(OfficerAddDialogComponent, {
-  //     width: '450px',
-  //     data:{ newOfficer: this.newOfficer },
-  //     autoFocus: false
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.newOfficer = result;
-  //     if(result != undefined){
-  //       this.addOfficer(this.newOfficer);
-  //     }
-  //   });
-  // } 
-
-  // addOfficer(off:Officer){
-  //   off = this.newOfficer;
-  //   this.resetErrors();
-  //   this.officerService.store(off)
-  //     .subscribe(
-  //       (res: Officer[]) => {
-  //         // Update the list of officers
-  //         this.officers = res;
-  //         // Inform the user
-  //         this.success = 'Created successfully';
-  //       },
-  //       (err) => this.error = err
-  //     );
-  //   this.getOfficers();
-  // }
-
-
-  deleteImage(ImageID) {
+  deleteImage(ImageID, imageString) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();
       this.imageService.delete(+ImageID)
@@ -81,37 +126,9 @@ export class AdminPictureComponent implements OnInit {
         );
       this.getImages();
     }
+    this.imageService.deleteFromFolder(imageString);
   }
-
-  // openUpdateDialog(off){
-  //   const dialogRef = this.dialog.open(OfficerUpdateDialogComponent, {
-  //     width: '450px',
-  //     data:{ updateOfficerID: off.OfficerID, updateFirstName: off.FirstName, updateLastName: off.LastName, updatePosition: off.Position,  
-  //            updateEmail: off.Email, updateTermStart: off.TermStart},
-  //     autoFocus: false
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(result != undefined){
-  //       this.officerToUpdate = result;
-  //       this.updateOfficer(this.officerToUpdate);
-  //     }
-  //   });
-  //   this.getOfficers();
-  // }
-
-  // updateOfficer(off){
-  //   this.resetErrors();
-  //   this.officerService.update({OfficerID: off.OfficerID, FirstName: off.FirstName, LastName: off.LastName, 
-  //       Position: off.Position, Email: off.Email, TermStart: off.TermStart})
-  //   .subscribe(
-  //     (res) => {
-  //       this.officers = res;
-  //       this.success = 'Updated successfully';
-  //     },
-  //     (err) => this.error = err
-  //   );
-  // }
-
+  
   resetErrors() {
     this.success = '';
     this.error   = '';

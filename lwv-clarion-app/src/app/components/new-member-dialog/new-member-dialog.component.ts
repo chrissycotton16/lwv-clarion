@@ -39,7 +39,7 @@ export class NewMemberDialogComponent implements OnInit {
   mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
   yyyy = this.today.getFullYear();
 
-  
+  captcha;
   
   error = '';
   success = '';
