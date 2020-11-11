@@ -67,6 +67,10 @@ import { AdminDocumentsComponent } from './components/admin/admin-documents/admi
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
 import {CalendarDialogComponent} from './components/calendar-dialog/calendar-dialog.component'
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
+import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -93,7 +97,10 @@ import {CalendarDialogComponent} from './components/calendar-dialog/calendar-dia
     AdminDocumentsComponent,
     AdminNewsletterComponent,
     AdminPictureComponent,
-    CalendarDialogComponent
+    CalendarDialogComponent,
+    AdminUsersComponent,
+    AdminAddDialogComponent,
+    AdminUpdateDialogComponent
   
   ],
   imports: [
