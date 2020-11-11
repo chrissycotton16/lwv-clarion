@@ -66,7 +66,7 @@ import { EventUpdateDialogComponent } from './components/admin/admin-events/even
 import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
-
+import {CalendarDialogComponent} from './components/calendar-dialog/calendar-dialog.component'
 
 @NgModule({
   declarations: [
@@ -92,7 +92,8 @@ import { AdminPictureComponent } from './components/admin/admin-picture/admin-pi
     EventUpdateDialogComponent,
     AdminDocumentsComponent,
     AdminNewsletterComponent,
-    AdminPictureComponent
+    AdminPictureComponent,
+    CalendarDialogComponent
   
   ],
   imports: [
