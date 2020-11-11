@@ -13,15 +13,22 @@ import { HttpClient } from '@angular/common/http';
 export class AdminNewsletterComponent implements OnInit {
 
   displayedColumns: string[] = ['NewsletterID', 'pdfSrc', 'Title', 'Description', 'Edit'];
-  //@Input() new ={ ImageID:0, imageString:'', caption:''}; //this is for storing purposes
   newsletters: Newsletter[];
   newsletterLength: number;
   error = '';
   success = '';
-  //@Input() newImage: Image ={ ImageID:0, imageString:'', caption:''};
+  pdfStringResult: string;
 
+  public pdfPath;
+  pdfURL: any;
+  public message: string;
+  newPDFURL: string;
+  newPDFTitle: string = '';
+  newPDFDescription: string = '';
+  pdfChosen = false;
   baseUrl = 'http://localhost/api/lwv/newsletter/';
   files:string[]  = [];
+
   uploadForm =  new  FormGroup({
     name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
     file:  new  FormControl('',  [Validators.required])
@@ -46,21 +53,13 @@ export class AdminNewsletterComponent implements OnInit {
       this.error = err;
     });
  }
-
-  public pdfPath;
-  pdfURL: any;
-  public message: string;
-  newPDFURL: string;
-  newPDFTitle: string = '';
-  newPDFDescription: string = '';
-  pdfChosen = false;
+ 
   onFileChange(event)  {
       this.files = [];
       this.files.push(event.target.files[0]);
       this.pdfChosen=true;
   }
   
-  pdfStringResult: string;
   submitForm(){
     this.resetErrors();
     const formData =  new  FormData();
@@ -80,6 +79,7 @@ export class AdminNewsletterComponent implements OnInit {
         this.newPDFDescription = "";
         this.newPDFTitle = "";      }
       else{
+        console.log(res);
         alert('File did not upload successfully. Please make sure the file you are submitting is a pdf and that it doesnt already exist in the folder.');
         this.uploadForm = new  FormGroup({
           name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),

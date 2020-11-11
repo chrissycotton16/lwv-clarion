@@ -12,15 +12,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminPictureComponent implements OnInit {
   displayedColumns: string[] = ['ImageID', 'imageString', 'caption', 'Edit'];
-  @Input() image ={ ImageID:0, imageString:'', caption:''}; //this is for storing purposes
   images: Image[];
   imageLength: number;
   error = '';
   success = '';
-  @Input() newImage: Image ={ ImageID:0, imageString:'', caption:''};
-
+  public imagePath;
+  imgURL: any;
+  public message: string;
+  picturePreviewed:boolean = false;
+  newImageURL: string;
+  newImageCaption: string = '';
   baseUrl = 'http://localhost/api/lwv/image/';
   files:string[]  = [];
+
   uploadForm =  new  FormGroup({
     name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
     file:  new  FormControl('',  [Validators.required])
@@ -33,13 +37,6 @@ export class AdminPictureComponent implements OnInit {
   ngOnInit(){
     this.getImages();
   }
-
-  public imagePath;
-  imgURL: any;
-  public message: string;
-  picturePreviewed:boolean = false;
-  newImageURL: string;
-  newImageCaption: string = '';
   
   preview(files) {
     if (files.length === 0)
@@ -73,10 +70,8 @@ export class AdminPictureComponent implements OnInit {
     const formData =  new  FormData();
     formData.append("file",  this.files[0]);
     this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
-      console.log(res + " " + this.imgURL);      
       if(res != 'failure'){
         alert('File uploaded Successfully!');
-        console.log(res);
         this.imageStringResult = res;
         //this.newImage = {ImageID: 0, imageString: res.toString(), caption: this.newImageCaption};  
         this.uploadForm = new  FormGroup({
@@ -112,7 +107,6 @@ export class AdminPictureComponent implements OnInit {
       (res: Image[]) => {
         this.images = res;
         this.imageLength = this.images.length;
-        console.log(this.images);
       },
       (err) => {
         this.error = err;
