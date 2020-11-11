@@ -23,6 +23,19 @@ export class ImageService {
   }
 
 
+  postFile(fileToUpload: File){
+    const formData: FormData = new FormData();
+    formData.append('fileKey', fileToUpload, fileToUpload.name);
+    return this.http.post(`${this.baseUrl}/fileUpload`, formData)
+      .pipe(map(res =>{
+        console.log((res));
+      }),
+      catchError(this.handleError));
+      
+      // .map(() => { return true; })
+      // .catch((e) => this.handleError(e));
+  }
+
   delete(ImageID: number): Observable<Image[]> {
       const params = new HttpParams()
       .set('ImageID', ImageID.toString());
@@ -37,6 +50,13 @@ export class ImageService {
       catchError(this.handleError));
   }
 
+  fileUpload(){
+      return this.http.post(`${this.baseUrl}/fileUpload`, {  }, {responseType: "text"})
+      .pipe(map((res) => {
+        console.log(res);
+      }),
+      catchError(this.handleError));
+  }
   // store(image: Image): Observable<Image[]> {
   //     return this.http.post(`${this.baseUrl}/store`, { data: image })
   //     .pipe(map((res) => {

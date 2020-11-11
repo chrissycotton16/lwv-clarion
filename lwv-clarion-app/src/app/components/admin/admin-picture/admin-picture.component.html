@@ -27,12 +27,29 @@
 <div class="imageCount">
       Number of images in carousel: {{this.imageLength}}  
 </div>
-<br><br>
+<br>
 
-<!-- <button mat-raised-button (click)="openDialog()">Add New Image</button> -->
+<!-- <h3>Add Image to Carousel</h3>
+<span style="color:red;" *ngIf="message">{{message}}</span>
+<input #file type="file" accept='image/*' (change)="preview(file.files)"><br> -->
+
+<!-- for the server -->
+<form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
+      <label>File</label>
+      <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)">
+    <button type="submit">Upload</button>
+</form>
+<!-- for the database -->
+<img [src]="imgURL" height="200" *ngIf="imgURL != undefined || imgURL != ''">
+<div *ngIf="picturePreviewed ==true">
+      Please enter this photo's caption: limit 40 characters <input type="text" [(ngModel)]="newImageCaption" maxlength="40">
+</div>
 
 <br><br>
 <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
 <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
+
+
 
 <br><br><br><br>
