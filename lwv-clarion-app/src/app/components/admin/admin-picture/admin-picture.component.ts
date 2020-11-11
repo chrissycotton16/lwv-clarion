@@ -18,7 +18,8 @@ export class AdminPictureComponent implements OnInit {
   error = '';
   success = '';
   @Input() newImage: Image ={ ImageID:0, imageString:'', caption:''};
-  baseUrl = 'http://localhost/api/lwv/image/testUpload';
+
+  baseUrl = 'http://localhost/api/lwv/image/';
   files:string[]  = [];
   uploadForm =  new  FormGroup({
     name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
@@ -33,14 +34,12 @@ export class AdminPictureComponent implements OnInit {
     this.getImages();
   }
 
-  
-
   public imagePath;
   imgURL: any;
   public message: string;
   picturePreviewed:boolean = false;
   newImageURL: string;
-  newImageCaption: string;
+  newImageCaption: string = '';
   
   preview(files) {
     if (files.length === 0)
@@ -48,7 +47,7 @@ export class AdminPictureComponent implements OnInit {
  
     var docType = files[0].type;
     if (docType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
+      this.message = "Only images are supported. Please select a .png, .jpeg or .jpg";
       return;
     }
  
@@ -67,27 +66,46 @@ export class AdminPictureComponent implements OnInit {
       this.files.push(event.target.files[0]);
       this.preview(this.files);
   }
-
+  
+  imageStringResult: string;
   submitForm(){
+    this.resetErrors();
     const formData =  new  FormData();
     formData.append("file",  this.files[0]);
-
-    this.httpClient.post(this.baseUrl, formData, {responseType: "text"}).subscribe(res =>  {
-        this.addtoDatabase(res);
-
-        alert('Files uploaded Successfully!');
+    this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
+      console.log(res + " " + this.imgURL);      
+      if(res != 'failure'){
+        alert('File uploaded Successfully!');
+        console.log(res);
+        this.imageStringResult = res;
+        //this.newImage = {ImageID: 0, imageString: res.toString(), caption: this.newImageCaption};  
         this.uploadForm = new  FormGroup({
           name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
           file:  new  FormControl('',  [Validators.required])
         });
         this.picturePreviewed = false;
         this.imgURL = "";
+        this.addtoDatabase(this.imageStringResult, this.newImageCaption);
+        this.newImageCaption = "";
+      }
+      else{
+        alert('File did not upload successfully. Please make sure the file you are submitting is an image and that it doesnt already exist in the folder.');
+        this.uploadForm = new  FormGroup({
+          name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
+          file:  new  FormControl('',  [Validators.required])
+        });
+        this.picturePreviewed = false;
+        this.imgURL = "";
+        this.newImageCaption = "";
+      }
     });
   }
 
-  addtoDatabase(result){
-    console.log(result);
+  addtoDatabase(imgString, caption){
+    this.imageService.store(imgString, caption);
+    this.getImages();
   }
+
   //database crud operations
   getImages():void {
     this.imageService.getAll().subscribe(
@@ -101,7 +119,7 @@ export class AdminPictureComponent implements OnInit {
       }
     );
   }
-  deleteImage(ImageID) {
+  deleteImage(ImageID, imageString) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();
       this.imageService.delete(+ImageID)
@@ -114,7 +132,9 @@ export class AdminPictureComponent implements OnInit {
         );
       this.getImages();
     }
+    this.imageService.deleteFromFolder(imageString);
   }
+  
   resetErrors() {
     this.success = '';
     this.error   = '';

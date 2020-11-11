@@ -12,12 +12,11 @@
       <ng-container matColumnDef="caption">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Caption</th>
         <td mat-cell *matCellDef="let img">{{img.caption}}</td>
-        <!--<img src = "data:image/png;base64,' . base64_encode($row['product_image']) . '" width = "50px" height = "50px"/>-->
       </ng-container>
       <ng-container matColumnDef="Edit">
             <th mat-header-cell *matHeaderCellDef>Edit</th>
             <td mat-cell *matCellDef="let img"> 
-                  <input type="button" value = "Delete" color='primary' (click)='deleteImage(img.ImageID)'>   
+                  <input type="button" value = "Delete" color='primary' (click)='deleteImage(img.ImageID, img.imageString)'>   
             </td>
       </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -35,9 +34,10 @@
 
 <!-- for the server -->
 <form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
-      <label>File</label>
-      <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)">
-    <button type="submit">Upload</button>
+      <h2>Add New Image to Carousel</h2>
+      <br>
+      <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)">{{message}}
+    <button class="submitButton" type="submit" [hidden]="newImageCaption ==''">Upload</button>
 </form>
 <!-- for the database -->
 <img [src]="imgURL" height="200" *ngIf="imgURL != undefined || imgURL != ''">

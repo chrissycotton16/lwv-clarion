@@ -8,6 +8,8 @@ import { Image } from '../models/image';
   providedIn: 'root'
 })
 export class ImageService {
+  
+  
     baseUrl = 'http://localhost/api/lwv/image';
     images: Image[];
     constructor(private http: HttpClient) { }
@@ -16,30 +18,14 @@ export class ImageService {
       return this.http.get(`${this.baseUrl}/list`).pipe(
       map((res) => {
           this.images = res['data'];
-          console.log(this.images);
           return this.images;
       }),
       catchError(this.handleError));
   }
 
-
-  postFile(fileToUpload: File){
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
-    return this.http.post(`${this.baseUrl}/fileUpload`, formData)
-      .pipe(map(res =>{
-        console.log((res));
-      }),
-      catchError(this.handleError));
-      
-      // .map(() => { return true; })
-      // .catch((e) => this.handleError(e));
-  }
-
   delete(ImageID: number): Observable<Image[]> {
       const params = new HttpParams()
       .set('ImageID', ImageID.toString());
-
       return this.http.delete(`${this.baseUrl}/delete`, { params: params })
       .pipe(map(res => {
           const filteredImages = this.images.filter((image) => {
@@ -50,22 +36,24 @@ export class ImageService {
       catchError(this.handleError));
   }
 
-  fileUpload(){
-      return this.http.post(`${this.baseUrl}/fileUpload`, {  }, {responseType: "text"})
-      .pipe(map((res) => {
+  deleteFromFolder(imageString: any) {
+      this.http.post(`${this.baseUrl}/deleteImage`, {imageString}, {responseType: 'text'}).subscribe(res => {
         console.log(res);
-      }),
-      catchError(this.handleError));
+      })
   }
-  // store(image: Image): Observable<Image[]> {
-  //     return this.http.post(`${this.baseUrl}/store`, { data: image })
-  //     .pipe(map((res) => {
-  //         this.images.push(res['data']);
-  //         return this.images;
-  //     }),
-  //     catchError(this.handleError));
-  // }
-  
+
+  store(imageString: string, caption: string) {
+    let img: Image ={ImageID: 0, imageString: imageString, caption: caption};
+    console.log(imageString, caption);
+    console.log(img);
+    this.http.post(`${this.baseUrl}/store`, { data: img }).subscribe(res => {
+      console.log(res);
+      this.images.push(res['data']);
+      console.log(this.images);
+    }),
+    catchError(this.handleError);
+   }
+
   private handleError(error: HttpErrorResponse) {
       console.log(error);
       // return an observable with a user friendly message

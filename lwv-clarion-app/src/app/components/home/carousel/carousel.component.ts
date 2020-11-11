@@ -14,7 +14,9 @@ export class CarouselComponent {
 
   slides = [];
 
+  //::::::::::insert get image array here::::::::::
   images : Image = [
+    //C:\xampp\htdocs\api\lwv\image\upload
     {imageString: "./assets/VoterReg2020.jpg", caption: "Picture Caption 1"},
     {imageString: "./assets/FBpicture1.jpg", caption: "Picture Caption 2"},
     {imageString: "./assets/HvS Debate 1.jpg", caption: "Picture Caption 3"},
