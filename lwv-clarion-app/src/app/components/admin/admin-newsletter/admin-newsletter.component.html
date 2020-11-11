@@ -1,0 +1,57 @@
+<br><br>
+<h1>Administrative View: Newsletter</h1>
+<table mat-table [dataSource]="newsletters" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="NewsletterID">
+           <th mat-header-cell *matHeaderCellDef mat-sort-header>NewsletterID</th>
+           <td mat-cell *matCellDef="let new">{{new.NewsletterID}}</td>
+      </ng-container>
+      <ng-container matColumnDef="pdfSrc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>PDF</th>
+        <td mat-cell *matCellDef="let new">{{new.pdfSrc}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let new">{{new.Title}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let new">{{new.Description}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let new"> 
+                  <input type="button" value = "Delete" color='primary' (click)='deletePDF(new.NewsletterID, new.pdfSrc)'>   
+            </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div class="newsletterCount">
+      Number of newsletters stored: {{this.newsletterLength}}  
+</div>
+<br>
+
+<form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
+      <h2>Add New Newsletter</h2>
+      <br>
+      <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)">{{message}}
+    <button class="submitButton" type="submit" [hidden]="newPDFTitle =='' || newPDFDescription == ''">Upload</button>
+</form>
+<img [src]="pdfURL" height="200" *ngIf="pdfURL != undefined || pdfURL != ''">
+<div *ngIf="pdfChosen ==true">
+      Please enter this pdf's title and description: limit 40 characters. <br>
+        Title:
+      <input type="text" [(ngModel)]="newPDFTitle" maxlength="40"> <br>
+        Description:
+      <input type="text" [(ngModel)]="newPDFDescription" maxlength="40">
+</div>
+
+<br><br>
+<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
+
+
+
+<br><br><br><br> 

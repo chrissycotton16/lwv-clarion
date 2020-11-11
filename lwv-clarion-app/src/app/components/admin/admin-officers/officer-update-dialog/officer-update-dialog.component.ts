@@ -23,7 +23,6 @@ export class OfficerUpdateDialogComponent implements OnInit {
   updatePosition: string;
   updateEmail: string;
   updateTermStart: string;
-  
   error ='';
 
   onNoClick(): void {
@@ -32,12 +31,9 @@ export class OfficerUpdateDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<OfficerUpdateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      
-    }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
   
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onOkClick(){
     this.data.officerToUpdate = { OfficerID: this.data.updateOfficerID,
@@ -48,5 +44,4 @@ export class OfficerUpdateDialogComponent implements OnInit {
       TermStart: this.data.updateTermStart};
       this.dialogRef.close(this.data.officerToUpdate);
   }
-
 }

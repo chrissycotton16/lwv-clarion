@@ -35,7 +35,8 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction'; 
 //resources
 import {MatExpansionModule} from '@angular/material/expansion';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+
 import { NewMemberDialogComponent } from './components/new-member-dialog/new-member-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './components/payment/payment.component';
@@ -61,6 +62,14 @@ import { AdminOfficersComponent } from './components/admin/admin-officers/admin-
 import { MatSortModule } from '@angular/material/sort';
 import { OfficerUpdateDialogComponent } from './components/admin/admin-officers/officer-update-dialog/officer-update-dialog.component';
 import { OfficerAddDialogComponent } from './components/admin/admin-officers/officer-add-dialog/officer-add-dialog.component';
+import { AdminEventsComponent } from './components/admin/admin-events/admin-events.component';
+import { EventAddDialogComponent } from './components/admin/admin-events/event-add-dialog/event-add-dialog.component';
+import { EventUpdateDialogComponent } from './components/admin/admin-events/event-update-dialog/event-update-dialog.component';
+import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
+import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
+import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
 
 
 @NgModule({
@@ -81,7 +90,15 @@ import { OfficerAddDialogComponent } from './components/admin/admin-officers/off
     NewMemberDialogComponent,
     PaymentComponent,
     OfficerUpdateDialogComponent,
-    OfficerAddDialogComponent
+    OfficerAddDialogComponent,
+    AdminEventsComponent,
+    EventAddDialogComponent,
+    EventUpdateDialogComponent,
+    AdminNewsletterComponent,
+    AdminPictureComponent,
+    AdminUsersComponent,
+    AdminAddDialogComponent,
+    AdminUpdateDialogComponent
   
   ],
   imports: [
@@ -108,7 +125,6 @@ import { OfficerAddDialogComponent } from './components/admin/admin-officers/off
     MatOptionModule,
     MatSelectModule,
     MatExpansionModule,
-    PdfViewerModule,
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -117,6 +133,7 @@ import { OfficerAddDialogComponent } from './components/admin/admin-officers/off
     MatInputModule,
     SlickCarouselModule,
     MatSortModule,
+    PdfJsViewerModule,
     RecaptchaModule,
     RecaptchaFormsModule,
     ScrollingModule

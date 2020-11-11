@@ -11,11 +11,6 @@ export class ResourcesComponent implements OnInit {
   constructor() { }
 
 
-pdfSrc="./assets/LWVCC_Fiscal_Policy.pdf";
-pdfSrc2="./assets/LWVCC_Nonpartisan_Policy.pdf";
-pdfSrc3="./assets/LWVCC_Public_Releases_Policy.pdf";
-
-
   ngOnInit(): void {
   }
 

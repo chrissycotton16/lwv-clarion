@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Image } from './image';
-
+  import { Image } from 'src/app/models/image';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -9,18 +8,21 @@ import { Image } from './image';
 export class CarouselComponent {
   title = 'slick-test';
 
-  constructor() { console.log("in carousel TS");  }
+  constructor() { 
+    //console.log("in carousel TS");
+  }
 
   slides = [];
 
+  //::::::::::insert get image array here::::::::::
   images : Image = [
+    //C:\xampp\htdocs\api\lwv\image\upload
     {imageString: "./assets/VoterReg2020.jpg", caption: "Picture Caption 1"},
     {imageString: "./assets/FBpicture1.jpg", caption: "Picture Caption 2"},
     {imageString: "./assets/HvS Debate 1.jpg", caption: "Picture Caption 3"},
     {imageString: "./assets/HvS Debate 6.jpg", caption: "Picture Caption 4"},
     {imageString: "./assets/HvS Debate 9.jpg", caption: "Picture Caption 5"},
     {imageString: "./assets/HvS Debate 8.jpg", caption: "Picture Caption 6"}
-
   ]
   
   slideConfig = {"slidesToShow": 1, 
@@ -31,8 +33,7 @@ export class CarouselComponent {
                 "autoplay": true, 
                 "autoplayspeed": 1000,  
                 "centerMode": true,
-                "variableWidth": true
-                    
+                "variableWidth": true      
                 };
 
   
