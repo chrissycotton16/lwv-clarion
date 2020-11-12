@@ -35,3 +35,15 @@
     border-color: var(--fc-button-active-border-color, #be0f34 !important);
   }
   
+
+  @media only screen and (max-width: 768px) {
+    .calendar-container{ 
+      margin: auto;
+      left: 2%;
+      top: 9%;
+      right: 2%;
+      width: 90%;
+      height: 100%;
+      
+    }
+  }

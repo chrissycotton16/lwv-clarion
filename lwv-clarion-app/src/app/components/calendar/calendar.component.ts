@@ -26,7 +26,7 @@ export class CalendarComponent implements OnInit{
 
   openCalendarDialog(arg){
     const dialogConfig = this.dialog.open(CalendarDialogComponent, {
-      width: '30%',
+      width: '50%',
       height: 'auto',
       data: {description: arg},
       autoFocus: false
