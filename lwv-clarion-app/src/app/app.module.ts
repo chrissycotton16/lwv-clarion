@@ -72,6 +72,10 @@ import { AdminUsersComponent } from './components/admin/admin-users/admin-users.
 import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
 
+import {LayoutModule} from '@angular/cdk/layout';
+import { ObserversModule } from '@angular/cdk/observers';
+import { PlatformModule } from '@angular/cdk/platform';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -101,7 +105,7 @@ import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin
     AdminUsersComponent,
     AdminAddDialogComponent,
     AdminUpdateDialogComponent
-  
+   
   ],
   imports: [
     BrowserModule,
@@ -138,8 +142,11 @@ import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin
     PdfJsViewerModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    LayoutModule,
+  
   ],
+  exports:[ObserversModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
