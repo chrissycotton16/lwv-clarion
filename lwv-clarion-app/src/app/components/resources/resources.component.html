@@ -50,19 +50,19 @@
 
   <div class="accordian-container">
     <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let new of newsletters">
           <mat-expansion-panel-header >
             <mat-panel-title>
-                September 2020 
+                {{new.Title}} 
             </mat-panel-title>
             <mat-panel-description>
+              {{new.Description}}
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="pdfContainer">
             <ng2-pdfjs-viewer 
               #pdfViewerOnDemand
-              pdfSrc="Voter20.09.pdf"
-              [downloadFileName]="'mytestfile.pdf'"
+              pdfSrc={{new.pdfSrc}}           
               [download]="true"
               [find] = "false"
               [fullScreen] ="false"
@@ -72,7 +72,7 @@
           </div>
         </mat-expansion-panel>
       
-        <mat-expansion-panel>
+        <!-- <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                       April 2020
@@ -158,7 +158,7 @@
                     [viewBookmark] = "false"
                   ></ng2-pdfjs-viewer>
                 </div>
-              </mat-expansion-panel>
+              </mat-expansion-panel> -->
 
       </mat-accordion>
     </div>

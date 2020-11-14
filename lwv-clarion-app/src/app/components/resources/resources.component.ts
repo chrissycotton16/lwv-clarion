@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsletterService } from 'src/app/services/newsletter.service';
+import { Newsletter } from 'src/app/models/newsletter';
 
 @Component({
   selector: 'app-resources',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourcesComponent implements OnInit {
   panelOpenState = false;
+  newsletters: Newsletter[];
+  constructor(private newsletterService: NewsletterService) {
+    this.getNewsletters();
+  }
 
-  constructor() { }
-
+  getNewsletters(){
+    this.newsletterService.getAll().subscribe(
+      (res: Newsletter[]) => {
+        this.newsletters = res;
+        console.log(this.newsletters);
+      },
+      (err) => {
+        console.log(err)
+      });
+  }
 
   ngOnInit(): void {
   }

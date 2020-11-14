@@ -101,7 +101,6 @@ export class AdminPictureComponent implements OnInit {
     this.getImages();
   }
 
-  //database crud operations
   getImages():void {
     this.imageService.getAll().subscribe(
       (res: Image[]) => {
@@ -113,6 +112,7 @@ export class AdminPictureComponent implements OnInit {
       }
     );
   }
+  
   deleteImage(ImageID, imageString) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();
