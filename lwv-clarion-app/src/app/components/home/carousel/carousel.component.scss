@@ -52,4 +52,23 @@
     
   }
   
+
+  @media only screen and (max-width: 768px) {
+
+
+    .carousel-container{
+        //position: relative;
+        margin: auto;
+        top: 24%;
+        left: 0%;
+        right: 0%;
+        width: 80%;
+        border: 30px solid #005596;
+        background-color:  #005596;
+        border-radius: 25px;
+        border-bottom: 10px;
+      
+      }
+
     
+}

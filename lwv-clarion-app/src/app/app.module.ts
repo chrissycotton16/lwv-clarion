@@ -66,10 +66,15 @@ import { EventAddDialogComponent } from './components/admin/admin-events/event-a
 import { EventUpdateDialogComponent } from './components/admin/admin-events/event-update-dialog/event-update-dialog.component';
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
+import {CalendarDialogComponent} from './components/calendar-dialog/calendar-dialog.component'
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
 
+import {LayoutModule} from '@angular/cdk/layout';
+import { ObserversModule } from '@angular/cdk/observers';
+import { PlatformModule } from '@angular/cdk/platform';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -94,10 +99,11 @@ import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin
     EventUpdateDialogComponent,
     AdminNewsletterComponent,
     AdminPictureComponent,
+    CalendarDialogComponent,
     AdminUsersComponent,
     AdminAddDialogComponent,
     AdminUpdateDialogComponent
-  
+   
   ],
   imports: [
     BrowserModule,
@@ -134,8 +140,11 @@ import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin
     PdfJsViewerModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    LayoutModule,
+  
   ],
+  exports:[ObserversModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
