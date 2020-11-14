@@ -45,3 +45,24 @@ h1{
 .officer_indent{
     text-indent: 5%;
 }
+
+
+@media only screen and (max-width: 768px) {
+    
+
+    .container{
+        display: block;
+        width: 95%;
+        margin: auto;
+    }
+
+    .officers{
+        width: 80%;
+        position: relative;
+        margin: auto;
+        border: 3px solid #be0f34;
+        padding: 3%;
+    }
+
+
+  }
