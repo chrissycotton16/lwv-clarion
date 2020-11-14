@@ -1,3 +1,59 @@
-<div id = "test">
-    <p>history works!</p>
+<div class = "container">
+    <div class = "officers" [dataSource]="officers">
+        <p class="title">Current Officers</p>
+        <ul *ngFor="let off of officers" class="position">{{off.Position}}
+                <li class="name">{{off.FirstName}} {{off.LastName}}</li><br>
+        </ul><br>
+    </div>
+    <br>
+    <div class = "history">
+        <h1>Our History</h1>
+        <p>
+            The League of Women Voters (LWV) is the direct descendant of the U.S. woman suffrage movement of the mid-19th to early 20th century. 
+            At the National American Woman Suffrage Association (NAWSA) National Convention in 1920, held at the Congress Hotel in Chicago, IL, 
+            NAWSA president <a href="https://www.womenshistory.org/education-resources/biographies/carrie-chapman-catt" target = "_blank">Carrie Chapman Catt</a>  
+            proposed a merger of several suffrage groups to create a new organization that would help newly enfranchised women learn how to register, how to vote, 
+            how to learn about their candidates, and how to learn about the workings of their governments. Six months before the ratification of the 19th Amendment, 
+            the National League of Women Voters came into existence and immediately began fulfilling its mission. The League of Women Voters of the U.S. provides a 
+            <a href="https://www.lwv.org/about-us/history" target = "_blank">League history</a>  detailing the significant events of each decade from 1920 to 2020. 
+        </p>
+        <p>
+            In Pennsylvania, the League set out immediately to help cities like Pittsburgh, Philadelphia and Erie register thousands of women and teach them how to vote. 
+        </p>
+        <p>
+            For more information about the history of the League of Women Voters of Pennsylvania, check out the publication 
+            <a href="https://static1.squarespace.com/static/5cc0ef58755be24fe008e905/t/5d23e8a7cb08f70001bcf226/1562634413351/137_FiftyYearsOld.pdf" target = "_blank">50 Years and Proud of It</a>.
+        </p>
+        <p>
+            The League of Women Voters of Clarion County was formed and recognized as an official organization in 1968. A group of new residents in the community 
+            inspired others to study the County government and publish a booklet about it and to continue the mission of LWVUS within Clarion County. 
+        </p>
+        <p>
+            During the provisional period, the officers of the League of Women Voters of Clarion County were:
+        </p>
+        <p class = "officer_indent">Joyce Mellon, President </p>
+        <p class = "officer_indent">Emmy Lou Goble, 1st VP</p>
+        <p class = "officer_indent"> Janice Horn, 2nd VP</p>
+        <p class = "officer_indent">Charlotte Combs, Secretary</p>  
+        <p class = "officer_indent"> Doris McLain, Treasurer</p>
+        <p class = "officer_indent">Rena Carlson</p>    
+        <p class = "officer_indent">Sarah Harmon</p>
+        <p class = "officer_indent">Elizabeth (Lib) Hart</p>
+        <p class = "officer_indent">Joyce Lilly</p>
+        <p class = "officer_indent">Arlene Van Bruggen</p>
+            
+        <p>
+            The first officers of 1969/1970, when the chapter was formally established and recognized:
+        </p>
+        <p class = "officer_indent">Charlotte Combs, President</p>
+        <p class = "officer_indent">Janice Horn, 1st VP</p>
+        <p class = "officer_indent">Helen Myers, 2nd VP</p>
+        <p class = "officer_indent">Margo Wimer, Secretary</p>
+        <p class = "officer_indent">Doris McLain, Treasurer</p>
+        <p class = "officer_indent">Directors:</p>
+        <p class = "officer_indent">Rena Carlson</p>
+        <p class = "officer_indent">Elizabeth (Lib) Hart</p>
+        <p class = "officer_indent">Helen Redfern</p>
+        <p class = "officer_indent">Ruth McCauley</p>        
+    </div>
 </div>

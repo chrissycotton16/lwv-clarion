@@ -2,7 +2,9 @@
 .logoButton{
     display: flex;
 }
-
+h1{
+    text-align: center;
+}
 .logo {
     position: relative;
     margin-left: 2%;
@@ -25,13 +27,12 @@
     position: relative;
     top: 95%;
     margin: auto;
-    justify-content: center;
     left: 25%;
     transform: translateX(-50%);
     width: 50%;
     border: 3px solid #005596;
     padding: 10px;
-    text-align: center;
+}
 
 }
 
@@ -70,4 +71,5 @@
 
 
 }
+
 
