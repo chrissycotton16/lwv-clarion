@@ -1,18 +1,3 @@
-// .container{
-// //   width: 100%;
-// //   height: 100%;
-//   min-height: 100%;
-//   margin-bottom: -50px;
-// //   display: flex;
-// //   flex-direction: column;
-// }
-// body{
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     //margin: 0;
-// }
-
 .homeButton{
     font-size: x-large;
 }
@@ -26,60 +11,14 @@
 .login{
     background-color: #be0f34;
     color: white;
-}
-
-
-// .NavigationBar{
-//     background-color: #005596;
-//     color: white;
-//     font-size: larger;
-//     display:flex;
-//     justify-content: space-between;
-//     padding: 1%;
-//     // position: fixed;
-//     // width: 100%;
-// }
-
-// .push{
-//     height: 50px;
-// }
-// .footer{
-//     // display: flex;
-//     // justify-content: center;
-//     // align-content: center;
-//     // padding: 10px 10px 0px 0px;
-//     background:  #005596;
-//     // color:white;
-//     // font-size: 15px;
-//     // position: relative;
-//     // bottom:0;
-//     // height: 50px;
-//     // width:100%;
-//     // justify-content: space-between;
-//     flex-shrink: 0;
-//   }
-
- 
-
-//   .content{
-//     //overflow-y: scroll;
-//     //position: absolute;
-//     flex: 1 0 auto;
-//     z-index: 0;
-//   }
-  
+} 
 
 .NavigationBar {
     z-index: 2;
     height: 50px;
     width: 100%;
-    //background: red;
     position: fixed;
-    //background: #eee;
     top: 0;
-    //height: 0;
-    //opacity: 0;
-    //transition: opacity .25s ease-out, height .15s ease;
     cursor: default;
     user-select: none;
     background-color: #005596;
@@ -95,18 +34,6 @@ html, body {
     height: 100%;
     margin: 0;
 }
-// .wrapper {
-//     z-index: 1;
-//     min-height: 100%;
-
-//     /* Equal to height of footer */
-//     /* But also accounting for potential margin-bottom of last child */
-//     margin-bottom: -50px;
-// }
-// .footer,
-// .push {
-//     height: 50px;
-// }
 
 .pagecontainer{
     position: relative;
@@ -114,10 +41,8 @@ html, body {
 }
 
 .wrapper{
-    //position: absolute;
     padding-bottom: 4rem;    /* Footer height */
     z-index: 1;
-    //width: 100%;
 }
 
 .footer{
@@ -128,8 +53,6 @@ html, body {
     z-index: 2;
     display: flex;
     justify-content: center;
-     //align-content: center;
-    //padding: 10px 10px 0px 0px;
     background:  #005596;
     color: white;
     font-size: 15px;
@@ -137,13 +60,13 @@ html, body {
     bottom:0;
     width:100%;
     justify-content: space-between;
-  }
+}
   
-  .content{
-     position: relative;
-     z-index: 0;
-     overflow-y: scroll;
-  }
+.content{
+    position: relative;
+    z-index: 0;
+    overflow-y: scroll;
+}
 
 #address{
     text-align: left;
