@@ -35,7 +35,7 @@
 <form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
       <h2>Add New Newsletter</h2>
       <br>
-      <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)">{{message}}
+      <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)" >{{message}}
     <button class="submitButton" type="submit" [hidden]="newPDFTitle =='' || newPDFDescription == ''">Upload</button>
 </form>
 <img [src]="pdfURL" height="200" *ngIf="pdfURL != undefined || pdfURL != ''">

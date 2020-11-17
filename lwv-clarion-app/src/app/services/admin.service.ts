@@ -25,7 +25,6 @@ export class AdminService {
         return this.http.post(`${this.baseUrl}/login`, {data: admin},{responseType: "text"})
                 .pipe(map((res) => {
                     if(res == "success"){
-                        console.log("inside success");
                         this.correctLogIn = true;
                         this.setToken("admin")
                     }

@@ -127,21 +127,75 @@ export class MembersComponent implements OnInit {
     );
   }
 
-  getEmails(){
+  exportEmails(){
     this.memberService.getEmails().subscribe(
       (res: string[]) => {
         this.emails = res;
-        this.emails.forEach(email => {
-          //output to input box
-          console.log(email);
-        });
+        console.log(this.emails);
+        this.downloadEmails();
       },
       (err) => {
         this.error = err;
       }
-    );     
+    );       
   }
 
+  downloadEmails(){
+    console.log(this.emails);
+    let filename = "emails";
+    let csvData = this.ConvertToCSV(this.emails, ['Email']);
+    console.log(csvData);
+    let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' })
+    let dwldLink = document.createElement("a");
+    let url = URL.createObjectURL(blob);
+    dwldLink.setAttribute("href", url);
+    dwldLink.setAttribute("download", filename + ".csv");
+    dwldLink.style.visibility = "hidden";
+    document.body.appendChild(dwldLink);
+    dwldLink.click();
+    document.body.removeChild(dwldLink);
+  }
+
+  exportAll(){
+    let filename = "members";
+    console.log(this.members)
+    let csvData = this.ConvertToCSV(this.members, ['FirstName', 'LastName', 'SecondaryHouseholdMemberName', 'LastPaidDate', 'DateJoined',
+        'MembershipType', 'Status', 'Email', 'PreferredPhone', 'SecondaryPhone', 'StreetAddress', 'City',
+        'State', 'ZipCode']);
+        console.log(csvData);
+
+    let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' })
+    let dwldLink = document.createElement("a");
+    let url = URL.createObjectURL(blob);
+    dwldLink.setAttribute("href", url);
+    dwldLink.setAttribute("download", filename + ".csv");
+    dwldLink.style.visibility = "hidden";
+    document.body.appendChild(dwldLink);
+    dwldLink.click();
+    document.body.removeChild(dwldLink);
+  }
+
+  ConvertToCSV(objArray, headers){
+    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+         let str = '';
+         let row = 'S.No,';
+
+         for (let index in headers) {
+             row += headers[index] + ',';
+         }
+         row = row.slice(0, -1);
+         str += row + '\r\n';
+         for (let i = 0; i < array.length; i++) {
+             let line = (i+1)+'';
+             for (let index in headers) {
+                let head = headers[index];
+
+                 line += ',' + array[i][head];
+             }
+             str += line + '\r\n';
+         }
+         return str;
+  }
   resetErrors() {
     this.success = '';
     this.error   = '';

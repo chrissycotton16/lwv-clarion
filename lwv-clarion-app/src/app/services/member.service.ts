@@ -26,7 +26,6 @@ export class MemberService {
         return this.http.get(`${this.baseUrl}/listEmails`).pipe(
         map((res) => {
             this.emails = res['data'];
-            console.log(this.emails);
             return this.emails;
         }),
         catchError(this.handleError));

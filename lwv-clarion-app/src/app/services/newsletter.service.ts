@@ -14,41 +14,38 @@ export class NewsletterService {
     newsletters: Newsletter[];
     constructor(private http: HttpClient) { }
 
-    getAll(): Observable<Newsletter[]> {
-      return this.http.get(`${this.baseUrl}/list`).pipe(
-      map((res) => {
-          this.newsletters = res['data'];
-          return this.newsletters;
-      }),
-      catchError(this.handleError));
+  getAll(): Observable<Newsletter[]> {
+    return this.http.get(`${this.baseUrl}/list`).pipe(
+    map((res) => {
+        this.newsletters = res['data'];
+        return this.newsletters;
+    }),
+    catchError(this.handleError));
   }
 
   delete(NewsletterID: number): Observable<Newsletter[]> {
-      const params = new HttpParams()
-      .set('NewsletterID', NewsletterID.toString());
-      return this.http.delete(`${this.baseUrl}/delete`, { params: params })
-      .pipe(map(res => {
-          const filteredNewsletters = this.newsletters.filter((newsletter) => {
-          return +newsletter['NewsletterID'] !== +NewsletterID;
-          });
-          return this.newsletters = filteredNewsletters;
-      }),
-      catchError(this.handleError));
+    const params = new HttpParams()
+    .set('NewsletterID', NewsletterID.toString());
+    return this.http.delete(`${this.baseUrl}/delete`, { params: params })
+    .pipe(map(res => {
+        const filteredNewsletters = this.newsletters.filter((newsletter) => {
+        return +newsletter['NewsletterID'] !== +NewsletterID;
+        });
+        return this.newsletters = filteredNewsletters;
+    }),
+    catchError(this.handleError));
   }
 
   deleteFromFolder(pdfSrc: any) {
-      this.http.post(`${this.baseUrl}/deleteNewsletter`, {pdfSrc}, {responseType: 'text'}).subscribe(res => {
-        console.log(res);
-      })
+    this.http.post(`${this.baseUrl}/deleteNewsletter`, {pdfSrc}, {responseType: 'text'}).subscribe(res => {
+      console.log(res);
+    })
   }
 
   store(pdfString: string, Title: string, Description: string) {
     let news: Newsletter = {NewsletterID: 0, pdfSrc: pdfString, Title: Title, Description: Description};
-    console.log(news);
     this.http.post(`${this.baseUrl}/store`, { data: news }).subscribe(res => {
-      console.log(res);
       this.newsletters.push(res['data']);
-      console.log(this.newsletters);
     }),
     catchError(this.handleError);
    }

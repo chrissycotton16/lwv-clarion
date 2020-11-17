@@ -56,41 +56,39 @@ export class AdminNewsletterComponent implements OnInit {
  
   onFileChange(event)  {
       this.files = [];
-      this.files.push(event.target.files[0]);
-      this.pdfChosen=true;
+      console.log(event.target.files[0].size);
+      if(event.target.files[0].size < 40000000){
+        this.files.push(event.target.files[0]);
+        this.pdfChosen=true;
+      }
+      else{
+        alert("This file is too big, the maximum size the database will allow is 40 MB.")
+        this.resetForm();
+      }
   }
   
   submitForm(){
     this.resetErrors();
     const formData =  new  FormData();
     formData.append("file",  this.files[0]);
-    this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
-      if(res != 'failure'){
-        alert('File uploaded Successfully!');
-        console.log(res);
-        this.pdfStringResult = res;
-        //this.newImage = {ImageID: 0, imageString: res.toString(), caption: this.newImageCaption};  
-        this.uploadForm = new  FormGroup({
-          name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
-          file:  new  FormControl('',  [Validators.required])
-        });
-        this.pdfURL = "";
-        this.addtoDatabase(this.pdfStringResult, this.newPDFTitle, this.newPDFDescription);
-        this.newPDFDescription = "";
-        this.newPDFTitle = "";      }
-      else{
-        console.log(res);
-        alert('File did not upload successfully. Please make sure the file you are submitting is a pdf and that it doesnt already exist in the folder.');
-        this.uploadForm = new  FormGroup({
-          name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
-          file:  new  FormControl('',  [Validators.required])
-        });
-        this.pdfURL = "";
-        this.newPDFDescription = "";
-        this.newPDFTitle = "";
-        this.pdfChosen = false;
-      }
-    });
+      this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
+        if(res != 'failure'){
+          console.log(res);
+          this.pdfStringResult = res;
+          
+          this.addtoDatabase(this.pdfStringResult, this.newPDFTitle, this.newPDFDescription);
+          
+          alert('File uploaded Successfully!');
+          this.resetForm();
+
+        }
+        else{
+          console.log(res);
+          alert('File did not upload successfully. Please make sure the file you are submitting is a pdf and that it doesnt already exist in the folder.');
+          this.resetForm();
+        }
+      });
+    
    }
 
   addtoDatabase(pdfString, title, description){
@@ -99,6 +97,17 @@ export class AdminNewsletterComponent implements OnInit {
   }
 
  
+  resetForm(){
+    this.uploadForm = new  FormGroup({
+      name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
+      file:  new  FormControl('',  [Validators.required])
+    });
+    this.pdfURL = "";
+    this.newPDFDescription = "";
+    this.newPDFTitle = "";
+    this.pdfChosen = false;
+  }
+
   deletePDF(NewsletterID, pdfSrc) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();

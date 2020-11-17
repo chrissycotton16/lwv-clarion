@@ -75,9 +75,8 @@
 <br><br>
 
 <button mat-raised-button (click)="openDialog()">Add New Member</button>
-
-<button mat-raised-button (click)="getEmails()">Export Email Addresses</button>
-<input matInput *ngIf="this.emails">
+<button mat-raised-button (click)="exportAll()">Export Members</button>
+<button mat-raised-button (click)="exportEmails()">Export Email Addresses</button>
 <br><br>
 <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
 <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
