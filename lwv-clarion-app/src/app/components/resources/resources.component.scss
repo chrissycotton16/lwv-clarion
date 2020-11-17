@@ -56,3 +56,47 @@ h1{
     width: 60%;
     height: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+    .pdfContainer{
+        height: 400px;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        font-size: medium;
+    }
+    h1{
+        text-align: center;
+        color: #005596;
+        padding: 2%;
+        font-size: x-large;
+    }
+    table{
+    
+        margin: auto;
+        left: 2%;
+        top: 15%;
+        right: 2%;
+        width: 90%;
+        height: 20%;
+    }
+    img{
+        max-width: 90%;
+        max-height: 100%;
+    }
+    .policies-container{
+        margin: auto;
+        left: 2%;
+        right: 2%;
+        width: 100%;
+        height: 100%;
+    }
+    .accordian-container{
+        margin: auto;
+        left: 2%;
+        right: 2%;
+        width: 100%;
+        
+    }
+}

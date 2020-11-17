@@ -1,5 +1,67 @@
-#test{
-    position: fixed;
-    top: 50%;
-    left: 50%;
+.container{
+    display: flex;
 }
+
+.officers{
+    width: 50%;
+    position: relative;
+    margin-left: 3%;
+    border: 3px solid #be0f34;
+    padding: 3%;
+}
+
+.title{
+    color: #005596;
+    font-weight: 1000;
+    font-size: x-large;
+    text-align: center;
+}
+
+.position{
+    font-weight: 700;
+    font-size: large;
+    color: #005596;
+    text-align: left;
+}
+
+.name{
+    font-weight: 200;
+    font-size: medium;
+    color: black;
+    text-align: left;
+}
+
+.history{
+    position: relative;
+    margin-left: 4%;
+    margin-right: 3%;
+}
+
+h1{
+    text-align: center;
+}
+
+.officer_indent{
+    text-indent: 5%;
+}
+
+
+@media only screen and (max-width: 768px) {
+    
+
+    .container{
+        display: block;
+        width: 95%;
+        margin: auto;
+    }
+
+    .officers{
+        width: 80%;
+        position: relative;
+        margin: auto;
+        border: 3px solid #be0f34;
+        padding: 3%;
+    }
+
+
+  }

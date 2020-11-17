@@ -14,14 +14,6 @@
     <mat-label>Secondary Household Member</mat-label>
     <input matInput [(ngModel)]="secondaryname" placeholder="John Doe" maxlength="50">
 </mat-form-field><br>
-<!-- <mat-form-field>
-    <mat-label>Last Date Paid</mat-label>
-    <input matInput [(ngModel)]="lastpaid" placeholder="01/20" maxlength="10" class="invisible">
-</mat-form-field><br>
-<mat-form-field>
-    <mat-label>Date Joined</mat-label>
-    <input matInput [(ngModel)]="datejoined" placeholder="01/01/20" maxlength="10" class="invisible">
-</mat-form-field><br> -->
 <mat-form-field>
     <mat-label>Membership Type</mat-label>
     <mat-select [(ngModel)]="membership">
@@ -30,14 +22,6 @@
         </mat-option>
     </mat-select>
 </mat-form-field><br>
-<!-- <mat-form-field>
-    <mat-label>Status</mat-label>
-    <mat-select [(ngModel)]="status" class="invisible">
-        <mat-option *ngFor="let opt of statusOptions" [value]='opt'>
-            {{opt}}
-        </mat-option>
-    </mat-select>
-</mat-form-field><br> -->
 <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput [(ngModel)]="email" placeholder="jane.doe@mail.com" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
@@ -66,11 +50,6 @@
     <mat-label>Zip Code</mat-label>
     <input matInput [(ngModel)]="zip" placeholder="16214" maxlength="5">
 </mat-form-field><br>
-
-<!-- <div id="recaptcha" class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div> -->
-<!-- <div class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div> -->
-<!-- <div class="g-recaptcha" data-sitekey="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz"></div><br> -->
-<!-- <div nbRecaptcha key="6Ldmj9wZAAAAAMPMWM0CYkzBplWUm90R8GvJbLmz" ></div> -->
 <re-captcha
       [(ngModel)]="captcha"
       name="captcha"

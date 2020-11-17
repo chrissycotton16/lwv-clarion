@@ -10,7 +10,6 @@ import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { HistoryComponent } from './components/history/history.component';
-import { OfficersComponent } from './components/officers/officers.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
@@ -67,12 +66,17 @@ import { EventAddDialogComponent } from './components/admin/admin-events/event-a
 import { EventUpdateDialogComponent } from './components/admin/admin-events/event-update-dialog/event-update-dialog.component';
 import { AdminNewsletterComponent } from './components/admin/admin-newsletter/admin-newsletter.component';
 import { AdminPictureComponent } from './components/admin/admin-picture/admin-picture.component';
+import {CalendarDialogComponent} from './components/calendar-dialog/calendar-dialog.component'
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
 import { NewsletterUpdateDialogComponent } from './components/admin/admin-newsletter/newsletter-update-dialog/newsletter-update-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
 
+import {LayoutModule} from '@angular/cdk/layout';
+import { ObserversModule } from '@angular/cdk/observers';
+import { PlatformModule } from '@angular/cdk/platform';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -81,7 +85,6 @@ import {MatRadioModule} from '@angular/material/radio';
     CalendarComponent,
     ResourcesComponent,
     HistoryComponent,
-    OfficersComponent,
     LogInComponent,
     AdminComponent,
     CarouselComponent,
@@ -98,6 +101,7 @@ import {MatRadioModule} from '@angular/material/radio';
     EventUpdateDialogComponent,
     AdminNewsletterComponent,
     AdminPictureComponent,
+    CalendarDialogComponent,
     AdminUsersComponent,
     AdminAddDialogComponent,
     AdminUpdateDialogComponent,
@@ -140,8 +144,11 @@ import {MatRadioModule} from '@angular/material/radio';
     RecaptchaModule,
     RecaptchaFormsModule,
     ScrollingModule,
-    MatRadioModule
+    MatRadioModule,
+    LayoutModule
+  
   ],
+  exports:[ObserversModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
