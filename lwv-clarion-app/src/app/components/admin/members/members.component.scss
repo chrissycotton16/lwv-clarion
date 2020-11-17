@@ -14,4 +14,15 @@ th.mat-sort-header-sorted {
 }
 .inLine{
     display: flex;
+
+.sort{
+    display: inline-block;
+}
+
+.rdobtn{
+    padding-right: 3%;
+}
+
+.mat-radio-inner-circle { 
+    background-color: #005596;
 }
