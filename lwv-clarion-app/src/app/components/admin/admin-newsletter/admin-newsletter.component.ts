@@ -4,6 +4,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { NewsletterService } from 'src/app/services/newsletter.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { NewsletterUpdateDialogComponent } from './newsletter-update-dialog/newsletter-update-dialog.component';
 
 @Component({
   selector: 'app-admin-newsletter',
@@ -18,6 +19,7 @@ export class AdminNewsletterComponent implements OnInit {
   error = '';
   success = '';
   pdfStringResult: string;
+  newsletterToUpdate: Newsletter ={ NewsletterID:0, pdfSrc:'', Title:'', Description:''};
 
   public pdfPath;
   pdfURL: any;
@@ -41,22 +43,49 @@ export class AdminNewsletterComponent implements OnInit {
   ngOnInit(){
     this.getNewsletters();
   }
- //database crud operations
- getNewsletters():void {
-  this.newsletterService.getAll().subscribe(
-    (res: Newsletter[]) => {
-      this.newsletters = res;
-      this.newsletterLength = this.newsletters.length;
-      console.log(this.newsletters);
-    },
-    (err) => {
-      this.error = err;
+
+  //database crud operations
+  getNewsletters():void {
+    this.newsletterService.getAll().subscribe(
+      (res: Newsletter[]) => {
+        this.newsletters = res;
+        this.newsletterLength = this.newsletters.length;
+      },
+      (err) => {
+        this.error = err;
+      });
+  }
+  
+  openUpdateDialog(news){
+    const dialogRef = this.dialog.open(NewsletterUpdateDialogComponent, {
+      width: '450px',
+      data:{ updateNewsletterID: news.NewsletterID, updatePdfSrc: news.pdfSrc, updateTitle: news.Title, updateDescription: news.Description},
+      autoFocus: false
     });
- }
- 
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined){
+        this.newsletterToUpdate = result;
+        this.updateNewsletter(this.newsletterToUpdate);
+      }
+    });
+    this.getNewsletters();
+  }
+
+  updateNewsletter(news){
+    this.resetErrors();
+    this.newsletterService.update({NewsletterID: news.NewsletterID, pdfSrc: news.pdfSrc, Title: news.Title, Description: news.Description})
+    .subscribe(
+      (res) => {
+        this.newsletters = res;
+        this.success = 'Updated successfully';
+      },
+      (err) => this.error = err
+    );
+  }
+
+
   onFileChange(event)  {
       this.files = [];
-      console.log(event.target.files[0].size);
       if(event.target.files[0].size < 40000000){
         this.files.push(event.target.files[0]);
         this.pdfChosen=true;
@@ -66,37 +95,35 @@ export class AdminNewsletterComponent implements OnInit {
         this.resetForm();
       }
   }
-  
+
   submitForm(){
     this.resetErrors();
     const formData =  new  FormData();
     formData.append("file",  this.files[0]);
-      this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
-        if(res != 'failure'){
-          console.log(res);
-          this.pdfStringResult = res;
-          
-          this.addtoDatabase(this.pdfStringResult, this.newPDFTitle, this.newPDFDescription);
-          
-          alert('File uploaded Successfully!');
-          this.resetForm();
+    this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
+      if(res != 'failure'){
+        console.log(res);
+        this.pdfStringResult = res;
+        
+        this.addtoDatabase(this.pdfStringResult, this.newPDFTitle, this.newPDFDescription);
+        
+        alert('File uploaded Successfully!');
+        this.resetForm();
 
-        }
-        else{
-          console.log(res);
-          alert('File did not upload successfully. Please make sure the file you are submitting is a pdf and that it doesnt already exist in the folder.');
-          this.resetForm();
-        }
-      });
-    
-   }
+      }
+      else{
+        console.log(res);
+        alert('File did not upload successfully. Please make sure the file you are submitting is a pdf and that it doesnt already exist in the folder.');
+        this.resetForm();
+      }
+    });
+  }
 
   addtoDatabase(pdfString, title, description){
     this.newsletterService.store(pdfString, title, description);
     this.getNewsletters();
   }
 
- 
   resetForm(){
     this.uploadForm = new  FormGroup({
       name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
@@ -123,11 +150,10 @@ export class AdminNewsletterComponent implements OnInit {
     }
     this.newsletterService.deleteFromFolder(pdfSrc);
   }
-  
+
   resetErrors() {
     this.success = '';
     this.error   = '';
   }
 
-  
 }

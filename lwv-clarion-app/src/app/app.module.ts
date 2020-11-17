@@ -70,6 +70,7 @@ import { AdminPictureComponent } from './components/admin/admin-picture/admin-pi
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
+import { NewsletterUpdateDialogComponent } from './components/admin/admin-newsletter/newsletter-update-dialog/newsletter-update-dialog.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin
     AdminPictureComponent,
     AdminUsersComponent,
     AdminAddDialogComponent,
-    AdminUpdateDialogComponent
+    AdminUpdateDialogComponent,
+    NewsletterUpdateDialogComponent
   
   ],
   imports: [

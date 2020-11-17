@@ -50,6 +50,24 @@ export class NewsletterService {
     catchError(this.handleError);
    }
 
+   update(newsletter: Newsletter): Observable<Newsletter[]> {
+    console.log(newsletter);
+    return this.http.put(`${this.baseUrl}/update`, { data: newsletter })
+    .pipe(map((res) => {
+      console.log(res);
+        const theNewsletter = this.newsletters.find((item) => {
+        return +item['NewsletterID'] === +newsletter['NewsletterID'];
+        });
+        if (theNewsletter) {
+          theNewsletter['pdfSrc'] = newsletter['pdfSrc'];
+          theNewsletter['Title'] = newsletter['Title'];
+          theNewsletter['Description'] = newsletter['Description'];
+        }
+        return this.newsletters;
+    }),
+    catchError(this.handleError));
+} 
+
   private handleError(error: HttpErrorResponse) {
       console.log(error);
       // return an observable with a user friendly message
