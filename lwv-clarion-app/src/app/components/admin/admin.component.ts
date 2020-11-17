@@ -17,7 +17,6 @@ export class AdminComponent implements OnInit {
   @Input() adminToCheck: Admin ={ AdminID:0, user:'', password:''};
   constructor(public adminService: AdminService, private router: Router){
     if(this.adminService.isLoggedIn()){
-      console.log("you are already logged in");
       this.loggedIn= true;
     }
     this.ngOnInit();

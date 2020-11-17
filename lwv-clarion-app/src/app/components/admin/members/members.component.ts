@@ -17,6 +17,7 @@ export class MembersComponent implements OnInit {
   emails: string[];
   error = '';
   success = '';
+  all=true;
   memberLength: number;
   displayedColumns: string[] = ['FirstName', 'LastName', 'SecondaryMember', 'LastPaidDate', 'DateJoined',
                                   'MembershipType', 'Status', 'Email', 'PreferredPhone', 'SecondaryPhone', 'StreetAddress', 'City',
@@ -62,6 +63,42 @@ export class MembersComponent implements OnInit {
     );
   }
   
+  getPendingMembers():void{
+    this.memberService.getPending().subscribe(
+      (res: Member[]) => {
+        this.members = res;
+        this.memberLength = this.members.length;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+  getInactiveMembers():void{
+    this.memberService.getInactive().subscribe(
+      (res: Member[]) => {
+        this.members = res;
+        this.memberLength = this.members.length;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+  getActiveMembers():void{
+    this.memberService.getActive().subscribe(
+      (res: Member[]) => {
+        this.members = res;
+        this.memberLength = this.members.length;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
   deleteMember(MemberID) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();
@@ -196,6 +233,12 @@ export class MembersComponent implements OnInit {
          }
          return str;
   }
+
+  changeToAll(){
+    console.log("all");
+  }
+
+
   resetErrors() {
     this.success = '';
     this.error   = '';
