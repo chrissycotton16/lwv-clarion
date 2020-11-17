@@ -18,7 +18,6 @@ export class CarouselComponent {
     this.imageService.getAll().subscribe(
       (res: Image[]) => {
         this.images = res;
-        console.log(this.images);
       },
       (err) => {
         console.log(err);

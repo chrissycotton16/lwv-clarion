@@ -1,20 +1,20 @@
 <br><br>
 <h1>Administrative View: Newsletter</h1>
-<table mat-table [dataSource]="newsletters" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="newsletters"  class="mat-elevation-z8">
       <ng-container matColumnDef="NewsletterID">
-           <th mat-header-cell *matHeaderCellDef mat-sort-header>NewsletterID</th>
+           <th mat-header-cell *matHeaderCellDef >NewsletterID</th>
            <td mat-cell *matCellDef="let new">{{new.NewsletterID}}</td>
       </ng-container>
       <ng-container matColumnDef="pdfSrc">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>PDF</th>
+        <th mat-header-cell *matHeaderCellDef>PDF</th>
         <td mat-cell *matCellDef="let new">{{new.pdfSrc}}</td>
       </ng-container>
       <ng-container matColumnDef="Title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <th mat-header-cell *matHeaderCellDef >Title</th>
         <td mat-cell *matCellDef="let new">{{new.Title}}</td>
       </ng-container>
       <ng-container matColumnDef="Description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <th mat-header-cell *matHeaderCellDef >Description</th>
         <td mat-cell *matCellDef="let new">{{new.Description}}</td>
       </ng-container>
       <ng-container matColumnDef="Edit">

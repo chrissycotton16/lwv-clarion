@@ -2,62 +2,67 @@
 <br><br>
 <div class="inLine">
       <h1>Administrative View: Members</h1> 
+      <button (click)=getAll()>All</button>
+      <button (click)=getPendingMembers()>Pending</button>
+      <button (click)=getActiveMembers()>Active</button>
+      <button (click)=getInactiveMembers()>Inactive</button>
 </div>
-<table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
+
+<table mat-table [dataSource]="members"  class="mat-elevation-z8">
       <ng-container matColumnDef="FirstName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+            <th mat-header-cell *matHeaderCellDef >First Name</th>
             <td mat-cell *matCellDef="let mem">{{mem.FirstName}}</td>
       </ng-container>
       <ng-container matColumnDef="LastName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+            <th mat-header-cell *matHeaderCellDef  >Last Name</th>
             <td mat-cell *matCellDef="let mem">{{mem.LastName}}</td>
       </ng-container>
       <ng-container matColumnDef="SecondaryMember">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Secondary Household Member</th>
+            <th mat-header-cell *matHeaderCellDef  >Secondary Household Member</th>
             <td mat-cell *matCellDef="let mem">{{mem.SecondaryHouseholdMemberName}}</td>
       </ng-container>
       <ng-container matColumnDef="LastPaidDate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Paid Date</th>
+            <th mat-header-cell *matHeaderCellDef  >Last Paid Date</th>
             <td mat-cell *matCellDef="let mem">{{mem.LastPaidDate}}</td>
       </ng-container>
       <ng-container matColumnDef="DateJoined">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Joined</th>
+            <th mat-header-cell *matHeaderCellDef  >Date Joined</th>
             <td mat-cell *matCellDef="let mem">{{mem.DateJoined}}</td>
       </ng-container>
       <ng-container matColumnDef="MembershipType" >
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Membership Type</th>
+            <th mat-header-cell *matHeaderCellDef  >Membership Type</th>
             <td mat-cell *matCellDef="let mem">{{mem.MembershipType}}</td>
       </ng-container>
       <ng-container matColumnDef="Status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <th mat-header-cell *matHeaderCellDef  >Status</th>
             <td mat-cell *matCellDef="let mem">{{mem.Status}}</td> 
       </ng-container>
       <ng-container matColumnDef="Email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <th mat-header-cell *matHeaderCellDef  >Email</th>
             <td mat-cell *matCellDef="let mem">{{mem.Email}}</td>
       </ng-container>
       <ng-container matColumnDef="PreferredPhone">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred Phone</th>
+            <th mat-header-cell *matHeaderCellDef  >Preferred Phone</th>
             <td mat-cell *matCellDef="let mem">{{mem.PreferredPhone}}</td>
       </ng-container>
       <ng-container matColumnDef="SecondaryPhone">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Secondary Phone</th>
+            <th mat-header-cell *matHeaderCellDef  >Secondary Phone</th>
             <td mat-cell *matCellDef="let mem">{{mem.SecondaryPhone}}</td>
       </ng-container>
       <ng-container matColumnDef="StreetAddress">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Street Address</th>
+            <th mat-header-cell *matHeaderCellDef  >Street Address</th>
             <td mat-cell *matCellDef="let mem">{{mem.StreetAddress}}</td>
       </ng-container>
       <ng-container matColumnDef="City">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+            <th mat-header-cell *matHeaderCellDef  >City</th>
             <td mat-cell *matCellDef="let mem">{{mem.City}}</td>
       </ng-container>
       <ng-container matColumnDef="State">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+            <th mat-header-cell *matHeaderCellDef  >State</th>
             <td mat-cell *matCellDef="let mem">{{mem.State}}</td>
       </ng-container>
       <ng-container matColumnDef="ZipCode" >
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Zip Code</th>
+            <th mat-header-cell *matHeaderCellDef  >Zip Code</th>
             <td mat-cell *matCellDef="let mem">{{mem.ZipCode}}</td>
       </ng-container>
       <ng-container matColumnDef="Edit">
