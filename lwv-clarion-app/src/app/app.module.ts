@@ -23,7 +23,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-
+import { MatRadioModule } from '@angular/material/radio';
 //carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
@@ -142,6 +142,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     RecaptchaFormsModule,
     ScrollingModule,
     LayoutModule,
+    MatRadioModule
   
   ],
   exports:[ObserversModule],

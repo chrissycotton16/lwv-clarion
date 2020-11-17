@@ -80,3 +80,14 @@ HEAD
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#005596; 
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color:#005596;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:#005596;
+}
