@@ -18,7 +18,6 @@ export class ResourcesComponent implements OnInit {
     this.newsletterService.getAll().subscribe(
       (res: Newsletter[]) => {
         this.newsletters = res;
-        console.log(this.newsletters);
       },
       (err) => {
         console.log(err)

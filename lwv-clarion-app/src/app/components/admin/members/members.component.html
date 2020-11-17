@@ -2,13 +2,14 @@
 <br><br>
 <div class = "sort">
       <h1>Administrative View: Members</h1>
-            <mat-radio-group>
-                  <mat-radio-button class = "rdobtn" value='All' [checked] = "true">All</mat-radio-button>
+      <h3>To filter the list: select a filter and press the button:         </h3>
+            <mat-radio-group [(ngModel)]="selection">
+                  <mat-radio-button class = "rdobtn" value='All'>All</mat-radio-button>
                   <mat-radio-button class = "rdobtn" value='Pending'>Pending</mat-radio-button>
                   <mat-radio-button class = "rdobtn" value='Active'>Active</mat-radio-button>
                   <mat-radio-button class = "rdobtn" value='Inactive'>Inactive</mat-radio-button>
             </mat-radio-group>
-            <button mat-raised-button >Filter</button>
+            <button mat-raised-button (click)=getFilteredMembers(selection)>Filter</button>
             <br><br>
 </div>
 <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">

@@ -71,7 +71,6 @@ import { AdminUsersComponent } from './components/admin/admin-users/admin-users.
 import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
 import { NewsletterUpdateDialogComponent } from './components/admin/admin-newsletter/newsletter-update-dialog/newsletter-update-dialog.component';
-import {MatRadioModule} from '@angular/material/radio';
 
 import {LayoutModule} from '@angular/cdk/layout';
 import { ObserversModule } from '@angular/cdk/observers';

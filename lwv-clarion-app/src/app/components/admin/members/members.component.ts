@@ -17,7 +17,7 @@ export class MembersComponent implements OnInit {
   emails: string[];
   error = '';
   success = '';
-  all=true;
+  selection: string;;
   memberLength: number;
   displayedColumns: string[] = ['FirstName', 'LastName', 'SecondaryMember', 'LastPaidDate', 'DateJoined',
                                   'MembershipType', 'Status', 'Email', 'PreferredPhone', 'SecondaryPhone', 'StreetAddress', 'City',
@@ -34,6 +34,7 @@ export class MembersComponent implements OnInit {
   }
  
   ngOnInit(){
+    this.selection = 'All';
     this.getMembers();
   }
 
@@ -51,44 +52,49 @@ export class MembersComponent implements OnInit {
     });
   }
 
+  getFilteredMembers(filter: string){
+    console.log(filter);
+    
+    if(filter == 'All'){
+      this.getMembers();
+    }
+    else if(filter =='Inactive'){
+      this.memberService.getInactive().subscribe(
+        (res: Member[]) => {
+          this.members = res;
+          this.memberLength = this.members.length;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );    
+    }
+    else if(filter == 'Active'){
+      this.memberService.getActive().subscribe(
+        (res: Member[]) => {
+          this.members = res;
+          this.memberLength = this.members.length;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );    
+    }
+    else if(filter=='Pending'){
+      this.memberService.getPending().subscribe(
+        (res: Member[]) => {
+          this.members = res;
+          this.memberLength = this.members.length;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );    
+    }
+  }
+
   getMembers():void {
     this.memberService.getAll().subscribe(
-      (res: Member[]) => {
-        this.members = res;
-        this.memberLength = this.members.length;
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
-  }
-  
-  getPendingMembers():void{
-    this.memberService.getPending().subscribe(
-      (res: Member[]) => {
-        this.members = res;
-        this.memberLength = this.members.length;
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
-  }
-
-  getInactiveMembers():void{
-    this.memberService.getInactive().subscribe(
-      (res: Member[]) => {
-        this.members = res;
-        this.memberLength = this.members.length;
-      },
-      (err) => {
-        this.error = err;
-      }
-    );
-  }
-
-  getActiveMembers():void{
-    this.memberService.getActive().subscribe(
       (res: Member[]) => {
         this.members = res;
         this.memberLength = this.members.length;
@@ -233,11 +239,6 @@ export class MembersComponent implements OnInit {
          }
          return str;
   }
-
-  changeToAll(){
-    console.log("all");
-  }
-
 
   resetErrors() {
     this.success = '';
