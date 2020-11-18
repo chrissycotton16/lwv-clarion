@@ -22,7 +22,7 @@ export class AdminPictureComponent implements OnInit {
   picturePreviewed:boolean = false;
   newImageURL: string;
   newImageCaption: string = '';
-  baseUrl = 'http://localhost/api/lwv/image/';
+  baseUrl = 'https://clarionlwvpa.org/api/lwv/image/';
   files:string[]  = [];
 
   uploadForm =  new  FormGroup({

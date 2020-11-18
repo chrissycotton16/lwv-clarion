@@ -8,7 +8,7 @@ import { Event } from '../models/event';
   providedIn: 'root'
 })
 export class EventService {
-    baseUrl = 'http://localhost/api/lwv/event';
+    baseUrl = 'https://clarionlwvpa.org/api/lwv/event';
     events: Event[];
     constructor(private http: HttpClient) { }
 

@@ -10,7 +10,7 @@ import { Newsletter } from '../models/newsletter';
 export class NewsletterService {
   
   
-    baseUrl = 'http://localhost/api/lwv/newsletter';
+    baseUrl = 'https://clarionlwvpa.org/api/lwv/newsletter';
     newsletters: Newsletter[];
     constructor(private http: HttpClient) { }
 

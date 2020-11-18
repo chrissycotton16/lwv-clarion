@@ -28,7 +28,7 @@ export class AdminNewsletterComponent implements OnInit {
   newPDFTitle: string = '';
   newPDFDescription: string = '';
   pdfChosen = false;
-  baseUrl = 'http://localhost/api/lwv/newsletter/';
+  baseUrl = 'https://clarionlwvpa.org/api/lwv/newsletter/';
   files:string[]  = [];
 
   uploadForm =  new  FormGroup({

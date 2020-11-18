@@ -10,7 +10,7 @@ import { Observable, throwError } from 'rxjs';
 
 export class AdminService {
     redirectUrl: string;
-    baseUrl:string = "http://localhost/api/lwv/admin";
+    baseUrl:string = "https://clarionlwvpa.org/api/lwv/admin";
     @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
     admins: Admin[];
     confirmedAdmin: Admin[];

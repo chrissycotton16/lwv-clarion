@@ -7,7 +7,7 @@ import { Officer } from '../models/officer';
     providedIn: 'root'
 })
 export class OfficerService {
-    baseUrl = 'http://localhost/api/lwv/officer';
+    baseUrl = 'https://clarionlwvpa.org/api/lwv/officer';
     constructor(private http: HttpClient) { }
     officers: Officer[];
 
