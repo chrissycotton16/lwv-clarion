@@ -76,6 +76,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PlatformModule } from '@angular/cdk/platform';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -149,7 +150,13 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   ],
   exports:[ObserversModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  // location: Location;
+  // constructor(location:Location){
+  //   this.location = location;
+  //   console.log(this.location);
+  // }
+}
