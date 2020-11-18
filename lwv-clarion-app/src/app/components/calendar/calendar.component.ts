@@ -30,11 +30,11 @@ export class CalendarComponent implements OnInit{
    
   }
 
-  openCalendarDialog(arg){
+  openCalendarDialog(description, title, start, end){
     const dialogConfig = this.dialog.open(CalendarDialogComponent, {
       width: '60%',
       height: 'auto',
-      data: {description: arg},
+      data: {description: description, title: title, start:start, end:end},
       autoFocus: false
     });
     dialogConfig.afterClosed().subscribe(
@@ -51,8 +51,7 @@ export class CalendarComponent implements OnInit{
         aspectRatio: 2.3,
         showNonCurrentDates: false,
         expandRows: true,
-        
-        
+           
         eventTimeFormat:
         {
           hour: 'numeric',
@@ -68,7 +67,8 @@ export class CalendarComponent implements OnInit{
         events: this.eventsList,
 
         eventClick:(arg) =>{
-          this.openCalendarDialog(arg.event.extendedProps.description)
+          console.log(arg.event.start);
+          this.openCalendarDialog(arg.event.extendedProps.description, arg.event.title, arg.event.start, arg.event.end);
         }
         
       };

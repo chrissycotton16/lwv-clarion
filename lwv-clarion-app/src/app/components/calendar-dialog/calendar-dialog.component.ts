@@ -9,7 +9,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class CalendarDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<CalendarDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: {description: string}) { }
+  constructor(public dialogRef: MatDialogRef<CalendarDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: {description: string, title: string, start:string, end:string}) { }
 
 
   close() {
