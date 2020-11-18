@@ -1,5 +1,13 @@
 <br><br>
 <h1>Administrative View: Events</h1>
+<button mat-raised-button (click)="openDialog()">Add New Event</button>
+
+<br><br>
+<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+<div class="eventCount">
+      Number of events: {{this.eventLength}}  
+</div>
 <table mat-table [dataSource]="events"  class="mat-elevation-z8">
       <ng-container matColumnDef="Title">
            <th mat-header-cell *matHeaderCellDef >Title</th>
@@ -28,15 +36,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<div class="eventCount">
-      Number of events: {{this.eventLength}}  
-</div>
-<br><br>
-
-<button mat-raised-button (click)="openDialog()">Add New Event</button>
 
 <br><br>
-<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
-<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
+
 
 <br><br><br><br> 

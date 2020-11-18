@@ -12,7 +12,7 @@
                   </mat-form-field><br>
                   <div mat-dialog-actions>
                         <button mat-raised-button (click)="logIn(user, password)" class ="okButton" [disabled]="user == '' || password == ''" *ngIf="loggedIn == false" color='primary'>Log In</button>
-                        <button mat-raised-button (click)="logOut()" class ="okButton" *ngIf="loggedIn == true" color='primary'>Log Out</button>
+                        <button mat-raised-button (click)="logOut()" class ="okButton" *ngIf="loggedIn == true">Log Out</button>
                   </div>
             </div>
       </div>

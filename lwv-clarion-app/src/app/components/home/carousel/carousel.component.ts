@@ -11,7 +11,6 @@ export class CarouselComponent {
   images: Image [];
   constructor(private imageService: ImageService) { 
     this.getImages();
-    //console.log("in carousel TS");
   }
 
   getImages():void {
@@ -26,17 +25,6 @@ export class CarouselComponent {
   }
   slides = [];
 
-  //::::::::::insert get image array here::::::::::
-  // images : Image = [
-  //   //C:\xampp\htdocs\api\lwv\image\upload
-  //   {imageString: "./assets/VoterReg2020.jpg", caption: "Picture Caption 1"},
-  //   {imageString: "./assets/FBpicture1.jpg", caption: "Picture Caption 2"},
-  //   {imageString: "./assets/HvS Debate 1.jpg", caption: "Picture Caption 3"},
-  //   {imageString: "./assets/HvS Debate 6.jpg", caption: "Picture Caption 4"},
-  //   {imageString: "./assets/HvS Debate 9.jpg", caption: "Picture Caption 5"},
-  //   {imageString: "./assets/HvS Debate 8.jpg", caption: "Picture Caption 6"}
-  // ]
-  
   slideConfig = {"slidesToShow": 1, 
                 "slidesToScroll": 1, 
                 'dots': true, 
