@@ -1,6 +1,19 @@
 
 <br><br>
-<h1>Administrative View: Officers</h1>
+<div>
+      <h1>Administrative View: Officers</h1>
+      
+      <button mat-raised-button (click)="openDialog()">Add New Officer</button>
+      
+      <br><br>
+      <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+      <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+      <div class="officerCount">
+            Number of officers: {{this.officerLength}}  
+      </div>
+</div>
+
+
 <table mat-table [dataSource]="officers"  class="mat-elevation-z8">
       <ng-container matColumnDef="FirstName">
            <th mat-header-cell *matHeaderCellDef >First Name</th>
@@ -33,15 +46,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<div class="officerCount">
-      Number of officers: {{this.officerLength}}  
-</div>
-<br><br>
 
-<button mat-raised-button (click)="openDialog()">Add New Officer</button>
 
-<br><br>
-<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
-<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
 
 <br><br><br><br>

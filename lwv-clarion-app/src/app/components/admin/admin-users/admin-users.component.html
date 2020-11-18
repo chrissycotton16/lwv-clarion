@@ -1,7 +1,14 @@
 <br><br>
-<!--   displayedColumns: string[] = ['AdminID', 'User', 'Password'];
- -->
+
 <h1>Administrative View: Admins</h1>
+
+<button mat-raised-button (click)="openDialog()">Add New Admin </button> 
+<br><br>
+<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+<div class="adminCount">
+      Number of admins: {{this.adminLength}}  
+</div>
 <table mat-table [dataSource]="admins" class="mat-elevation-z8">
       <ng-container matColumnDef="AdminID">
            <th mat-header-cell *matHeaderCellDef >Admin ID</th>
@@ -26,14 +33,8 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<div class="adminCount">
-      Number of admins: {{this.adminLength}}  
-</div>
+
 <br><br>
 
-<button mat-raised-button (click)="openDialog()">Add New Admin </button> 
-<br><br>
-<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
-<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
 
 <br><br><br><br> 

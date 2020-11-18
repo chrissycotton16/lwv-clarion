@@ -3,7 +3,8 @@ table{
 }
 
 button{
-    color: #005596;
+    color: white;
+    background-color: #005596;
 }
 .memberCount{
     text-align: right;
@@ -12,11 +13,10 @@ button{
 th.mat-sort-header-sorted {
     color: black;
 }
-.inLine{
-    display: flex;
-}
+
 .sort{
     display: inline-block;
+    width: 50%;
 }
 
 .rdobtn{
@@ -25,4 +25,7 @@ th.mat-sort-header-sorted {
 
 .mat-radio-inner-circle { 
     background-color: #005596;
+}
+.memButtons{
+    display: inline-block;
 }

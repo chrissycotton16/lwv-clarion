@@ -13,7 +13,7 @@ import { NewsletterUpdateDialogComponent } from './newsletter-update-dialog/news
 })
 export class AdminNewsletterComponent implements OnInit {
 
-  displayedColumns: string[] = ['NewsletterID', 'pdfSrc', 'Title', 'Description', 'Edit'];
+  displayedColumns: string[] = ['pdfSrc', 'Title', 'Description', 'Edit'];
   newsletters: Newsletter[];
   newsletterLength: number;
   error = '';

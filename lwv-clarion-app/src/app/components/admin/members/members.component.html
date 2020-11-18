@@ -12,6 +12,19 @@
             <button mat-raised-button (click)=getFilteredMembers(selection)>Filter</button>
             <br><br>
 </div>
+<div class= "memButtons">
+      <button mat-raised-button (click)="openDialog()">Add New Member</button>
+      <button mat-raised-button (click)="exportAll()">Export Members</button>
+      <button mat-raised-button (click)="exportEmails()">Export Email Addresses</button>
+      <br><br>
+      <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+      <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+</div>
+<div class="memberCount">
+      Number of members: {{this.memberLength}}  
+</div>
+
+
 <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="FirstName">
             <th mat-header-cell *matHeaderCellDef >First Name</th>
@@ -80,16 +93,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<div class="memberCount">
-      Number of members: {{this.memberLength}}  
-</div>
-<br><br>
 
-<button mat-raised-button (click)="openDialog()">Add New Member</button>
-<button mat-raised-button (click)="exportAll()">Export Members</button>
-<button mat-raised-button (click)="exportEmails()">Export Email Addresses</button>
-<br><br>
-<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
-<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
 
 <br><br><br><br>
