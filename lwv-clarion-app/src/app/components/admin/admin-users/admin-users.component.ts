@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./admin-users.component.scss']
 })
 export class AdminUsersComponent implements OnInit {
-  displayedColumns: string[] = ['AdminID', 'User', 'Password', 'Edit'];
+  displayedColumns: string[] = ['User', 'Edit'];
   //@Input() event ={ EventID:0, title:'', start:'', end:'', description:''}; //this is for storing purposes
   admins: Admin[];
   adminLength: number;
