@@ -56,10 +56,6 @@ html, body {
     background:  #005596;
     color: white;
     font-size: 15px;
-    position: fixed;
-    bottom:0;
-    width:100%;
-    justify-content: space-between;
 }
   
 .content{
@@ -68,17 +64,14 @@ html, body {
     overflow-y: scroll;
 }
 
-#address{
-    text-align: left;
-    padding-right: 20%;
-}
+
 #facebook{
-    text-align: center;
-    
+    margin-top: 0.7%;
 }
 #copyright{
-    text-align: right;
-    padding-left: 20%;
+    //text-align: right;
+    margin-top: 1.5%;
+    padding-left: 10%;
 }
   
 
@@ -118,11 +111,6 @@ html, body {
         background:  #005596;
         color: white;
         font-size: 15px;
-        position: fixed;
-        bottom:0;
-        width:100%;
-        justify-content: space-between;
-
         height: 8.5rem;
         display: block;
         
@@ -131,18 +119,9 @@ html, body {
         padding-bottom:8.5rem;    /* Footer height */
 
     }
-    #address{
-        text-align: center;
-        padding: .5%;
-        font-size: smaller;
-    }
     #facebook{
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        text-align: center;
-        font-size: smaller;
-        padding: .5%;
-        padding-bottom: 2%;
+        margin-top: 5%;
+        padding-left: 45%;
     }
     #copyright{
         text-align: center;
@@ -156,11 +135,7 @@ html, body {
 
 }
 
-    // position: absolute;
-//     // bottom:0;
-//     // height: 50px;
-//     // width:100%;
-    //justify-content: space-between;
+
 
 
 
