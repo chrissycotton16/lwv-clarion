@@ -4,12 +4,11 @@
       <h1>Administrative View: Members</h1>
       <h3>To filter the list: select a filter and press the button:         </h3>
             <mat-radio-group [(ngModel)]="selection">
-                  <mat-radio-button class = "rdobtn" value='All'>All</mat-radio-button>
-                  <mat-radio-button class = "rdobtn" value='Pending'>Pending</mat-radio-button>
-                  <mat-radio-button class = "rdobtn" value='Active'>Active</mat-radio-button>
-                  <mat-radio-button class = "rdobtn" value='Inactive'>Inactive</mat-radio-button>
+                  <mat-radio-button class = "rdobtn" value='All' (change)="handleChange($event)">All</mat-radio-button>
+                  <mat-radio-button class = "rdobtn" value='Pending' (change)="handleChange($event)">Pending</mat-radio-button>
+                  <mat-radio-button class = "rdobtn" value='Active' (change)="handleChange($event)">Active</mat-radio-button>
+                  <mat-radio-button class = "rdobtn" value='Inactive' (change)="handleChange($event)">Inactive</mat-radio-button>
             </mat-radio-group>
-            <button mat-raised-button (click)=getFilteredMembers(selection)>Filter</button>
             <br><br>
 </div>
 <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">

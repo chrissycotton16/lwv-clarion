@@ -52,13 +52,11 @@ export class MembersComponent implements OnInit {
     });
   }
 
-  getFilteredMembers(filter: string){
-    console.log(filter);
-    
-    if(filter == 'All'){
+  handleChange(evt) {
+    if(evt.value == 'All'){
       this.getMembers();
     }
-    else if(filter =='Inactive'){
+    else if(evt.value =='Inactive'){
       this.memberService.getInactive().subscribe(
         (res: Member[]) => {
           this.members = res;
@@ -69,7 +67,7 @@ export class MembersComponent implements OnInit {
         }
       );    
     }
-    else if(filter == 'Active'){
+    else if(evt.value == 'Active'){
       this.memberService.getActive().subscribe(
         (res: Member[]) => {
           this.members = res;
@@ -80,7 +78,7 @@ export class MembersComponent implements OnInit {
         }
       );    
     }
-    else if(filter=='Pending'){
+    else if(evt.value=='Pending'){
       this.memberService.getPending().subscribe(
         (res: Member[]) => {
           this.members = res;
