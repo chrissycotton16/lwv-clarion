@@ -21,6 +21,23 @@ export class DocumentService {
     catchError(this.handleError));
   }
 
+  getPolicies(): Observable<Document[]> {
+    return this.http.get(`${this.baseUrl}/listPolicies`).pipe(
+    map((res) => {
+        this.documents = res['data'];
+        return this.documents;
+    }),
+    catchError(this.handleError));
+  }
+  getArchives(): Observable<Document[]> {
+    return this.http.get(`${this.baseUrl}/listArchives`).pipe(
+    map((res) => {
+        this.documents = res['data'];
+        return this.documents;
+    }),
+    catchError(this.handleError));
+  }
+
   delete(DocumentID: number): Observable<Document[]> {
     const params = new HttpParams()
     .set('DocumentID', DocumentID.toString());

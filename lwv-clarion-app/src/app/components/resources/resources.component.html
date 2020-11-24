@@ -82,11 +82,37 @@
       </mat-accordion>
     </div>
 
-
-    <h1>Documents</h1>  
+    <h1>Archives</h1>  
     <div class="accordian-container">
       <mat-accordion>
-          <mat-expansion-panel *ngFor="let doc of documents">
+          <mat-expansion-panel *ngFor="let doc of archives">
+            <mat-expansion-panel-header >
+              <mat-panel-title>
+                  {{doc.Title}} 
+              </mat-panel-title>
+              <mat-panel-description >
+                {{doc.Description}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="pdfContainer">
+              <ng2-pdfjs-viewer 
+                #pdfViewerOnDemand
+                pdfSrc={{doc.pdfSrc}}           
+                [download]="true"
+                [find] = "false"
+                [fullScreen] ="false"
+                [openFile] ="false"
+                [viewBookmark] = "false"   
+              ></ng2-pdfjs-viewer>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+    <h1>Policies</h1>  
+    <div class="accordian-container">
+      <mat-accordion>
+          <mat-expansion-panel *ngFor="let doc of policies">
             <mat-expansion-panel-header >
               <mat-panel-title>
                   {{doc.Title}} 

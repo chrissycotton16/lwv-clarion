@@ -12,9 +12,12 @@ export class ResourcesComponent implements OnInit {
   panelOpenState = false;
   newsletters: Newsletter[];
   documents: Document[];
+  archives: Document[];
+  policies: Document[];
   constructor(private newsletterService: NewsletterService, private documentService: DocumentService) {
     this.getNewsletters();
-    this.getDocuments();
+    this.getPolicies();
+    this.getArchives();
   }
 
   getNewsletters(){
@@ -27,10 +30,20 @@ export class ResourcesComponent implements OnInit {
       });
   }
 
-  getDocuments(){
-    this.documentService.getAll().subscribe(
+  getPolicies(){
+    this.documentService.getPolicies().subscribe(
       (res: Document[]) => {
-        this.documents = res;
+        this.policies = res;
+      },
+      (err) => {
+        console.log(err)
+      });
+  }
+
+  getArchives(){
+    this.documentService.getArchives().subscribe(
+      (res: Document[]) => {
+        this.archives = res;
       },
       (err) => {
         console.log(err)
