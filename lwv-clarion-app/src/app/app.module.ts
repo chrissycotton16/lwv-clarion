@@ -77,6 +77,8 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { PlatformModule } from '@angular/cdk/platform';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
+import { DocumentUpdateDialogComponent } from './components/admin/admin-documents/document-update-dialog/document-update-dialog.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     AdminUsersComponent,
     AdminAddDialogComponent,
     AdminUpdateDialogComponent,
-    NewsletterUpdateDialogComponent
+    NewsletterUpdateDialogComponent,
+    AdminDocumentsComponent,
+    DocumentUpdateDialogComponent
   
   ],
   imports: [

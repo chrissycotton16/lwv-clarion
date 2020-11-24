@@ -1,0 +1,24 @@
+<h1 mat-dialog-title cdkFocusInitial>Update Document: {{data.updateTitle}}</h1>
+<div mat-dialog-content class="AddForm">
+    <mat-form-field >
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="data.updateTitle" placeholder="Organization Policy" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="data.updateDescription" placeholder="Updates on LWV Clarion" maxlength="25">
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="data.updateType">
+            <mat-option *ngFor="let type of types" [value]='type'>
+                {{type}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onOkClick()" class ="okButton" [mat-dialog-close]="data"
+        [disabled]="data.updateTitle == undefined|| data.updateDescription == undefined ">Save Document</button>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+</div>

@@ -38,7 +38,6 @@ export class NewsletterService {
 
   deleteFromFolder(pdfSrc: any) {
     this.http.post(`${this.baseUrl}/deleteNewsletter`, {pdfSrc}, {responseType: 'text'}).subscribe(res => {
-      console.log(res);
     })
   }
 
@@ -51,7 +50,6 @@ export class NewsletterService {
    }
 
    update(newsletter: Newsletter): Observable<Newsletter[]> {
-    console.log(newsletter);
     return this.http.put(`${this.baseUrl}/update`, { data: newsletter })
     .pipe(map((res) => {
       console.log(res);

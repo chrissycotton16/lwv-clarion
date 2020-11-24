@@ -75,75 +75,30 @@
     </div>
 
 
-    <h1>Policies</h1>  
-    <div class="policies-container">
+    <h1>Documents</h1>  
+    <div class="accordian-container">
       <mat-accordion>
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngFor="let doc of documents">
             <mat-expansion-panel-header >
               <mat-panel-title>
-                  Fiscal Policy
+                  {{doc.Title}} 
               </mat-panel-title>
-              <mat-panel-description>
+              <mat-panel-description >
+                {{doc.Description}}
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="pdfContainer">
               <ng2-pdfjs-viewer 
                 #pdfViewerOnDemand
-                pdfSrc="LWVCC_Fiscal_Policy.pdf"
-                [downloadFileName]="'mytestfile.pdf'"
+                pdfSrc={{doc.pdfSrc}}           
                 [download]="true"
                 [find] = "false"
                 [fullScreen] ="false"
                 [openFile] ="false"
-                [viewBookmark] = "false"
+                [viewBookmark] = "false"   
               ></ng2-pdfjs-viewer>
             </div>
           </mat-expansion-panel>
-        
-          <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Nonpartisan Policy
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <div class="pdfContainer">
-                    <ng2-pdfjs-viewer 
-                      #pdfViewerOnDemand
-                      pdfSrc="LWVCC_Fiscal_Policy.pdf"
-                      [downloadFileName]="'mytestfile.pdf'"
-                      [download]="true"
-                      [find] = "false"
-                      [fullScreen] ="false"
-                      [openFile] ="false"
-                      [viewBookmark] = "false"
-                    ></ng2-pdfjs-viewer>  
-                  </div>
-                </mat-expansion-panel>
-        
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Public Release Policy
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <div class="pdfContainer">
-                    <ng2-pdfjs-viewer 
-                      #pdfViewerOnDemand
-                      pdfSrc="LWVCC_Fiscal_Policy.pdf"
-                      [downloadFileName]="'mytestfile.pdf'"
-                      [download]="true"
-                      [find] = "false"
-                      [fullScreen] ="false"
-                      [openFile] ="false"
-                      [viewBookmark] = "false"
-                    ></ng2-pdfjs-viewer>
-                  </div>
-                </mat-expansion-panel>
         </mat-accordion>
       </div>
-  
   </body>
