@@ -1,5 +1,6 @@
 <br><br>
 <h1>Administrative View: Documents</h1>
+
 <form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
   <h2>Add New Documents</h2>
   <br>
@@ -21,10 +22,18 @@
     </select>
 </div>
 
-<br><br>
+<br>
 <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
 <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
-
+<br>
+<div class = "sort">
+    <mat-radio-group [(ngModel)]="selection">
+          <mat-radio-button class = "rdobtn" value='All' (change)="handleChange($event)">All</mat-radio-button>
+          <mat-radio-button class = "rdobtn" value='Policy' (change)="handleChange($event)">Policy</mat-radio-button>
+          <mat-radio-button class = "rdobtn" value='Archive' (change)="handleChange($event)">Archive</mat-radio-button>
+    </mat-radio-group>
+    <br>
+</div>
 <div class="newsletterCount">
   Number of documents stored: {{this.documentLength}}  
 </div>

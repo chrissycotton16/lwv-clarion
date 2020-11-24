@@ -44,4 +44,5 @@ export class DocumentUpdateDialogComponent implements OnInit {
     };
       this.dialogRef.close(this.data.DocumentToUpdate);
   }
+  
 }

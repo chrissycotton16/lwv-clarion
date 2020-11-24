@@ -30,7 +30,7 @@ export class AdminDocumentsComponent implements OnInit {
   pdfChosen = false;
   baseUrl = 'http://localhost/api/lwv/document/';
   files:string[]  = [];
-
+  selection: string;
   uploadForm =  new  FormGroup({
     name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
     file:  new  FormControl('',  [Validators.required])
@@ -41,6 +41,8 @@ export class AdminDocumentsComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.selection = 'All';
+
     this.getDocuments();
   }
 
@@ -157,4 +159,31 @@ export class AdminDocumentsComponent implements OnInit {
     this.error   = '';
   }
 
+  handleChange(evt) {
+    if(evt.value == 'All'){
+      this.getDocuments();
+    }
+    else if(evt.value =='Policy'){
+      this.documentService.getPolicies().subscribe(
+        (res: Document[]) => {
+          this.documents = res;
+          this.documentLength = this.documents.length;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );    
+    }
+    else if(evt.value =='Archive'){
+      this.documentService.getArchives().subscribe(
+        (res: Document[]) => {
+          this.documents = res;
+          this.documentLength = this.documents.length;
+        },
+        (err) => {
+          this.error = err;
+        }
+      );    
+    }
+  }
 }
