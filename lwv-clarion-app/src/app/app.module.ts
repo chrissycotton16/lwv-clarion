@@ -79,6 +79,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
 import { DocumentUpdateDialogComponent } from './components/admin/admin-documents/document-update-dialog/document-update-dialog.component';
+import { ContactDialogComponent } from './components/contact-dialog/contact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { DocumentUpdateDialogComponent } from './components/admin/admin-document
     AdminUpdateDialogComponent,
     NewsletterUpdateDialogComponent,
     AdminDocumentsComponent,
-    DocumentUpdateDialogComponent
+    DocumentUpdateDialogComponent,
+    ContactDialogComponent
   
   ],
   imports: [

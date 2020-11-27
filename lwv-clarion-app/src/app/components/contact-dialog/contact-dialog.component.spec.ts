@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalendarDialogComponent } from './calendar-dialog.component';
+import { ContactDialogComponent } from './contact-dialog.component';
 
-describe('CalendarDialogComponent', () => {
-  let component: CalendarDialogComponent;
-  let fixture: ComponentFixture<CalendarDialogComponent>;
+describe('ContactDialogComponent', () => {
+  let component: ContactDialogComponent;
+  let fixture: ComponentFixture<ContactDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalendarDialogComponent ]
+      declarations: [ ContactDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CalendarDialogComponent);
+    fixture = TestBed.createComponent(ContactDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +22,4 @@ describe('CalendarDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-}); 
+});

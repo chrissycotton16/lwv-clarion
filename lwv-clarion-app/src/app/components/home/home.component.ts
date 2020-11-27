@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { from } from 'rxjs';
 import { NewMemberDialogComponent } from '../new-member-dialog/new-member-dialog.component';
+import { ContactDialogComponent } from '../contact-dialog/contact-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +24,15 @@ export class HomeComponent implements OnInit {
     });
     dialogConfig.afterClosed().subscribe(
       data => console.log("Dialog output: ", data)
+    );
+  }
+  openContactDialog(){
+    const dialogConfig = this.dialog.open(ContactDialogComponent, {
+      width: '40%',
+      height: 'auto',
+      autoFocus: false
+    });
+    dialogConfig.afterClosed().subscribe(
     );
   }
 }
