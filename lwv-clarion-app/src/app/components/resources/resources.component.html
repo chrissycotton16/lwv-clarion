@@ -6,40 +6,48 @@
     <table>
       <tr >
           <td style="text-align: center;">
-            <a href="https://www.votespa.com/"> <img src="./assets/VotesPA.png"> </a>
+            <a href="https://www.votespa.com/" target='_blank'> <img src="./assets/VotesPA.png"> </a>
           </td>
           
           <td style="border:5px solid #005596;">
-            <a href="https://www.votespa.com/">Pennsylvania voting resources</a>
+            <a href="https://www.votespa.com/" target='_blank'>Pennsylvania voting resources</a>
           </td>
       </tr>
   
       <tr>
         <td style="text-align: center;">
-          <a href="http://www.co.clarion.pa.us/"> <img src="./assets/ClarionCounty.jpg"> </a>
+          <a href="http://www.co.clarion.pa.us/" target='_blank'> <img src="./assets/ClarionCounty.jpg"> </a>
         </td>
         <td style="border:5px solid #005596;">
-          <a href="http://www.co.clarion.pa.us/"> Clarion County </a>
+          <a href="http://www.co.clarion.pa.us/" target='_blank'> Clarion County </a>
         </td>
       </tr>
   
       <tr>
         <td style="text-align: center;">
-          <a href="https://www.palwv.org/"> <img src="./assets/LWVPA.jpg"> </a>
+          <a href="https://www.palwv.org/" target='_blank'> <img src="./assets/LWVPA.jpg"> </a>
         </td>
         <td style="border:5px solid #005596;">
-          <a href="https://www.palwv.org/"> Pennsylvania League of Women Voters </a>
+          <a href="https://www.palwv.org/" target='_blank'> Pennsylvania League of Women Voters </a>
         </td>
       </tr>
   
       <tr>
         <td style="text-align: center;">
-          <a href="https://www.lwv.org/"> <img src="./assets/LWV.jpg" > </a>
+          <a href="https://www.lwv.org/" target='_blank'> <img src="./assets/LWV.jpg" > </a>
         </td>
         <td style="border:5px solid #005596;">
-          <a href="https://www.lwv.org/"> National League of Women Voters </a>
+          <a href="https://www.lwv.org/" target='_blank'> National League of Women Voters </a>
         </td>
-  
+      </tr>
+
+      <tr>
+        <td style="text-align: center;">
+          <a href="https://www.vote411.org/" target = "_blank"> <img src="./assets/vote411.png" > </a>
+        </td>
+        <td style="border:5px solid #005596;">
+          <a href="https://www.vote411.org/" target = "_blank"> Election Information </a>
+        </td>
       </tr>
    
     </table>
@@ -50,19 +58,19 @@
 
   <div class="accordian-container">
     <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let new of newsletters">
           <mat-expansion-panel-header >
             <mat-panel-title>
-                September 2020 
+                {{new.Title}} 
             </mat-panel-title>
             <mat-panel-description>
+              {{new.Description}}
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="pdfContainer">
             <ng2-pdfjs-viewer 
               #pdfViewerOnDemand
-              pdfSrc="Voter20.09.pdf"
-              [downloadFileName]="'mytestfile.pdf'"
+              pdfSrc={{new.pdfSrc}}           
               [download]="true"
               [find] = "false"
               [fullScreen] ="false"
@@ -71,168 +79,60 @@
             ></ng2-pdfjs-viewer>
           </div>
         </mat-expansion-panel>
-      
-        <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      April 2020
-                  </mat-panel-title>
-                  <mat-panel-description>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div class="pdfContainer">
-                  <ng2-pdfjs-viewer 
-                    #pdfViewerOnDemand
-                    pdfSrc="Voter20.04.pdf"
-                    [downloadFileName]="'mytestfile.pdf'"
-                    [download]="true"
-                    [find] = "false"
-                    [fullScreen] ="false"
-                    [openFile] ="false"
-                    [viewBookmark] = "false"
-                  ></ng2-pdfjs-viewer>  
-                </div>
-              </mat-expansion-panel>
-      
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      March 2020
-                  </mat-panel-title>
-                  <mat-panel-description>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div class="pdfContainer">
-                  <ng2-pdfjs-viewer 
-                    #pdfViewerOnDemand
-                    pdfSrc="Voter20.03.pdf"
-                    [downloadFileName]="'mytestfile.pdf'"
-                    [download]="true"
-                    [find] = "false"
-                    [fullScreen] ="false"
-                    [openFile] ="false"
-                    [viewBookmark] = "false"
-                  ></ng2-pdfjs-viewer>
-                </div>
-              </mat-expansion-panel>
-
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      February 2020
-                  </mat-panel-title>
-                  <mat-panel-description>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div class="pdfContainer">
-                  <ng2-pdfjs-viewer 
-                    #pdfViewerOnDemand
-                    pdfSrc="Voter20.02.pdf"
-                    [downloadFileName]="'mytestfile.pdf'"
-                    [download]="true"
-                    [find] = "false"
-                    [fullScreen] ="false"
-                    [openFile] ="false"
-                    [viewBookmark] = "false"
-                  ></ng2-pdfjs-viewer>
-                </div>
-              </mat-expansion-panel>
-
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      December 2019 & January 2020
-                  </mat-panel-title>
-                  <mat-panel-description>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div class="pdfContainer">
-                  <ng2-pdfjs-viewer 
-                    #pdfViewerOnDemand
-                    pdfSrc="Voter19.12.pdf"
-                    [downloadFileName]="'mytestfile.pdf'"
-                    [download]="true"
-                    [find] = "false"
-                    [fullScreen] ="false"
-                    [openFile] ="false"
-                    [viewBookmark] = "false"
-                  ></ng2-pdfjs-viewer>
-                </div>
-              </mat-expansion-panel>
-
       </mat-accordion>
     </div>
 
-
-    <h1>Policies</h1>  
-    <div class="policies-container">
+    <h1>Archives</h1>  
+    <div class="accordian-container">
       <mat-accordion>
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngFor="let doc of archives">
             <mat-expansion-panel-header >
               <mat-panel-title>
-                  Fiscal Policy
+                  {{doc.Title}} 
               </mat-panel-title>
-              <mat-panel-description>
+              <mat-panel-description >
+                {{doc.Description}}
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="pdfContainer">
               <ng2-pdfjs-viewer 
                 #pdfViewerOnDemand
-                pdfSrc="LWVCC_Fiscal_Policy.pdf"
-                [downloadFileName]="'mytestfile.pdf'"
+                pdfSrc={{doc.pdfSrc}}           
                 [download]="true"
                 [find] = "false"
                 [fullScreen] ="false"
                 [openFile] ="false"
-                [viewBookmark] = "false"
+                [viewBookmark] = "false"   
               ></ng2-pdfjs-viewer>
             </div>
           </mat-expansion-panel>
-        
-          <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Nonpartisan Policy
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <div class="pdfContainer">
-                    <ng2-pdfjs-viewer 
-                      #pdfViewerOnDemand
-                      pdfSrc="LWVCC_Fiscal_Policy.pdf"
-                      [downloadFileName]="'mytestfile.pdf'"
-                      [download]="true"
-                      [find] = "false"
-                      [fullScreen] ="false"
-                      [openFile] ="false"
-                      [viewBookmark] = "false"
-                    ></ng2-pdfjs-viewer>  
-                  </div>
-                </mat-expansion-panel>
-        
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Public Release Policy
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <div class="pdfContainer">
-                    <ng2-pdfjs-viewer 
-                      #pdfViewerOnDemand
-                      pdfSrc="LWVCC_Fiscal_Policy.pdf"
-                      [downloadFileName]="'mytestfile.pdf'"
-                      [download]="true"
-                      [find] = "false"
-                      [fullScreen] ="false"
-                      [openFile] ="false"
-                      [viewBookmark] = "false"
-                    ></ng2-pdfjs-viewer>
-                  </div>
-                </mat-expansion-panel>
         </mat-accordion>
       </div>
-  
+
+    <h1>Policies</h1>  
+    <div class="accordian-container">
+      <mat-accordion>
+          <mat-expansion-panel *ngFor="let doc of policies">
+            <mat-expansion-panel-header >
+              <mat-panel-title>
+                  {{doc.Title}} 
+              </mat-panel-title>
+              <mat-panel-description >
+                {{doc.Description}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="pdfContainer">
+              <ng2-pdfjs-viewer 
+                #pdfViewerOnDemand
+                pdfSrc={{doc.pdfSrc}}           
+                [download]="true"
+                [find] = "false"
+                [fullScreen] ="false"
+                [openFile] ="false"
+                [viewBookmark] = "false"   
+              ></ng2-pdfjs-viewer>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
   </body>

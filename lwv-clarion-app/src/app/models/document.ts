@@ -1,9 +1,9 @@
 export class Document {
     constructor(
         //required attributes of Document
-        FileName: string,
-        PDFFile: Blob, // check data type
-        DocumentID?:   number      
+       DocumentID?:number,
+       pdfSrc?:string,
+       Title?:string,
+       Description?:string
     ) {}
   }
-  

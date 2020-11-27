@@ -81,8 +81,18 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather');
-
 * {
   font-family: Merriweather;
-  
  }
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#005596; 
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color:#005596;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:#005596;
+}

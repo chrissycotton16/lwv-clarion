@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./admin-picture.component.scss']
 })
 export class AdminPictureComponent implements OnInit {
-  displayedColumns: string[] = ['ImageID', 'imageString', 'caption', 'Edit'];
+  displayedColumns: string[] = ['imageString', 'caption', 'Edit'];
   images: Image[];
   imageLength: number;
   error = '';
@@ -44,7 +44,15 @@ export class AdminPictureComponent implements OnInit {
  
     var docType = files[0].type;
     if (docType.match(/image\/*/) == null) {
-      this.message = "Only images are supported. Please select a .png, .jpeg or .jpg";
+      //this.message = "Only images are supported. Please select a .png, .jpeg or .jpg";
+      alert("Only images are supported. Please select a .png, .jpeg or .jpg");
+      this.uploadForm = new  FormGroup({
+        name:  new  FormControl('',  [Validators.required,  Validators.minLength(3)]),
+        file:  new  FormControl('',  [Validators.required])
+      });
+      this.picturePreviewed = false;
+      this.imgURL = "";
+      this.newImageCaption = "";
       return;
     }
  
@@ -101,7 +109,6 @@ export class AdminPictureComponent implements OnInit {
     this.getImages();
   }
 
-  //database crud operations
   getImages():void {
     this.imageService.getAll().subscribe(
       (res: Image[]) => {
@@ -113,6 +120,7 @@ export class AdminPictureComponent implements OnInit {
       }
     );
   }
+  
   deleteImage(ImageID, imageString) {
     if(window.confirm('Are you sure you want to delete this item?')){
       this.resetErrors();

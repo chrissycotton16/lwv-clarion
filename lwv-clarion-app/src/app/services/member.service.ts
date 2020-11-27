@@ -22,11 +22,37 @@ export class MemberService {
         catchError(this.handleError));
     }
 
+    getPending():Observable<Member[]>{
+        return this.http.get(`${this.baseUrl}/listPending`).pipe(
+            map((res) => {
+                this.members = res['data'];
+                return this.members;
+            }),
+            catchError(this.handleError));
+    }
+
+    getInactive():Observable<Member[]>{
+        return this.http.get(`${this.baseUrl}/listInactive`).pipe(
+            map((res) => {
+                this.members = res['data'];
+                return this.members;
+            }),
+            catchError(this.handleError));
+    }
+
+    getActive():Observable<Member[]>{
+        return this.http.get(`${this.baseUrl}/listActive`).pipe(
+            map((res) => {
+                this.members = res['data'];
+                return this.members;
+            }),
+            catchError(this.handleError));
+    }
+
     getEmails(): Observable<string[]> {
         return this.http.get(`${this.baseUrl}/listEmails`).pipe(
         map((res) => {
             this.emails = res['data'];
-            console.log(this.emails);
             return this.emails;
         }),
         catchError(this.handleError));

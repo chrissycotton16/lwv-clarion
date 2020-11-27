@@ -1,0 +1,77 @@
+<br><br>
+<h1>Administrative View: Documents</h1>
+
+<form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
+  <h2>Add New Documents</h2>
+  <br>
+  <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)" >{{message}}
+<button class="submitButton" type="submit" [hidden]="newPDFTitle =='' || newPDFDescription == ''">Upload</button>
+</form>
+<img [src]="pdfURL" height="200" *ngIf="pdfURL != undefined || pdfURL != ''">
+<div *ngIf="pdfChosen ==true">
+    Please enter this pdf's title and description: limit 40 characters. <br>
+        Title:
+    <input type="text" [(ngModel)]="newPDFTitle" maxlength="40"> <br>
+        Description:
+    <input type="text" [(ngModel)]="newPDFDescription" maxlength="40"> <br>
+    <label>Choose a type: </label>
+    <select [(ngModel)]="newType">
+        <option *ngFor="let type of types" [value]='type'>
+            {{type}}
+        </option>
+    </select>
+</div>
+
+<br>
+<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+<br>
+<div class = "sort">
+    <mat-radio-group [(ngModel)]="selection">
+          <mat-radio-button class = "rdobtn" value='All' (change)="handleChange($event)">All</mat-radio-button>
+          <mat-radio-button class = "rdobtn" value='Policy' (change)="handleChange($event)">Policy</mat-radio-button>
+          <mat-radio-button class = "rdobtn" value='Archive' (change)="handleChange($event)">Archive</mat-radio-button>
+    </mat-radio-group>
+    <br>
+</div>
+<div class="newsletterCount">
+  Number of documents stored: {{this.documentLength}}  
+</div>
+<table mat-table [dataSource]="documents"  class="mat-elevation-z8">
+      <ng-container matColumnDef="pdfSrc">
+        <th mat-header-cell *matHeaderCellDef>PDF</th>
+        <td mat-cell *matCellDef="let doc">{{doc.pdfSrc}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef >Title</th>
+        <td mat-cell *matCellDef="let doc">{{doc.Title}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef >Description</th>
+        <td mat-cell *matCellDef="let doc">{{doc.Description}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Type">
+        <th mat-header-cell *matHeaderCellDef >Type</th>
+        <td mat-cell *matCellDef="let doc">{{doc.Type}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let doc"> 
+                  <input type="button" value = "Delete" color='primary' (click)='deletePDF(doc.DocumentID, doc.pdfSrc)'>   
+                  <input type="button" value = "Update" color='primary' (click)='openUpdateDialog(doc)'>   
+
+            </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<br>
+
+
+
+
+
+
+<br><br><br><br> 

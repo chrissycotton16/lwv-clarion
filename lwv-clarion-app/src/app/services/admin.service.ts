@@ -21,11 +21,9 @@ export class AdminService {
     constructor(private http : HttpClient) { }
 
     userLogin(admin: Admin): Observable<Admin[]> {
-        console.log(admin);
         return this.http.post(`${this.baseUrl}/login`, {data: admin},{responseType: "text"})
                 .pipe(map((res) => {
                     if(res == "success"){
-                        console.log("inside success");
                         this.correctLogIn = true;
                         this.setToken("admin")
                     }
@@ -39,7 +37,6 @@ export class AdminService {
     }
 
     store(admin: Admin): Observable<Admin[]> {
-        console.log("in admin service");
         return this.http.post(`${this.baseUrl}/store`, { data: admin })
         .pipe(map((res) => {
             this.admins.push(res['data']);

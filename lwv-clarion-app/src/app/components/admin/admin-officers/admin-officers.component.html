@@ -1,25 +1,38 @@
 
 <br><br>
-<h1>Administrative View: Officers</h1>
-<table mat-table [dataSource]="officers" matSort class="mat-elevation-z8">
+<div>
+      <h1>Administrative View: Officers</h1>
+      
+      <button mat-raised-button (click)="openDialog()">Add New Officer</button>
+      
+      <br><br>
+      <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
+      <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+      <div class="officerCount">
+            Number of officers: {{this.officerLength}}  
+      </div>
+</div>
+
+
+<table mat-table [dataSource]="officers"  class="mat-elevation-z8">
       <ng-container matColumnDef="FirstName">
-           <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+           <th mat-header-cell *matHeaderCellDef >First Name</th>
            <td mat-cell *matCellDef="let off">{{off.FirstName}}</td>
       </ng-container>
       <ng-container matColumnDef="LastName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+            <th mat-header-cell *matHeaderCellDef >Last Name</th>
             <td mat-cell *matCellDef="let off">{{off.LastName}}</td>
       </ng-container>
       <ng-container matColumnDef="Position">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+            <th mat-header-cell *matHeaderCellDef >Position</th>
             <td mat-cell *matCellDef="let off">{{off.Position}}</td>
       </ng-container>
       <ng-container matColumnDef="Email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <th mat-header-cell *matHeaderCellDef >Email</th>
             <td mat-cell *matCellDef="let off">{{off.Email}}</td>
       </ng-container>
       <ng-container matColumnDef="TermStart">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Term</th>
+            <th mat-header-cell *matHeaderCellDef >Start Term</th>
             <td mat-cell *matCellDef="let off">{{off.TermStart}}</td>
       </ng-container>
       <ng-container matColumnDef="Edit">
@@ -33,15 +46,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<div class="officerCount">
-      Number of officers: {{this.officerLength}}  
-</div>
-<br><br>
 
-<button mat-raised-button (click)="openDialog()">Add New Officer</button>
 
-<br><br>
-<div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
-<div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
 
 <br><br><br><br>

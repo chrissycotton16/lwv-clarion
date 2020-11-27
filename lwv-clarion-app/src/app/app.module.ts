@@ -23,7 +23,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-
+import { MatRadioModule } from '@angular/material/radio';
 //carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
@@ -70,11 +70,15 @@ import {CalendarDialogComponent} from './components/calendar-dialog/calendar-dia
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { AdminAddDialogComponent } from './components/admin/admin-users/admin-add-dialog/admin-add-dialog.component';
 import { AdminUpdateDialogComponent } from './components/admin/admin-users/admin-update-dialog/admin-update-dialog.component';
+import { NewsletterUpdateDialogComponent } from './components/admin/admin-newsletter/newsletter-update-dialog/newsletter-update-dialog.component';
 
 import {LayoutModule} from '@angular/cdk/layout';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PlatformModule } from '@angular/cdk/platform';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AdminDocumentsComponent } from './components/admin/admin-documents/admin-documents.component';
+import { DocumentUpdateDialogComponent } from './components/admin/admin-documents/document-update-dialog/document-update-dialog.component';
 
 @NgModule({
   declarations: [
@@ -102,8 +106,11 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     CalendarDialogComponent,
     AdminUsersComponent,
     AdminAddDialogComponent,
-    AdminUpdateDialogComponent
-   
+    AdminUpdateDialogComponent,
+    NewsletterUpdateDialogComponent,
+    AdminDocumentsComponent,
+    DocumentUpdateDialogComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -141,12 +148,13 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     RecaptchaModule,
     RecaptchaFormsModule,
     ScrollingModule,
-    LayoutModule,
+    MatRadioModule,
+    LayoutModule
   
   ],
   exports:[ObserversModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

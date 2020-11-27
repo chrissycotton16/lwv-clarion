@@ -1,41 +1,7 @@
 <br><br>
 <h1>Administrative View: Images</h1>
-<table mat-table [dataSource]="images" matSort class="mat-elevation-z8">
-      <ng-container matColumnDef="ImageID">
-           <th mat-header-cell *matHeaderCellDef mat-sort-header>ImageID</th>
-           <td mat-cell *matCellDef="let img">{{img.ImageID}}</td>
-      </ng-container>
-      <ng-container matColumnDef="imageString">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Image String</th>
-        <td mat-cell *matCellDef="let img">{{img.imageString}}</td>
-      </ng-container>
-      <ng-container matColumnDef="caption">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Caption</th>
-        <td mat-cell *matCellDef="let img">{{img.caption}}</td>
-      </ng-container>
-      <ng-container matColumnDef="Edit">
-            <th mat-header-cell *matHeaderCellDef>Edit</th>
-            <td mat-cell *matCellDef="let img"> 
-                  <input type="button" value = "Delete" color='primary' (click)='deleteImage(img.ImageID, img.imageString)'>   
-            </td>
-      </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<div class="imageCount">
-      Number of images in carousel: {{this.imageLength}}  
-</div>
-<br>
-
-<!-- <h3>Add Image to Carousel</h3>
-<span style="color:red;" *ngIf="message">{{message}}</span>
-<input #file type="file" accept='image/*' (change)="preview(file.files)"><br> -->
-
-<!-- for the server -->
 <form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
       <h2>Add New Image to Carousel</h2>
-      <br>
       <input  formControlName="file" name="file" id="file"  type="file"  (change)="onFileChange($event)">{{message}}
     <button class="submitButton" type="submit" [hidden]="newImageCaption ==''">Upload</button>
 </form>
@@ -48,6 +14,33 @@
 <br><br>
 <div *ngIf="error" class="alert alert-danger">Database says: {{error}}</div>
 <div *ngIf="success" class="alert alert-success">Database says: {{success}}</div>
+
+<div class="imageCount">
+      Number of images in carousel: {{this.imageLength}}  
+</div>
+<table mat-table [dataSource]="images"  class="mat-elevation-z8">
+      <ng-container matColumnDef="imageString">
+        <th mat-header-cell *matHeaderCellDef >Image String</th>
+        <td mat-cell *matCellDef="let img">{{img.imageString}}</td>
+      </ng-container>
+      <ng-container matColumnDef="caption">
+        <th mat-header-cell *matHeaderCellDef >Caption</th>
+        <td mat-cell *matCellDef="let img">{{img.caption}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let img"> 
+                  <input type="button" value = "Delete" color='primary' (click)='deleteImage(img.ImageID, img.imageString)'>   
+            </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<br>
+
+
 
 
 
