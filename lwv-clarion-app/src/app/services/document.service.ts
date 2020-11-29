@@ -8,8 +8,8 @@ import { Document } from '../models/document';
   providedIn: 'root'
 })
 export class DocumentService {
-    baseUrl = 'http://localhost/api/lwv/document';
-    documents: Document[];
+  baseUrl = 'https://clarionlwvpa.org/api/lwv/document';
+  documents: Document[];
     constructor(private http: HttpClient) { }
 
   getAll(): Observable<Document[]> {

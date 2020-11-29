@@ -8,7 +8,8 @@ import { Image } from '../models/image';
   providedIn: 'root'
 })
 export class ImageService {
-    baseUrl = 'http://localhost/api/lwv/image';
+  baseUrl = 'https://clarionlwvpa.org/api/lwv/image';
+
     images: Image[];
     constructor(private http: HttpClient) { }
 

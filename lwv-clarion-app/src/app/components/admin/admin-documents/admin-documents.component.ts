@@ -28,7 +28,7 @@ export class AdminDocumentsComponent implements OnInit {
   newPDFDescription: string = '';
   newType: string = '';
   pdfChosen = false;
-  baseUrl = 'http://localhost/api/lwv/document/';
+  baseUrl = 'https://clarionlwvpa.org/api/lwv/document/';
   files:string[]  = [];
   selection: string;
   uploadForm =  new  FormGroup({
