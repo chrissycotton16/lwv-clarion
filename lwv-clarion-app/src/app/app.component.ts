@@ -1,7 +1,6 @@
 import { HostListener } from '@angular/core';
 import { Component} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogInComponent } from './components/log-in/log-in.component';
 
 
 @Component({
@@ -22,18 +21,6 @@ export class AppComponent {
     this.ngOnInIt();
   }
 
-  openLogInDialog(){
-    const dialogConfig = this.dialog.open(LogInComponent, {
-      width: '450px',
-      data: {id: 1,
-        title: 'Admin Log In'},
-      autoFocus: false
-    });
-    dialogConfig.afterClosed().subscribe(
-      data => console.log("Dialog output: ", data)
-    );
-  }
-  
   ngOnInIt(){
     
   }

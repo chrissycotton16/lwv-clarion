@@ -10,7 +10,6 @@ import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { HistoryComponent } from './components/history/history.component';
-import { LogInComponent } from './components/log-in/log-in.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -88,7 +87,6 @@ import { ContactDialogComponent } from './components/contact-dialog/contact-dial
     CalendarComponent,
     ResourcesComponent,
     HistoryComponent,
-    LogInComponent,
     AdminComponent,
     CarouselComponent,
     MembersComponent,

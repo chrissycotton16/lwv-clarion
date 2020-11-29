@@ -3,7 +3,6 @@ import { Routes } from '@angular/router';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { HistoryComponent } from './components/history/history.component';
 import { HomeComponent } from './components/home/home.component';
-import { LogInComponent } from './components/log-in/log-in.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { AdminComponent } from './components/admin/admin.component';
 
@@ -23,10 +22,6 @@ const appRoutes: Routes = [
     {
         path: 'history',
         component: HistoryComponent
-    },
-    {
-        path: 'log-in',
-        component: LogInComponent
     },
     {
         path: 'admin',
