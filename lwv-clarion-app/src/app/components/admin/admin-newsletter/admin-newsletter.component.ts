@@ -91,6 +91,7 @@ export class AdminNewsletterComponent implements OnInit {
         this.pdfChosen=true;
       }
       else{
+        alert(event.target.files[0].size);
         alert("This file is too big to upload, please try again with a smaller sized pdf file.")
         this.resetForm();
       }
