@@ -91,7 +91,7 @@ export class AdminNewsletterComponent implements OnInit {
         this.pdfChosen=true;
       }
       else{
-        alert("This file is too big, the maximum size the database will allow is 40 MB.")
+        alert("This file is too big to upload, please try again with a smaller sized pdf file.")
         this.resetForm();
       }
   }
