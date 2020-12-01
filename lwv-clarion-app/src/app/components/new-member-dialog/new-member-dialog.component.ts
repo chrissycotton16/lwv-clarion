@@ -21,7 +21,7 @@ export class NewMemberDialogComponent implements OnInit {
   secondaryname: string;
   lastpaid: string;
   datejoined: string;
-  membership:number;
+  membership:string;
   status: string;
   email: string;
   phone: string;
@@ -29,7 +29,7 @@ export class NewMemberDialogComponent implements OnInit {
   street: string;
   city: string;
   state: string;
-  zip: number;
+  zip: string;
   membershipTypes: string[] = ['Student: $0', 'Individual: $40-$80', 'Household: $60-$120'];
   statusOptions: string[] = ['Inactive', 'Active', 'Pending'];
 

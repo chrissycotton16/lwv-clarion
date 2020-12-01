@@ -59,10 +59,12 @@
 
 <mat-dialog-actions>
     <button class="mat-raised-button"(click)="close()">Close</button>
-    <button mat-raised-button mat-primary (click)="saveOpen()" id="save"
+    <button mat-raised-button  (click)="saveOpen()" id="save"
         [disabled]="firstname == undefined || lastname == undefined || secondaryname == undefined ||
         email == undefined || phone == undefined || membership == undefined ||
         secondaryphone == undefined || street == undefined ||
-        city == undefined || state == undefined || zip == undefined">Save</button>
+        city == undefined || state == undefined || zip == undefined || firstname == '' || lastname == '' || secondaryname == '' ||
+        email == '' || phone == '' || membership == '' || secondaryphone == '' || street == '' ||
+        city == '' || state == '' || zip == ''">Save</button>
 </mat-dialog-actions>
 </mat-dialog-content>

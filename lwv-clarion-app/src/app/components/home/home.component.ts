@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
   openContactDialog(){
     const dialogConfig = this.dialog.open(ContactDialogComponent, {
-      width: '40%',
+      width: '450px',
       height: 'auto',
       autoFocus: false
     });
