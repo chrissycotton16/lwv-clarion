@@ -35,7 +35,6 @@ export class OfficerService {
     }
 
     store(officer: Officer): Observable<Officer[]> {
-        console.log("in officer service");
         return this.http.post(`${this.baseUrl}/store`, { data: officer })
         .pipe(map((res) => {
             this.officers.push(res['data']);
@@ -45,7 +44,6 @@ export class OfficerService {
     }
 
     update(officer: Officer): Observable<Officer[]> {
-        console.log(officer);
         return this.http.put(`${this.baseUrl}/update`, { data: officer })
         .pipe(map((res) => {
             const theOfficer = this.officers.find((item) => {

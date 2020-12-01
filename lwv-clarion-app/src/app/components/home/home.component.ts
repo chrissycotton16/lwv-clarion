@@ -22,9 +22,7 @@ export class HomeComponent implements OnInit {
         title: 'Become A Member'},
       autoFocus: false
     });
-    dialogConfig.afterClosed().subscribe(
-      data => console.log("Dialog output: ", data)
-    );
+    dialogConfig.afterClosed().subscribe();
   }
   openContactDialog(){
     const dialogConfig = this.dialog.open(ContactDialogComponent, {

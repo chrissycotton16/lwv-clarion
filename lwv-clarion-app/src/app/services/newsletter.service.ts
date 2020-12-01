@@ -52,7 +52,6 @@ export class NewsletterService {
    update(newsletter: Newsletter): Observable<Newsletter[]> {
     return this.http.put(`${this.baseUrl}/update`, { data: newsletter })
     .pipe(map((res) => {
-      console.log(res);
         const theNewsletter = this.newsletters.find((item) => {
         return +item['NewsletterID'] === +newsletter['NewsletterID'];
         });

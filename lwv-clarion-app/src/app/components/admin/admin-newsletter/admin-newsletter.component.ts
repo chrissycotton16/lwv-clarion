@@ -102,7 +102,6 @@ export class AdminNewsletterComponent implements OnInit {
     formData.append("file",  this.files[0]);
     this.httpClient.post((this.baseUrl+"testUpload"), formData, {responseType: "text"}).subscribe(res =>  {
       if(res != 'failure'){
-        console.log(res);
         this.pdfStringResult = res;
         
         this.addtoDatabase(this.pdfStringResult, this.newPDFTitle, this.newPDFDescription);
@@ -112,7 +111,6 @@ export class AdminNewsletterComponent implements OnInit {
 
       }
       else{
-        console.log(res);
         alert('File did not upload successfully. Please make sure the file you are submitting is a pdf and that it doesnt already exist in the folder.');
         this.resetForm();
       }

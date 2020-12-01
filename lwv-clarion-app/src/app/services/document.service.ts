@@ -57,7 +57,6 @@ export class DocumentService {
   }
 
   store(pdfString: string, Title: string, Description: string, Type :string) {
-      console.log(Type);
     let doc: Document = {DocumentID: 0, pdfSrc: pdfString, Title: Title, Description: Description, Type: Type};
     this.http.post(`${this.baseUrl}/store`, { data: doc }).subscribe(res => {
       this.documents.push(res['data']);
@@ -66,7 +65,6 @@ export class DocumentService {
    }
 
    update(document: Document): Observable<Document[]> {
-    console.log(document);
     return this.http.put(`${this.baseUrl}/update`, { data: document })
     .pipe(map((res) => {
         const theDocument = this.documents.find((item) => {
@@ -84,7 +82,6 @@ export class DocumentService {
 } 
 
   private handleError(error: HttpErrorResponse) {
-      console.log(error);
       // return an observable with a user friendly message
       return throwError('Error! something went wrong.');
   }

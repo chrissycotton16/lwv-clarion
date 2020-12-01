@@ -73,7 +73,6 @@ export class MemberService {
     }
 
     store(member: Member): Observable<Member[]> {
-        console.log("in mem service");
         return this.http.post(`${this.baseUrl}/store`, { data: member })
         .pipe(map((res) => {
             this.members.push(res['data']);
@@ -83,8 +82,6 @@ export class MemberService {
     }
 
     update(member: Member): Observable<Member[]> {
-        console.log("made it to update in services");
-        console.log(member);
         return this.http.put(`${this.baseUrl}/update`, { data: member })
         .pipe(map((res) => {
             const theMember = this.members.find((item) => {

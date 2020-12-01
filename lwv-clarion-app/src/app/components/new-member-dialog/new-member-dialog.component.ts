@@ -70,7 +70,6 @@ export class NewMemberDialogComponent implements OnInit {
       City: this.city, 
       State: this.state, 
       ZipCode: this.zip};
-    console.log(this.newMember);                        
     this.dialogRef.close(this.newMember);
   }
 
@@ -85,9 +84,6 @@ export class NewMemberDialogComponent implements OnInit {
 
     addMember(mem: Member) {
       mem = this.newMember;
-      console.log("member v");
-      console.log(this.newMember);
-      console.log(mem);
       this.resetErrors();
       this.memberService.store(mem)
         .subscribe(
@@ -131,7 +127,6 @@ export class NewMemberDialogComponent implements OnInit {
     });
     dialogConfig.afterClosed().subscribe(result => {
       if(result == "yes"){
-        console.log(this.newMember);
         this.addMember(this.newMember);
         this.dialogRef.close(this.newMember);
       }

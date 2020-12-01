@@ -45,7 +45,6 @@ export class EventService {
     }
 
     store(event: Event): Observable<Event[]> {
-        console.log("in event service");
         return this.http.post(`${this.baseUrl}/store`, { data: event })
         .pipe(map((res) => {
             this.events.push(res['data']);
@@ -55,7 +54,6 @@ export class EventService {
     }
 
     update(event: Event): Observable<Event[]> {
-        console.log(event);
         return this.http.put(`${this.baseUrl}/update`, { data: event })
         .pipe(map((res) => {
             const theEvent = this.events.find((item) => {

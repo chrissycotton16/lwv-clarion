@@ -172,7 +172,6 @@ export class MembersComponent implements OnInit {
     this.memberService.getEmails().subscribe(
       (res: string[]) => {
         this.emails = res;
-        console.log(this.emails);
         this.downloadEmails();
       },
       (err) => {
@@ -182,10 +181,8 @@ export class MembersComponent implements OnInit {
   }
 
   downloadEmails(){
-    console.log(this.emails);
     let filename = "emails";
     let csvData = this.ConvertToCSV(this.emails, ['Email']);
-    console.log(csvData);
     let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' })
     let dwldLink = document.createElement("a");
     let url = URL.createObjectURL(blob);
@@ -199,11 +196,9 @@ export class MembersComponent implements OnInit {
 
   exportAll(){
     let filename = "members";
-    console.log(this.members)
     let csvData = this.ConvertToCSV(this.members, ['FirstName', 'LastName', 'SecondaryHouseholdMemberName', 'LastPaidDate', 'DateJoined',
         'MembershipType', 'Status', 'Email', 'PreferredPhone', 'SecondaryPhone', 'StreetAddress', 'City',
         'State', 'ZipCode']);
-        console.log(csvData);
 
     let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' })
     let dwldLink = document.createElement("a");

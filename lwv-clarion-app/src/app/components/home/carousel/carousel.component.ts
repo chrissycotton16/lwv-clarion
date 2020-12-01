@@ -45,21 +45,16 @@ export class CarouselComponent {
     this.slides.length = this.slides.length - 1;
   }
   
-  slickInit(e) {
-    //console.log('slick initialized');
-    
+  slickInit(e) {    
   }
   
   breakpoint(e) {
-    //console.log('breakpoint');
   }
   
   afterChange(e) {
-    //console.log('afterChange');
   }
   
   beforeChange(e) {
-    //console.log('beforeChange');
   }
 }
 

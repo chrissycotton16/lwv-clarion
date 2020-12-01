@@ -67,7 +67,6 @@ export class CalendarComponent implements OnInit{
         events: this.eventsList,
 
         eventClick:(arg) =>{
-          console.log(arg.event.start);
           this.openCalendarDialog(arg.event.extendedProps.description, arg.event.title, arg.event.start, arg.event.end);
         }
         
